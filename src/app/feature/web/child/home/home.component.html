@@ -1,0 +1,283 @@
+<div class="carousel">
+    <div *ngFor="let item of carouselItem; index as i" class="carousel_item"
+        [style.opacity]="selectCarouselIndex == i ? 1 : 0"
+    >
+        <div>
+            <img [src]="item.itemUrl" width="100%" height="100%" alt="">
+            <caption>{{item.caption}}</caption>
+        </div>
+    </div>
+    <div class="control">
+        <div style="position: relative; width: 100%; height: 100%">
+            <div class="arrow_left" (click)="onDecrease()">
+                <ng-icon name="heroArrowLeft" ></ng-icon>
+            </div>
+            <div class="shortcut">
+                <div *ngFor="let item of carouselItem; index as i"
+                    class="shortcut_item"
+                    [ngClass]="{ active: selectCarouselIndex == i }"
+                    [style.backgroundColor]="selectCarouselIndex == i ? 'var(--dark-color)': 'var(--bright-color)'"
+                    (click)="selectCarouselIndex = i"></div>
+            </div>
+           
+            <div class="arrow_right" (click)="onIncrease()">
+                <ng-icon name="heroArrowRight"></ng-icon>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section #service>
+    <div class="service_section">
+        <div class="service_header">
+            <header class=" header">Service</header>
+            <div class="outline-btn">
+                Explore more
+            </div>
+        </div>
+        <div class="service_item">
+            <label for="">Service 1</label>
+            <div class="service_content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum condimentum commodo. Vestibulum lacus magna, pellentesque a ipsum nec, elementum condimentum ligula.
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="service_item">
+            <label for="">Service 2</label>
+            <div class="service_content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum condimentum commodo. Vestibulum lacus magna, pellentesque a ipsum nec, elementum condimentum ligula.
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="service_item">
+            <label for="">Service 3</label>
+            <div class="service_content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum condimentum commodo. Vestibulum lacus magna, pellentesque a ipsum nec, elementum condimentum ligula.
+            </div>
+        </div>
+    </div>
+</section>
+<section #read>
+    <div class="read_section">
+        <div class="read_header">
+            <header style="padding-left: 0;">Lastest read</header>
+            <div class="inline-btn">
+                View all
+            </div>
+        </div>
+        <div class="read_content">
+            <div style="grid-area: first;" class="first_story">
+                <div class="story_item">
+                    <div class="story_header">
+                        <div class="story_img">
+                            <img src="../../../../../assets/read/Holiday2024.jpg" alt="">
+                        </div>
+                        <small>17 November</small>
+                    </div>
+                    <div class="story_title">
+                        Holiday 2024
+                    </div>
+                    <div class="story_brief">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="story_list" style="grid-area: list;">
+                <div class="story_item">
+                    <div class="story_header">
+                        <div class="story_img">
+                            <img src="../../../../../assets/read/Spirit.jpg"  alt="">
+                        </div>
+                        <small>17 November</small>
+                    </div>
+                    <div class="story_title">
+                        Spirit
+                    </div>
+                    <div class="story_brief">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
+                    </div>
+                </div>
+                <div class="story_item">
+                    <div class="story_header">
+                        <div class="story_img">
+                            <img src="../../../../../assets/read/Baking.jpg"  alt="">
+                        </div>
+                        <small>17 November</small>
+                    </div>
+                    <div class="story_title">
+                        Baking
+                    </div>
+                    <div class="story_brief">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
+                    </div>
+                </div>
+                <div class="story_item">
+                    <div class="story_header">
+                        <div class="story_img">
+                            <img src="../../../../../assets/read/Greenary.jpg"  alt="">
+                        </div>
+                        <small>17 November</small>
+                    </div>
+                    <div class="story_title">
+                        Greenary
+                    </div>
+                    <div class="story_brief">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
+                    </div>
+                </div>
+                <div class="story_item">
+                    <div class="story_header">
+                        <div class="story_img">
+                            <img src="../../../../../assets/read/Loeffer.jpg"  alt="">
+                        </div>
+                        <small>17 November</small>
+                    </div>
+                    <div class="story_title">
+                        Loeffer
+                    </div>
+                    <div class="story_brief">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
+                    </div>
+                </div>
+                <div class="story_item">
+                    <div class="story_header">
+                        <div class="story_img">
+                            <img src="../../../../../assets/read/Musing.jpg"  alt="">
+                        </div>
+                        <small>17 November</small>
+                    </div>
+                    <div class="story_title">
+                        Musing
+                    </div>
+                    <div class="story_brief">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
+                    </div>
+                </div>
+                <div class="story_item">
+                    <div class="story_header">
+                        <div class="story_img">
+                            <img src="../../../../../assets/read/Scent.jpg"  alt="">
+                        </div>
+                        <small>17 November</small>
+                    </div>
+                    <div class="story_title">
+                        Scent
+                    </div>
+                    <div class="story_brief">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
+                    </div>
+                </div>
+            </div>
+            <div style="grid-area: top;">
+                <div style="margin-bottom: 20px;">
+                    <span >Top Stories</span>
+                </div>
+                <div class="top_list">
+                    <div class="story_item">
+                        <div class="story_header">
+                            <div class="story_img">
+                                <img src="../../../../../assets/read/top_stories/DesignTrend.jpg"  alt="">
+                            </div>
+                            <small>17 November</small>
+                        </div>
+                        <div class="story_title">
+                            DesignTrend
+                        </div>
+                        <div class="story_brief">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
+                        </div>
+                    </div>
+                    <div class="story_item">
+                        <div class="story_header">
+                            <div class="story_img">
+                                <img src="../../../../../assets/read/top_stories/HolidayGift.jpg"  alt="">
+                            </div>
+                            <small>17 November</small>
+                        </div>
+                        <div class="story_title">
+                            Holiday Gift
+                        </div>
+                        <div class="story_brief">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
+                        </div>
+                    </div>
+                    <div class="story_item">
+                        <div class="story_header">
+                            <div class="story_img">
+                                <img src="../../../../../assets/read/top_stories/Musing.jpg"  alt="">
+                            </div>
+                            <small>17 November</small>
+                        </div>
+                        <div class="story_title">
+                            Musing
+                        </div>
+                        <div class="story_brief">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider" style="grid-area: divider;"></div>
+        </div>
+    </div>
+</section>
+<section #portfolio>
+    <div class="portfolio_section">
+        <div class="portfolio_header">
+            <header>Feature projects</header>
+        </div>
+
+        <div class="portfolio_content">
+            <div class="portfolio_item">
+                <img class="portfolio_img" src="../../../../../assets/feature_project/HoustonEstate.jpg"  alt="">
+                <div class="portfolio_title">
+                    Houston Estate
+                </div>
+                <div class="portfolio_brief">
+                    Modern and traditional merge in a friendly, family home
+                </div>
+            </div>
+            <div class="portfolio_item">
+                <img class="portfolio_img" src="../../../../../assets/feature_project/TahoePines.jpg"  alt="">
+                <div class="portfolio_title">
+                    Tahoe Pines
+                </div>
+                <div class="portfolio_brief">
+                    Modern mountain meets laidback lake
+                </div>
+            </div>
+            <div class="portfolio_item">
+                <img class="portfolio_img" src="../../../../../assets/feature_project/TheSummitEstate.jpg"  alt="">
+                <div class="portfolio_title">
+                    The Summit Estate
+                </div>
+                <div class="portfolio_brief">
+                    A modern mountain home with a fun personality.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section #parner>
+    <div class="parner_section">
+        <div class="parner_header">
+            <header>Parner</header>
+        </div>
+        <div class="parner_content">
+            <div class="parner_list">
+                <div>
+                    <img class="parner_img" src="../../../../../assets/parner/goman.jpg"  alt="">
+                </div>
+                <div>
+                    <img class="parner_img" src="../../../../../assets/parner/dura.jpg"  alt="">
+                </div>
+                <div>
+                    <img class="parner_img" src="../../../../../assets/parner/eco.png"  alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,13 @@
+<div class="navbar">
+    <div routerLink="/web/home" style="cursor: pointer;">
+        <img src="../../../assets/logo.png" width="150px" alt="">
+    </div>
+    <div class="navbar_menu">
+        <a class="navbar_item" [routerLink]="item.routerLink" [class.active]="item.isActive" *ngFor="let item of menuItem">
+            {{item.title}}
+        </a>
+    </div>
+    <div>
+        <a href="#">+84 902931738</a>
+    </div>
+</div>

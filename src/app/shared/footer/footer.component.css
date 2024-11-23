@@ -1,0 +1,80 @@
+footer {
+    height: max-content;
+    overflow: hidden;
+    background-color: var(--dark-color);
+    color: var(--bright-color);
+    padding: 50px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 40% max-content auto;
+    user-select: none;
+    column-gap: 30px;
+}
+
+.footer_header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer_header header {
+    font-size: 3rem;
+}
+
+.footer_content {
+    display: flex;
+    gap: 100px;
+    padding: 0 30px;
+    justify-content: center;
+}
+
+.footer_content > * {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer_content > * > * {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer_content > * > header {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.explore_menu > * {
+    cursor: pointer;
+    transition-duration: 250ms;
+}
+
+.explore_menu > *:hover {
+    filter: brightness(1.3);
+}
+
+.social_media_contact {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.social_media_contact > * {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    cursor: pointer;
+}
+.social_media_contact > * > fa-icon {
+    font-size: 1.2rem;
+}
+
+.social_link > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.social_link:hover > * {
+    text-decoration: underline;
+}
