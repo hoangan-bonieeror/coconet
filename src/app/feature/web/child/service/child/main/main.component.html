@@ -1,0 +1,31 @@
+<div class="list-services">
+    @for (service of services; track $index; let idx = $index) {
+        <div class="service" [class.full-service]="service.label==Service.FULL_SERVICE" data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="idx * 100">
+            @if (service.label==Service.FULL_SERVICE) {
+                <div class="img-overview">
+                    <img [src]="'../../../../../assets/service/' + service.imgFileName" alt="">
+                </div>
+                <div class="overlap-info">
+                    <label for="">{{service.label}}</label>
+                    <div class="description">{{service.description}}</div>
+                    <!-- <button class="btn" (click)="exploreService(service)">Explore</button> -->
+                    <div class="explore_link" (click)="exploreService(service)">
+                        <span>Explore more</span>
+                        <fa-icon class="icon" [icon]="ArrowRight"></fa-icon>
+                    </div>
+                </div>
+            } @else {
+                <div class="img-overview">
+                    <img [src]="'../../../../../assets/service/' + service.imgFileName" alt="">
+                </div>
+                <label for="">{{service.label}}</label>
+                <div class="description">{{service.description}}</div>
+                <!-- <button class="btn" (click)="exploreService(service)">Explore</button> -->
+                <div class="explore_link" (click)="exploreService(service)">
+                    <span>Explore more</span>
+                    <fa-icon class="icon" [icon]="ArrowRight"></fa-icon>
+                </div>
+            }
+        </div>
+    }
+</div>

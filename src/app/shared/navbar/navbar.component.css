@@ -1,16 +1,28 @@
 .navbar {
-    display: grid;
-    grid-template-columns: 1fr 75% 1fr;
+    display: flex;
+    /* grid-template-columns: 1fr 75% 1fr; */
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     padding: 15px 25px;
-    background-color: var(--bright-color);
+    border-bottom: 1px;
+    transition-duration: 250ms;
+    background-color: transparent;
+    color: var(--bright-color);
+    background-color: var(--dark-color);
+}
+
+.floating {
+  border-radius: 2px;
+  box-shadow: 0px 1px 10px #999;
+  background-color: var(--bright-color);
+  color: var(--dark-color);
 }
 
 .navbar_menu {
   display: flex;
   align-items: center;
-  gap: 50px;
+  gap: 40px;
   justify-content: center;
 }
 
@@ -23,10 +35,11 @@
   transition-duration: 250ms;
   text-decoration: none;
   cursor: pointer;
-  color: var(--dark-color);
+  color: inherit;
   overflow: hidden;
   letter-spacing: 1px;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 
 /* Fade in */
@@ -37,7 +50,7 @@
   left: 0;
   width: 100%;
   height: 0.1em;
-  background-color: var(--dark-color);
+  background-color: var(--bright-color);
   opacity: 0;
   transition: opacity 300ms, transform 300ms;
 }
@@ -47,15 +60,55 @@
   transform: translate3d(-100%, 0, 0);
 }
 
+.floating .navbar_menu > *::after{
+  background-color: var(--dark-color) !important;
+}
+
 .navbar_menu > *:hover::after,
 .navbar_menu > *:focus::after {
   transform: translate3d(0, 0, 0);
 }
 
-.navbar_menu >*:has(.active) {
-  color: var(--dark-color);
+.active {
+  color: var(--dark-color) !important;
 }
-.navbar_menu >*:has(.active)::after {
+.active-floating {
+  color: var(--bright-color) !important;
+}
+.active::after, .active-floating::after {
   opacity: 1 !important;
-  transform: translate3d(-100%, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+.social_media_contact {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.social_link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 10px;
+  background-color: var(--bright-color);
+  width: 30px;
+  height: 30px;
+  transition-duration: 250ms;
+}
+
+.social_link:hover {
+  filter: brightness(0.9);
+}
+
+.telephone {
+  font-family: sans-serif;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.social_media_contact > * > fa-icon {
+  font-size: 1.2rem;
 }

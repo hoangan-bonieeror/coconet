@@ -1,39 +1,32 @@
 <footer>
-    <div class="footer_header">
-        <header>Coconet</header>
-        <p>
-            The predecessor was THIET THACH LLC since 2004, then converted into a joint stock company and operated under Business Registration Certificate No. 0310538214 issued by the Department of Planning & Investment of Ho Chi Minh City on December 24, 2010, registered for the 5th change on September 15, 2017.
-        </p>
+    <div>
+        <img src="../../../assets/logo-dark.png" alt="">
     </div>
-    <div style="width: 2px; height: 80%; background-color:var(--bright-color)"></div>
-    <div class="footer_content">
-        <div>
-            <header>Expore</header>
-            <div class="explore_menu">
-                <div>Read</div>
-                <div>Service</div>
-                <div>Shop</div>
-                <div>About</div>
+    <div>
+        <header>Contact</header>
+        <div class="list">
+            <div>195 Nguyen Thai Son, P.4, Q.Go Vap</div>
+            <div>cocostudio&#64;gmail.com</div>
+            <div>+84938434666</div>
+        </div>
+    </div>
+    <div>
+        <header>Expore</header>
+        <div class="list">
+            <div *ngFor="let item of _mainService.menu" (click)="onNavigate(item)">
+                {{item.title}}
             </div>
         </div>
-        <div>
-            <header>Contact</header>
-            <input type="text" placeholder="EMAIL ADDRESS">
-            <div class="social_media_contact">
-                <div class="social_link">
-                    <fa-icon [icon]="IconFacebook"></fa-icon>
-                    <a target="_blank" class="social_link" href="https://www.facebook.com/hoangan.nguyen.5623">Coconet For Life</a>
-                </div>
-                <div class="social_link">
-                    <fa-icon [icon]="IconInstagram"></fa-icon>
-                    <a target="_blank" href="https://www.instagram.com/bolunn_">Coconet</a>
-                </div>
-                <div class="social_link">
-                    <fa-icon [icon]="IconPhone"></fa-icon>
-                    <div>093 8434 666 - 0908 000 880</div>
-                </div>
-                
-            </div>
+    </div>
+    <div>
+        <header>Newsletter</header>
+        <div class="sent-mail">
+            <input type="text" class="sent-mail-input" placeholder="Email address...">
+            <span class="sent-mail-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 17l5-5-5-5v10z" />
+                  </svg>
+            </span>
         </div>
     </div>
 </footer>

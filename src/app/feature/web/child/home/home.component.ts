@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { heroArrowLeft, heroArrowRight } from '@ng-icons/heroicons/outline'
+import { MainServiceService } from '../../../../core/service/main.service.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -30,7 +31,7 @@ export class HomeComponent {
     },
   ]
 
-  constructor(){}
+  constructor(public _mainService: MainServiceService){}
 
   onIncrease() {
     let index = this.selectCarouselIndex + 1

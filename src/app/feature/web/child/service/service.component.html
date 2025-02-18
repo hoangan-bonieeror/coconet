@@ -1,1 +1,27 @@
-<p>service works!</p>
+<div class="container">
+    <div class="header">
+        @switch (_mainService.currentService) {
+            @case (Service.GENERAL) {
+                <header class="header-anination">{{_mainService.currentService.toLocaleUpperCase()}}</header>
+            }
+            @case (Service.ARCHITECTURAL_DESIGN) {
+                <header class="header-anination">{{_mainService.currentService.toLocaleUpperCase()}}</header>
+            }
+            @case (Service.INTERIOR_DESIGN) {
+                <header class="header-anination">{{_mainService.currentService.toLocaleUpperCase()}}</header>
+            }
+            @case (Service.INTERIOR_CONSTRUCTION) {
+                <header class="header-anination">{{_mainService.currentService.toLocaleUpperCase()}}</header>
+            }
+            @case (Service.FULL_SERVICE) {
+                <header class="header-anination">{{_mainService.currentService.toLocaleUpperCase()}}</header>
+            }
+        }
+    </div>
+
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+
+    
+</div>

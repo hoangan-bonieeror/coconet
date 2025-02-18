@@ -7,42 +7,47 @@ import { ShopComponent } from './child/shop/shop.component';
 import { AboutComponent } from './child/about/about.component';
 import { WebComponent } from './web.component';
 import { HomeComponent } from './child/home/home.component';
+import { ProjectComponent } from './child/project/project/project.component';
+import { PagenotfoundComponent } from '../../shared/pagenotfound/pagenotfound.component';
 
-const routes : Route[] = [
+const routes: Route[] = [
   {
     path: '',
     component: WebComponent,
     children: [
       {
-        path: 'home',
-        component: HomeComponent
+        path: '',
+        component: HomeComponent,
       },
       {
         path: 'read',
-        component: ReadComponent
+        component: ReadComponent,
       },
       {
         path: 'service',
-        component: ServiceComponent
+        loadChildren: () =>
+          import('./child/service/service.module').then((m) => m.ServiceModule),
       },
       {
         path: 'shop',
-        component: ShopComponent
+        component: ShopComponent,
       },
       {
         path: 'about',
-        component: AboutComponent
+        component: AboutComponent,
       },
-    ]
-  }
-]
-
+      {
+        path: 'project',
+        component: ProjectComponent,
+      },
+      //Wild Card Route for 404 request
+      { path: '**', pathMatch: 'full', component: PagenotfoundComponent },
+    ],
+  },
+];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes)
-  ]
+  imports: [CommonModule, RouterModule.forChild(routes)],
 })
-export class WebRouteModule { }
+export class WebRouteModule {}

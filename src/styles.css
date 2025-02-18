@@ -1,24 +1,116 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-    --bright-color: #f5f4f0;
-    --dark-color: #4f4135;
-    --neutral-color: #e1e1e1;
+  --bright-color: #f5f4f0;
+  --dark-color: #4f4135;
+  --neutral-color: #e1e1e1;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
-    background-color: var(--bright-color);
-    color: var(--dark-color);
-    font-family:sans-serif;
-    margin: 0;
-    font-size: 16px;
+  background-color: var(--bright-color);
+  color: var(--dark-color);
+  font-family: sans-serif;
+  margin: 0;
+  font-size: 16px;
 }
 
 .divider {
-    width: 1px;
-    height: 100%;
-    background-color: var(--neutral-color);
+  width: 1px;
+  height: 100%;
+  background-color: var(--neutral-color);
 }
 
 input {
-    padding: 10px 20px;
+  padding: 10px 20px;
+}
+
+button {
+  transition-duration: 250ms;
+  border-radius: 6px;
+  padding: 10px 20px;
+  cursor: pointer;
+  outline: none;
+  color: var(--bright-color);
+  border: 1px solid var(--dark-color);
+  width: max-content;
+}
+
+.btn {
+  background-color: var(--bright-color);
+  color: var(--dark-color);
+}
+
+.btn:hover {
+  filter: brightness(0.9);
+}
+
+.btn-dark {
+  background-color: var(--dark-color);
+  border: none;
+}
+
+.btn-dark:hover {
+  filter: brightness(1.1);
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.search__input {
+  font-family: inherit;
+  font-size: inherit;
+  background-color: white;
+  border: 1px solid var(--dark-color);
+  color: var(--dark-color);
+  padding: 0.7rem 1rem;
+  border-radius: 6px;
+  width: 20em;
+  transition: all ease-in-out 0.5s;
+  margin-right: -2rem;
+}
+
+.search__input:hover,
+.search__input:focus {
+  box-shadow: 0 5px 1em #00000013;
+}
+
+/* .search__input:focus {
+  outline: none;
+  background-color: #f0eeee;
+} */
+
+.search__input::-webkit-input-placeholder {
+  font-weight: 100;
+  color: #898989;
+}
+
+/* .search__input:focus + .search__button {
+  background-color: #f0eeee;
+} */
+
+.search__button {
+  border: none;
+  background-color: transparent;
+  margin-top: 0.1em;
+}
+
+.search__button:hover {
+  cursor: pointer;
+}
+
+.search__icon {
+  height: 1.3em;
+  width: 1.3em;
+  fill: var(--dark-color);
+}
+
+.not-found-data {
+  font-size: 1.5em;
+  font-style: italic;
+  min-height: 50vh;
 }

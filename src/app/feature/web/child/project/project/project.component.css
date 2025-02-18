@@ -1,0 +1,94 @@
+.container {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    font-size: 3rem;
+    padding: 30px;
+    overflow: hidden;
+}
+
+.header header {
+    letter-spacing: 1px;
+}
+
+.filter-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    column-gap: 50px;
+    row-gap: 50px;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.project:hover .img-overview img,
+.project:focus .img-overview img {
+    transform: scale(1.1);
+}
+
+.project .img-overview {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+}
+
+.img-overview img {
+    transition-duration: 250ms;
+}
+
+.project label {
+    font-size: 2em;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.project .location {
+    max-width: 50ch;
+}
+
+.img-overview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+
+/* Ipad Viewport */
+@media screen and (max-width: 768px) {
+    .filter-bar {
+        flex-direction: column;
+    }
+    .list-projects {
+        grid-template-columns: 1fr;
+    }
+  }

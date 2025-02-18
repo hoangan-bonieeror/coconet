@@ -8,10 +8,14 @@ import { HomeComponent } from './child/home/home.component';
 import { NgIconsModule } from '@ng-icons/core';
 import { heroArrowLeft, heroArrowRight } from '@ng-icons/heroicons/outline'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CoreModule } from '../../core/core.module';
+import { FormsModule } from '@angular/forms';
+import { ProjectComponent } from './child/project/project/project.component';
 @NgModule({
   declarations: [
     WebComponent,
-    HomeComponent
+    HomeComponent,
+    ProjectComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +25,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NgIconsModule.withIcons({
       heroArrowLeft, heroArrowRight
     }),
-    FontAwesomeModule
+    FontAwesomeModule,
+    CoreModule,
+    FormsModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

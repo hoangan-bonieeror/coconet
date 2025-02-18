@@ -1,0 +1,53 @@
+.container {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    font-size: 3rem;
+    padding: 30px;
+    overflow: hidden;
+}
+
+.header header {
+    letter-spacing: 1px;
+}
+
+.header .divider {
+    width: 10ch;
+    height: 2px;
+    background-color: var(--dark-color);
+    animation: dividerAnimation 500ms ease-in-out 0;
+}
+
+.header-anination {
+    animation-name: headerChange;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+}
+
+
+@keyframes headerChange {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes dividerAnimation {
+    from {
+        width: 0ch;
+    }
+    to {
+        width: 10ch;
+    }
+}

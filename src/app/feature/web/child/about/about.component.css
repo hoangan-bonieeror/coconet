@@ -1,0 +1,201 @@
+.header {
+    height: 90vh;
+    width: 100%;
+    transition-duration: 750ms;
+    position: relative;
+    overflow: hidden;
+}
+
+.header > .header_img {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    object-fit: cover;
+}
+
+.header > .header_img > img {
+    object-fit: cover;
+}
+
+.header_content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--bright-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 40px;
+    box-shadow: rgba(0, 0, 0, 0.5) 500px 0px 200px -20px inset;
+}
+
+.header_content header {
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+.header_content span {
+    max-width: 50ch;
+}
+
+.work {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: center;
+    padding: 50px;
+}
+
+.work .work_img {
+    width: auto;
+    height: 100vh;    
+    position: relative;
+    text-align: center;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.work_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.work .slogan {
+    /* width: 70ch; */
+    font-style: italic;
+    font-size: 1.5rem;
+}
+
+
+.major, .journey {
+    padding: 50px;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.major_header, .journey_header {
+    font-size: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.major_content {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.major_content > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.major_content > div > header {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.major_content > div > img {
+    width: 100px;
+    height: 100px;
+    mix-blend-mode: multiply;
+}
+
+
+.journey_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 50px;
+    gap: 40px;
+    font-size: 1rem;
+}
+
+
+.journey_item {
+    position: relative;
+}
+
+.journey_content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 40px;
+    overflow: hidden;
+}
+
+.journey_item:nth-child(even) .img_overview {
+    grid-column: 2;
+}
+
+.journey_item:nth-child(even) .description {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.journey_item:nth-child(odd) .img_overview {
+    grid-column: 1;
+}
+
+.journey_item:nth-child(odd) .description {
+    grid-column: 2;
+}
+
+
+.journey_item .img_overview {
+    overflow: hidden;
+}
+
+.journey_item .description header {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.journey_item > .timestamp {
+    position: absolute;
+    font-size: 6rem;
+    bottom: 10px;
+    left: 50%;
+    letter-spacing: 2px;
+    transform: translateX(-35%);
+    filter: drop-shadow(1px 0 0 var(--bright-color)) 
+    drop-shadow(0 1px 0 var(--bright-color))
+    drop-shadow(-1px 0 0 var(--bright-color)) 
+    drop-shadow(0 -1px 0 var(--bright-color));
+}
+
+.journey_item:nth-child(even) .timestamp {
+    transform: translateX(-75%);
+    color: var(--bright-color);
+    filter: drop-shadow(1px 0 0 var(--dark-color)) 
+    drop-shadow(0 1px 0 var(--dark-color))
+    drop-shadow(-1px 0 0 var(--dark-color)) 
+    drop-shadow(0 -1px 0 var(--dark-color));
+}
+
+.journey_item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.journey_item .img_overview {
+    height: 100%;
+    width: auto;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.divider {
+    width: 5ch;
+    height: 2px;
+    background-color: var(--dark-color);
+}

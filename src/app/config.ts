@@ -1,6 +1,7 @@
 export enum Menu {
-    READ = "Read",
+    PROJECT = "Project",
     SERVICE = "Service",
     SHOP = "Shop",
-    ABOUT = "About"
+    ABOUT = "About",
+    READ = "Read",
 }

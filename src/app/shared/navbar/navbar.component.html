@@ -1,13 +1,25 @@
-<div class="navbar">
-    <div routerLink="/web/home" style="cursor: pointer;">
-        <img src="../../../assets/logo.png" width="150px" alt="">
+<div #navbar class="navbar" [class.floating]="_mainService.scrollPosition > 0">
+    <div routerLink="/" style="cursor: pointer;">
+        <img [src]="_mainService.scrollPosition > 0 ? '../../../assets/logo.png' : '../../../assets/logo-dark.png'" width="150px" alt="">
     </div>
     <div class="navbar_menu">
-        <a class="navbar_item" [routerLink]="item.routerLink" [class.active]="item.isActive" *ngFor="let item of menuItem">
+        <a class="navbar_item" *ngFor="let item of _mainService.menu" (click)="onNavigate(item)"
+            [class.active]="item.isActive && _mainService.scrollPosition > 0"
+            [class.active-floating]="item.isActive && _mainService.scrollPosition == 0"
+            >
             {{item.title}}
         </a>
     </div>
-    <div>
-        <a href="#">+84 902931738</a>
+    <div class="social_media_contact">
+        <a target="_blank" class="social_link" href="https://www.facebook.com/2f.art">
+            <fa-icon [icon]="IconFacebook"></fa-icon>
+        </a>
+        <a target="_blank" class="social_link" href="https://www.instagram.com/c.o.c.o.house/">
+            <fa-icon [icon]="IconInstagram"></fa-icon>
+        </a>
+        <div class="telephone">
+            <div>+84938434666</div>
+        </div>
+        
     </div>
 </div>
