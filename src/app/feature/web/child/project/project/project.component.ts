@@ -1,15 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
-export enum Category {
-
-}
-
-export interface Project {
-  name: string,
-  description: string,
-  img_url: string,
-  location: string
-}
+import { DataService, Project } from '../../../../../core/service/data.service';
+import { Router } from '@angular/router';
+import { MainServiceService } from '../../../../../core/service/main.service.service';
+import { Menu } from '../../../../../config';
 
 @Component({
   selector: 'app-project',
@@ -17,78 +10,27 @@ export interface Project {
   styleUrl: './project.component.css'
 })
 export class ProjectComponent implements OnInit {
-  projects : Project[] = []
   searchStr : string = ""
-  constructor() {}
+  constructor(
+    public _dataService: DataService,
+    private _router: Router,
+    private _mainService: MainServiceService
+  ) {}
   ngOnInit(): void {
-      this.projects = [
-        {
-          name: "Project 1",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a justo blandit, hendrerit nunc nec, consequat nibh. Duis nec enim sed purus sagittis congue.",
-          img_url: 'http://localhost:4200/assets/service/service2.jpg',
-          location: "Go Vap District"
-        },
-        {
-          name: "Project 2",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a justo blandit, hendrerit nunc nec, consequat nibh. Duis nec enim sed purus sagittis congue.",
-          img_url: 'http://localhost:4200/assets/service/service2.jpg',
-          location: "Go Vap District"
-        },
-        {
-          name: "Project 3",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a justo blandit, hendrerit nunc nec, consequat nibh. Duis nec enim sed purus sagittis congue.",
-          img_url: 'http://localhost:4200/assets/service/service2.jpg',
-          location: "Go Vap District"
-        },
-        {
-          name: "Project 4",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a justo blandit, hendrerit nunc nec, consequat nibh. Duis nec enim sed purus sagittis congue.",
-          img_url: 'http://localhost:4200/assets/service/service2.jpg',
-          location: "Go Vap District"
-        },
-        {
-          name: "Project 5",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a justo blandit, hendrerit nunc nec, consequat nibh. Duis nec enim sed purus sagittis congue.",
-          img_url: 'http://localhost:4200/assets/service/service2.jpg',
-          location: "Go Vap District"
-        },
-        {
-          name: "Project 6",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a justo blandit, hendrerit nunc nec, consequat nibh. Duis nec enim sed purus sagittis congue.",
-          img_url: 'http://localhost:4200/assets/service/service2.jpg',
-          location: "Go Vap District"
-        },
-        {
-          name: "Project 7",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a justo blandit, hendrerit nunc nec, consequat nibh. Duis nec enim sed purus sagittis congue.",
-          img_url: 'http://localhost:4200/assets/service/service2.jpg',
-          location: "Go Vap District"
-        },
-        {
-          name: "Project 8",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a justo blandit, hendrerit nunc nec, consequat nibh. Duis nec enim sed purus sagittis congue.",
-          img_url: 'http://localhost:4200/assets/service/service2.jpg',
-          location: "Go Vap District"
-        },
-        {
-          name: "Project 9",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas a justo blandit, hendrerit nunc nec, consequat nibh. Duis nec enim sed purus sagittis congue.",
-          img_url: 'http://localhost:4200/assets/service/service2.jpg',
-          location: "Go Vap District"
-        }
-
-      ]
+    let projectMenuItem = this._mainService.findMenuItem(Menu.PROJECT)
+    if(projectMenuItem) this._mainService.activateEndpoint(projectMenuItem)
   }
 
   filterProject() {
-    let filterProjectResult : Project[] = []
-    let preProcessStr = this.searchStr.trim().toLowerCase()
-    this.projects.forEach((pro, index) => {
-      let firstCond = pro.name.trim().toLowerCase().includes(preProcessStr)
-      let secondCond = pro.location.trim().toLowerCase().includes(preProcessStr)
-      let thirdCond = preProcessStr.length == 0
-      if(firstCond || secondCond || thirdCond) filterProjectResult.push(pro)
+    return this._dataService.filterProject(this.searchStr)
+  }
+
+  viewProjectGallery(project: Project) {
+    this._router.navigate([
+      'gallery'
+    ],
+    {
+      queryParams: { name: project.name }
     })
-    return filterProjectResult
   }
 }

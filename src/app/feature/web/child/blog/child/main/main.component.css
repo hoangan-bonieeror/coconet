@@ -1,0 +1,76 @@
+.container {
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 25% auto;
+    column-gap: 20px;
+}
+
+.container .tool-bar > * {
+    color: var(--dark-color);
+    background-color: var(--neutral-color);
+    border-radius: 6px;
+    padding: 1em 2em;
+}
+
+.tool-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.categories-area .header, .top-blog .header {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+.categories-area .categories-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.categories-list .item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    padding-bottom: 1em;
+    padding-top: 1em;
+    cursor: pointer;
+    user-select: none;
+}
+
+.categories-list .item:last-child {
+    border-bottom: none;
+}
+
+.top-blog {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+}
+
+.top-blog .item {
+    display: flex;
+    gap: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.top-blog .item:hover > .content {
+    filter: brightness(1.5);
+}
+
+.top-blog .item .num-header {
+    font-size: 2em;
+    font-weight: 600;
+    text-align: center;
+    min-width: 2ch !important;
+}
+.top-blog .item .content {
+   display: flex; flex-direction: column; gap: 10px; 
+   transition-duration: 250ms;
+}
+
+.blog-list {
+    height: 1000px;
+}
+

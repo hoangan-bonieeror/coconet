@@ -13,7 +13,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/coconet",
+            "allowedCommonJsDependencies": [
+              "aos"
+            ],
+            "outputPath": "dist/cocostudio",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -42,8 +45,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "5kB",
-                  "maximumError": "10kB"
+                  "maximumWarning": "15kB",
+                  "maximumError": "20kB"
                 }
               ],
               "outputHashing": "all"

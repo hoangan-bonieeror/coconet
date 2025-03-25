@@ -1,0 +1,13 @@
+export enum SORT_ORDER {
+    ASCENDING = "A to Z",
+    DESCENDING = "Z to A"
+}
+
+export enum LOCALSTORAGE_KEY {
+    TOKEN = "token",
+    USER = "user"
+}
+
+export enum SESSION_STORAGE_KEY {
+    CURRENT_PAGE = "current_page"
+}

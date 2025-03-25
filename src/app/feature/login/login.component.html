@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="form-login">
+        <div class="header">
+            <header>Cocostudio</header>
+        </div>
+    
+        <div class="form">
+            <div class="form-content" [formGroup]="loginForm">
+                <label for="">Username</label>
+                <input type="text" pInputText formControlName="username">
+                <label for="">Password</label>
+                <p-password [toggleMask]="true" [feedback]="false" formControlName="password" />
+            </div>
+            <div class="form-footer">
+                <button class="btn-login" pButton label="LOGIN" (click)="login()"></button>
+            </div>
+        </div>
+    </div>
+</div>

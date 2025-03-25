@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="tool-bar">
+        <div class="search-area">
+            <p-inputgroup>
+                <p-inputgroup-addon>
+                    <p-button icon="pi pi-search" severity="secondary" variant="text"/>
+                </p-inputgroup-addon>
+                <input pInputText placeholder="Search..." />
+            </p-inputgroup>
+        </div>
+        <div class="categories-area">
+            <div class="header">
+                <header>Phân loại</header>
+            </div>
+            <div class="categories-list">
+                @for (category of categories; track $index) {
+                    <div class="item">
+                        {{category.name}}
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="top-blog">
+            <div class="header">
+                <header>Top Blog</header>
+            </div> 
+            @for (item of topBlogs; track $index; let index = $index) {
+                <div class="item">
+                    <div class="num-header">{{index + 1}}</div>
+                    <div class="content">
+                        <div>{{item.title}}</div>
+                        <small style="opacity: 0.8;">{{item.categoryId}} - {{ item.updatedAt | date }}</small>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="blog-list">
+
+    </div>
+</div>

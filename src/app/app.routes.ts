@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.component';
+import { LoginComponent } from './feature/login/login.component';
 
 export const routes: Routes = [
     {
@@ -10,5 +11,9 @@ export const routes: Routes = [
         path: 'admin',
         loadChildren: () => import('./feature/management/management.module').then(m => m.ManagementModule)
     },
+    {
+        path: 'login',
+        component: LoginComponent
+    }
 ];
 

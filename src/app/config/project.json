@@ -1,0 +1,304 @@
+{
+    "projects": [
+        {
+            "name": "The View",
+            "description": "",
+            "cover_img": "https://res.cloudinary.com/halshop/image/upload/v1742726961/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V23-1_eokfzu.jpg",
+            "location": "",
+            "gallery": [
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726961/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V23-1_eokfzu.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726961/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V25-1_au46tv.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726961/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V50-1_wgnd9y.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726960/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V48_glwimm.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726959/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V22_njzlxa.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726959/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V20-1_jfun7s.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726958/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V21-1_zjksh6.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726956/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V15-1_apvnlk.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726955/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V13-1_d8ie3b.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726954/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V11-2_rnxbvc.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726954/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V08_wloftm.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726953/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V09-1_dqfdah.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726953/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V03-2_it2rxg.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726952/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V01-1_ufythd.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726952/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V07-1_eglon4.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726952/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V02-2_mrnz6w.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726951/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V04-2_h6cwni.jpg",
+                    "ratio": 1.5
+                }
+            ]
+        },
+        {
+            "name": "The Vista Duplex",
+            "description": "",
+            "cover_img": "https://res.cloudinary.com/halshop/image/upload/v1742726913/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM4044-HDR_pykimm.jpg",
+            "location": "",
+            "gallery": [
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726913/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM4044-HDR_pykimm.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726913/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM4050-HDR_gkiawz.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726913/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM4061-HDR_wvao1e.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726912/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM4054_xufrmi.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726912/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM4038_ubgofe.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726909/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM3954-HDR_dvirdi.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726908/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM3968_dgpifg.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726908/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM4034-HDR_mpzjix.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726907/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM4030_jklq9x.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726907/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM3963-HDR_r4cspy.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726907/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM4028_giwd9m.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726906/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM4026_gzwu7i.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726906/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM4015_lggeu3.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726906/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM4011_sw46zb.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726904/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM4008-HDR_g93lbk.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726903/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM4005-HDR_pddac1.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726903/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM4004_awlvsz.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726902/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM3996-HDR_nblsmh.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726902/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM3988_qybcab.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726902/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM3985_p2fe8r.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726902/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM3981-HDR_zuavkt.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726902/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM3978-HDR_isfmgr.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726901/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM3969_eylabk.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726900/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM3960-HDR_byh2mq.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726900/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM3957-HDR_bhyrrw.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726900/cocostudio/vista_duplex/B%E1%BA%A3n_sao_c%E1%BB%A7a_TOM3966-HDR_ims7i7.jpg",
+                    "ratio": 1.5
+                }
+            ]
+        },
+        {
+            "name": "The Midtown",
+            "description": "",
+            "cover_img": "https://res.cloudinary.com/halshop/image/upload/v1742726998/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3253-HDR_frahi3.jpg",
+            "location": "",
+            "gallery": [
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742727125/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3280-HDR_xqle3l.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742727124/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3265_bo7uic.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742727117/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3283-HDR_fcgumh.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742727114/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3266_oiztgt.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726998/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3253-HDR_frahi3.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726998/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3258_e3aftr.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726997/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3259_vjuzfp.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726996/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3264_xu9h5e.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726995/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3213-HDR_gwnzkd.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726994/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3207-HDR_cwdbku.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726994/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3256_jw4jin.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726993/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3249-HDR_wfmfar.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726993/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3245_d7nzes.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726991/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3238_mhhnuf.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726991/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3205_cqadbu.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726990/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3242-HDR_me9yjt.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726988/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3236_suouxg.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726987/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3234_h4wvg6.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726986/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3233_epljqn.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726986/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3235_j8g3bh.jpg",
+                    "ratio": 1.5
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726983/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3231_jrdys6.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726981/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3224_fmttdy.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726980/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3228-HDR_bzcfxv.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726980/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3225_lanlzi.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726978/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3222_z8gggn.jpg",
+                    "ratio": 0.6666666666666666
+                },
+                {
+                    "img_url": "https://res.cloudinary.com/halshop/image/upload/v1742726978/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3210-HDR_kyzvhh.jpg",
+                    "ratio": 1.5
+                }
+            ]
+        }
+    ]
+}

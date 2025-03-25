@@ -1,0 +1,48 @@
+.container {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    font-size: 3rem;
+    padding: 30px;
+    overflow: hidden;
+}
+
+.header header {
+    letter-spacing: 1px;
+}
+
+.contact-content {
+    padding: 20px;
+    border-radius: 6px;
+    border: 2px solid var(--dark-color);
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    
+}
+
+.contact-content .overview {
+    grid-column: span 3;
+    text-align: center;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+.contact-content .info header {
+    font-weight: 600;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.price-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+}

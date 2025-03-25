@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="logo" (click)="backToDashboard()">
+        <img src="../../../assets/logo.png" width="150px" alt="">
+    </div>
+    <div class="sidebar">
+        @for (item of _adminService.menus; track $index; let index = $index) {
+            <div class="sidebar-item" [class.active]="item.isActive" (click)="onClick(item)">
+                <div class="icon"><fa-icon [icon]="item.icon"></fa-icon></div>
+                <div class="title">{{item.tittle}}</div>
+            </div>
+        }
+    </div>
+    <div class="account" (click)="logout()">
+        <span>Logout</span>
+        <fa-icon class="icon" [icon]="logoutIcon"></fa-icon>
+    </div>
+</div>
+

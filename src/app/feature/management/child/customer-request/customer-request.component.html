@@ -1,0 +1,49 @@
+<div class="request-content">
+    <p-table
+        [value]="requests"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [tableStyle]="{ 'min-width': '50rem', 'font-size': '1em' }" 
+        [paginator]="true" 
+        [rows]="5" 
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        dataKey="id"
+        showGridlines
+    >
+        <ng-template #header>
+            <tr>
+                <th colspan="5">Về dự án</th>
+                <th colspan="3"> Về khách hàng</th>
+                <th colspan="2"></th>
+            </tr>
+            <tr>
+                <th>Tên dự án</th>
+                <th>Diện tích</th>
+                <th>Thời gian hoàn thành</th>
+                <th>Chi phí dự kiến</th>
+                <th>Dịch vụ</th>
+                <th>Tên khách hàng</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>Thời gian yêu cầu</th>
+                <th>Thời gian cập nhật</th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-request>
+            <tr>
+                <td>{{ request.projectName }}</td>
+                <td>{{ request.projectArea }} m&#178;</td>
+                <td>{{ request.completionTime }}</td>
+                <td>
+                    {{ request.minEstimatedPrice | currency : "VND" : "" }} -> {{ request.maxEstimatedPrice | currency : "VND" : "" }}
+                </td>
+                <td>{{request.selectedService}}</td>
+                <td>{{request.customerFullname}}</td>
+                <td>{{request.customerPhone}}</td>
+                <td>{{request.customerEmail}}</td>
+                <td>{{request.createdAt | date}}</td>
+                <td>{{request.updatedAt | date}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

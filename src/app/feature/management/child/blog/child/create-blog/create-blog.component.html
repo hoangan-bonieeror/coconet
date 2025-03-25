@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="header">
+        <header>Blog mới</header>
+    </div>
+    <div class="form blog-form">
+        <div class="form-content" style="align-items: baseline;" [formGroup]="blogForm">
+            <label for="">Chủ đề</label>
+            <!-- <input type="text" pInputText placeholder="Nhập chủ đề blog..."> -->
+            <textarea rows="5" cols="30" pTextarea style="resize: none;" formControlName="title"></textarea>
+            <label for="">Phân loại</label>
+            <p-select [options]="categoryOptions" optionLabel="name" optionValue="id" placeholder="Chọn phân loại" formControlName="category" />
+            <label for="tags">Thẻ gán</label>
+            <p-multiselect [options]="tagOptions" formControlName="tags" placeholder="Chọn thẻ..." optionLabel="name" display="chip" />
+            <label style="grid-column: span 2;" for="">Nội dung bài blog</label>
+            <div style="grid-column: span 2;">
+                <p-editor 
+                    formControlName="content" 
+                    [style]="{ height: '500px' }"
+                    (onTextChange)="onTextChange($event)"
+                />
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="tool-bar">
+            <button pButton label="Lưu blog" (click)="saveBlog()"></button>
+            <button pButton label="Quay về"></button>
+        </div>
+    </div>
+</div>

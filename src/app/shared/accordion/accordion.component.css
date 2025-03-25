@@ -1,0 +1,20 @@
+.accordion {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1em;
+}
+
+.accordion-item {
+    display: flex;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.accordion-item .title {
+    color: var(--admin-bright-color);
+}
+
+.active {
+    color: var(--admin-dark-color) !important;
+}

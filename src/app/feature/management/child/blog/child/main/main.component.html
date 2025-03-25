@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="blog-header">
+        <div class="title">
+            <header>Blog</header>
+        </div>
+        <div class="tool">
+            <button pButton icon="pi pi-plus" (click)="createNewBlog()">Blog mới</button>
+        </div> 
+    </div>
+    
+<div class="post-content">
+    <p-table 
+        stripedRows
+        [value]="posts" 
+        [tableStyle]="{ 'min-width': '50rem', 'font-size': '1em' }" 
+        [paginator]="true" 
+        [rows]="5" 
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        dataKey="id" editMode="row"
+    >
+        <ng-template #header>
+            <tr>
+                <th pSortableColumn="id">
+                    ID <p-sortIcon field="id"></p-sortIcon>
+                </th>
+                <th pSortableColumn="name">
+                    Chủ đề <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th pSortableColumn="name">
+                    Phân loại <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th pSortableColumn="name">
+                    Người viết <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th pSortableColumn="createdAt">
+                    Ngày tạo <p-sortIcon field="createdAt"></p-sortIcon>
+                </th>
+                <th pSortableColumn="updatedAt">
+                    Ngày cập nhật <p-sortIcon field="updatedAt"></p-sortIcon>
+                </th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-post let-ri="rowIndex" let-editing="editing">
+            <tr>
+                <td>{{ post.id }}</td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.category.name }}</td>
+                <td>{{ post.user.username }}</td>
+                <td>{{ post.createdAt | date }}</td>
+                <td>{{ post.updatedAt | date }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+</div>
+

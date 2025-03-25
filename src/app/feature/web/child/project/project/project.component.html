@@ -1,10 +1,10 @@
 <div class="container">
     <div class="header">
-        <header>OUR PROJECTS</header>
+        <header>Dự án</header>
     </div>
     <div class="filter-bar">
         <div class="search">
-            <input type="text" [(ngModel)]="searchStr" class="search__input" placeholder="Search by project name or location...">
+            <input type="text" [(ngModel)]="searchStr" class="search__input" placeholder="Nhập tên dự án hoặc vị trí...">
             <span class="search__button">
                 <svg class="search__icon" aria-hidden="true" viewBox="0 0 23 23">
                     <g>
@@ -23,9 +23,11 @@
             </div>
         } @else {
             @for (project of filterProjects; track $index; let idx = $index) {
-                <div class="project" data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="idx * 100">
+                <div class="project" data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="idx * 100"
+                    (click)="viewProjectGallery(project)"
+                >
                     <div class="img-overview">
-                        <img [src]="project.img_url" alt="">
+                        <img [src]="project.cover_img" alt="">
                     </div>
                     <label for="">{{project.name}}</label>
                     <div class="location">{{project.location}}</div>

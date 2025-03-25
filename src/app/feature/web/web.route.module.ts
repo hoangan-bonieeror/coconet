@@ -9,6 +9,9 @@ import { WebComponent } from './web.component';
 import { HomeComponent } from './child/home/home.component';
 import { ProjectComponent } from './child/project/project/project.component';
 import { PagenotfoundComponent } from '../../shared/pagenotfound/pagenotfound.component';
+import { ProjectDetailComponent } from './child/project-detail/project-detail.component';
+import { BlogComponent } from './child/blog/blog.component';
+import { ContactComponent } from './child/contact/contact.component';
 
 const routes: Route[] = [
   {
@@ -20,13 +23,12 @@ const routes: Route[] = [
         component: HomeComponent,
       },
       {
-        path: 'read',
-        component: ReadComponent,
+        path: 'blog',
+        loadChildren: () => import('./child/blog/blog.module').then(m => m.BlogModule)
       },
       {
         path: 'service',
-        loadChildren: () =>
-          import('./child/service/service.module').then((m) => m.ServiceModule),
+        component: ServiceComponent
       },
       {
         path: 'shop',
@@ -40,8 +42,14 @@ const routes: Route[] = [
         path: 'project',
         component: ProjectComponent,
       },
-      //Wild Card Route for 404 request
-      { path: '**', pathMatch: 'full', component: PagenotfoundComponent },
+      {
+        path: 'gallery',
+        component: ProjectDetailComponent
+      },
+      {
+        path: 'contact',
+        component: ContactComponent
+      }
     ],
   },
 ];

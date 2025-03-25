@@ -1,0 +1,14 @@
+<div class="accordion">
+    @for (item of items; track $index; let index = $index) {
+        <div class="accordion-item">
+            @if (index != 0) {
+                <span>/</span>
+            }
+            @if (index == items.length-1) {
+                <span class="title">{{item.title}}</span>
+            } @else {
+                <span class="title active" [routerLink]="item.endpoint">{{item.title}}</span>
+            }
+        </div>
+    }
+</div>

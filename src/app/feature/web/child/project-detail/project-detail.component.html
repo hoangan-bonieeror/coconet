@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="header">
+        @if (project) {
+            <header>{{project.name}}</header>
+            <div class="location">{{project.location}}</div>
+        } @else {
+            <header>No Data</header>
+            <div class="location">>No data</div>
+        }
+    </div>
+
+    @if (project) {
+        <div class="gallery">
+            @for (item of project.gallery; track $index; let index = $index) 
+            {
+                @switch (item.ratio) {
+                    @case (ImgRatio.BLOG_HORIZONTAL) {
+                        <div class="gallery-item" data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="index * 10"
+                            style="grid-column: span 2;"
+                            (click)="onClickImg(index)"
+                        >
+                            <img [src]="item.img_url" alt="" loading="lazy">
+                        </div>
+                    }
+                    @case (ImgRatio.BLOG_VERTICALL) {
+                        <div class="gallery-item" data-aos="fade-up" data-aos-duration="500"
+                            style="grid-row: span 2; grid-column: span 2;"
+                            (click)="onClickImg(index)"
+                        >
+                            <img [src]="item.img_url" alt="" loading="lazy">
+                        </div>
+                    }
+                    @case (ImgRatio.SQUARE) {
+                        <div class="gallery-item" data-aos="fade-up" data-aos-duration="500"
+                            (click)="onClickImg(index)"
+                        >
+                            <img [src]="item.img_url" alt="" loading="lazy">
+                        </div>
+                    }
+                }
+            }
+            
+        </div>
+    }
+
+</div>
+
+@if (isDisplayDialog) {
+    @if (project) {
+        <div class="modal">
+            <div class="modal-content">
+                <div class="dialog" data-aos="fade-left">
+                    @if (project.gallery[currentIndex].ratio < 1) {
+                        <img [src]="processImageUrl(project.gallery[currentIndex].img_url)" height="100%" alt="">
+                    } @else {
+                        <img [src]="processImageUrl(project.gallery[currentIndex].img_url)" width="70%" alt="">
+                    }
+                </div>
+        
+                <div>
+                    <div class="control">
+                        <div class="arrow_left">
+                            <ng-icon (click)="onSlideBackward()" name="heroArrowLeft" ></ng-icon>
+                        </div>                   
+                        <div class="arrow_right">
+                            <ng-icon (click)="onSlideForward()" name="heroArrowRight"></ng-icon>
+                        </div>
+                        <div class="close" >
+                            <ng-icon (click)="hideDialog()" name="heroXMark"></ng-icon>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

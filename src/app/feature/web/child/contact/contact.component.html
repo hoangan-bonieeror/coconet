@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="header" data-aos="fade-up" data-aos-duration="500">
+        <header>Liên hệ</header>
+    </div>
+
+    <div class="contact-content" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
+        <div class="overview">
+            <p>Vui lòng nhập thông tin sau đây, Coco studio sẽ chủ động liên hệ đến bạn để săp xếp lịch gặp tại văn phòng của chúng tôi.</p>
+        </div>
+        <div class="requirement info">
+            <header>Yêu cầu dự án</header>
+            <div class="form">
+                <div class="form-content" [formGroup]="formContact">
+                    <label for="">Tên dự án</label>
+                    <input pInputText formControlName="projectName" type="text" placeholder="Nhập tên dự án...">
+                    <label for="">Diện tích (m&#178;)</label>
+                    <p-inputnumber formControlName="projectArea" placeholder="Nhập diện tích..."></p-inputnumber>
+                    <label for="">Thời gian hoàn thành</label>
+                    <input formControlName="completionTime" pInputText type="text" placeholder="Nhập thời gian dự kiến...">
+                    <label for="">Nhu cầu dịch vụ</label>
+                    <p-select formControlName="selectedService" [options]="serviceOptions" placeholder="Chọn dịch vụ"></p-select>
+                    <label for="">Chi phí dự kiến</label>
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <div class="price-item">
+                            <p-inputnumber formControlName="minEstimatedPrice" mode="currency"  currency="VND" locale="vi-VI"></p-inputnumber>
+                            <i class="pi pi-arrow-right"></i>
+                            <p-inputnumber formControlName="maxEstimatedPrice" mode="currency"  currency="VND" locale="vi-VI"></p-inputnumber>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p-divider [layout]="'vertical'"></p-divider>
+        <div class="personal info">
+            <header>Thông tin cá nhân</header>
+            <div class="form">
+                <div class="form-content" [formGroup]="formContact">
+                    <label for="">Họ tên</label>
+                    <input type="text" pInputText formControlName="customerFullname" placeholder="Nhập họ tên...">
+                    <label for="">Số điện thoại</label>
+                    <input type="text" pInputText formControlName="customerPhone" placeholder="Nhập số điện thoại...">
+                    <label for="">Email</label>
+                    <input type="text" pInputText formControlName="customerEmail" placeholder="Nhập email...">
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; margin-top: 20px; grid-column: span 3;">
+            <button 
+                pButton
+                [loading]="loading"
+                [label]="'Gửi yêu cầu'"
+                icon="pi pi-send"
+                (click)="sendReuquest()"
+            ></button>
+        </div>
+    </div>
+</div>
+
+<p-toast></p-toast>

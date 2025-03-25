@@ -1,0 +1,174 @@
+<div class="tag-header">
+    <div class="title">
+        <header>Thẻ gán</header>
+    </div>
+    <!-- <div class="filter">
+        <p-button label="Sort by" icon="pi pi-sort-alt" (click)="menu.toggle($event)" />
+        <p-tieredmenu #menu [model]="items" [popup]="true" />
+        <p-select [options]="items" optionLabel="label" placeholder="Sort by"
+            (onChange)="onChangeOrder($event)"
+        >
+            <ng-template let-item #item>
+                <div style="display: flex; align-items: center; gap: 5px;">
+                    <i [class]="item.icon"></i>
+                    <div>{{ item.label }}</div>
+                </div>
+            </ng-template>
+            <ng-template #selectedItem let-selectedOption>
+                <div style="display: flex; align-items: center; gap: 5px;">
+                    <i [class]="selectedOption.icon"></i>
+                    <div>{{ selectedOption.label }}</div>
+                </div>
+            </ng-template>
+        </p-select>
+    </div> -->
+    <div class="tool">
+        <button pButton icon="pi pi-plus" (click)="isDisplayDialog = true">Thẻ mới</button>
+    </div>
+</div>
+<div class="tag-content">
+    <p-table 
+        stripedRows
+        [value]="tags" 
+        [tableStyle]="{ 'min-width': '50rem', 'font-size': '1em' }" 
+        [paginator]="true" 
+        [rows]="5" 
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        dataKey="id" editMode="row"
+    >
+        <ng-template #header>
+            <tr>
+                <th style="width: 20%;" pSortableColumn="id">
+                    ID <p-sortIcon field="id"></p-sortIcon>
+                </th>
+                <th style="width: 20%;" pSortableColumn="name">
+                    Tên phân loại <p-sortIcon field="name"></p-sortIcon>
+                </th>
+                <th style="width: 20%;" pSortableColumn="createdAt">
+                    Ngày tạo <p-sortIcon field="createdAt"></p-sortIcon>
+                </th>
+                <th style="width: 20%;" pSortableColumn="updatedAt">
+                    Ngày cập nhật <p-sortIcon field="updatedAt"></p-sortIcon>
+                </th>
+                <th style="width: 20%;"></th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-tag let-ri="rowIndex" let-editing="editing">
+            <tr [pEditableRow]="tag">
+                <td>{{ tag.id }}</td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <div class="input-field">
+                                <input
+                                    pInputText
+                                    type="text"
+                                    [formControl]="tagNameUpdateControl"
+                                />
+                                @if (submit) {
+                                    <div class="error-field" *ngIf="tagNameUpdateControl.hasError('required')">
+                                        Name is required.
+                                    </div>
+                                    <div class="error-field" *ngIf="tagNameUpdateControl.hasError('minlength')">
+                                        Name must be at least 1 characters long.
+                                    </div>
+                                    <div class="error-field" *ngIf="tagNameUpdateControl.hasError('isEnameExistxist')">
+                                        Name already existed.
+                                    </div>
+                                }
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{tag.name}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    {{tag.createdAt | date}}
+                </td>
+                <td>
+                    {{tag.updatedAt | date}}
+                </td>
+                <td>
+                    <div class="flex align-items-center justify-center gap-10">
+                        <button
+                            *ngIf="!editing"
+                            pButton
+                            pRipple
+                            type="button"
+                            severity="primary"
+                            pInitEditableRow
+                            icon="pi pi-pencil"
+                            (click)="onRowEditInit(tag)"
+                            text
+                            rounded
+                            outlined
+                            severity="secondary"
+                        ></button>
+                        <button
+                            *ngIf="!editing"
+                            pButton
+                            icon="pi pi-trash"
+                            severity="danger"
+                            rounded
+                            outlined
+                            (click)="deleteTag(tag)" 
+                        ></button>
+                        <button
+                            *ngIf="editing"
+                            pButton
+                            pRipple
+                            type="button"
+                            pSaveEditableRow
+                            icon="pi pi-check"
+                            (click)="onRowEditSave(tag)"
+                            text
+                            rounded
+                            severity="secondary"
+                        ></button>
+                        <button
+                            *ngIf="editing"
+                            pButton
+                            pRipple
+                            type="button"
+                            pCancelEditableRow
+                            icon="pi pi-times"
+                            (click)="onRowEditCancel(tag, ri)"
+                            text
+                            rounded
+                            severity="secondary"
+                        ></button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-dialog header="Tạo thẻ mới" [modal]="true" [(visible)]="isDisplayDialog" [style]="{ width: '25rem' }">
+    <div class="form">
+        <div class="form-content">
+            <label for="username" class="font-semibold w-24">Tên thẻ</label>
+            <div class="input-field">
+                <input pInputText id="username" [formControl]="tagNameControl" class="flex-auto" autocomplete="off" />
+                @if (submit) {
+                    <div class="error-field" *ngIf="tagNameControl.hasError('required')">
+                        Name is required.
+                    </div>
+                    <div class="error-field" *ngIf="tagNameControl.hasError('minlength')">
+                        Name must be at least 1 characters long.
+                    </div>
+                    <div class="error-field" *ngIf="tagNameControl.hasError('isEnameExistxist')">
+                        Name already existed.
+                    </div>
+                }
+            </div>
+            
+        </div>
+        <div class="form-footer">
+            <p-button label="Tạo" [loading]="createLoading" (click)="onSave()" />
+            <p-button label="Hủy" severity="secondary" (click)="onCancel()" />
+        </div>
+    </div>
+</p-dialog>

@@ -23,7 +23,12 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.1",
     "@ng-icons/core": "^29.9.0",
     "@ng-icons/heroicons": "^29.9.0",
+    "@primeng/themes": "^19.0.9",
     "aos": "^2.3.4",
+    "node-html-parser": "^7.0.1",
+    "primeicons": "^7.0.0",
+    "primeng": "^18.0.2",
+    "quill": "^2.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
