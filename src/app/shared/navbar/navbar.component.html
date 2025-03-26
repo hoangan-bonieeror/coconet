@@ -1,11 +1,9 @@
-<div #navbar class="navbar" [class.floating]="_mainService.scrollPosition > 0">
+<div #navbar class="navbar">
     <div routerLink="/" style="cursor: pointer;">
-        <img [src]="_mainService.scrollPosition > 0 ? '../../../assets/logo.png' : '../../../assets/logo-dark.png'" width="150px" alt="">
+        <img [src]="'../../../assets/logo.png'" width="150px" alt="">
     </div>
     <div class="navbar_menu">
         <a class="navbar_item" *ngFor="let item of _mainService.menu" (click)="onNavigate(item)"
-            [class.active]="item.isActive && _mainService.scrollPosition > 0"
-            [class.active-floating]="item.isActive && _mainService.scrollPosition == 0"
             >
             {{item.title}}
         </a>

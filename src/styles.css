@@ -3,10 +3,13 @@
 :root {
   --bright-color: #f5f4f0;
   --dark-color: #4f4135;
-  --neutral-color: #e1e1e1;
+  --neutral-color: #f2ede7;
 
   --admin-dark-color: #1f214d;
   --admin-bright-color: #f7f6fb;
+}
+* {
+  line-height: 1.5;
 }
 html {
   scroll-behavior: smooth;
@@ -15,7 +18,7 @@ html {
 body {
   background-color: var(--bright-color);
   color: var(--dark-color);
-  font-family: Calibri;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
 
