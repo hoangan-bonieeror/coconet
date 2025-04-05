@@ -112,3 +112,111 @@
 .social_media_contact > * > fa-icon {
   font-size: 1.2rem;
 }
+
+
+/* Burger Menu Button Styling */
+.burger-menu-btn {
+  display: none;
+  width: 30px; /* Width of the icon */
+  height: 20px; /* Height of the icon */
+  position: relative; /* Needed for absolute positioning of lines if used, but flex is often easier */
+  flex-direction: column;
+  justify-content: space-between; /* Distributes lines evenly */
+  cursor: pointer;
+  border: none;
+  background: var(--neutral-color) !important;
+  padding: 0; /* Remove default button padding */
+  z-index: 1001; /* Ensure it's above other content if needed */
+}
+
+/* Individual Burger Line Styling */
+.burger-line {
+  display: block;
+  width: 100%;
+  height: 4px; /* Thickness of the lines */
+  background-color: var(--dark-color); /* Color of the lines */
+  border-radius: 3px; /* Slightly rounded ends */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transform-origin: center; /* Rotate lines around their center */
+}
+/* .burger-menu.active .burger-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.burger-menu.active .burger-line:nth-child(2) {
+  opacity: 0;
+}
+.burger-menu.active .burger-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+} */
+
+.burger-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 25px;
+  border-bottom: 1px;
+  transition-duration: 250ms;
+  background-color: transparent;
+  color: var(--dark-color);
+  background-color: var(--neutral-color);
+}
+
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Underline styles */
+.burger-menu > * {
+  display: block;
+  position: relative;
+  padding: 0.2em 0;
+  padding: 5px;
+  transition-duration: 250ms;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+  overflow: hidden;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+/* Fade in */
+.burger-menu > *::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: var(--dark-color);
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}
+
+.burger-menu > *::after {
+  opacity: 1;
+  transform: translate3d(-100%, 0, 0);
+}
+
+.floating .burger-menu > *::after{
+  background-color: var(--dark-color) !important;
+}
+
+.burger-menu > *:hover::after,
+.burger-menu > *:focus::after {
+  transform: translate3d(0, 0, 0);
+}
+
+@media only screen and (max-width: 768px)
+{ 
+  .navbar_menu, .social_media_contact {
+    display: none;
+  }
+
+  .burger-menu-btn {
+    display: flex;
+  }
+}

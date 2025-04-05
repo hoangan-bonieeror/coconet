@@ -18,6 +18,36 @@
         <div class="telephone">
             <div>+84938434666</div>
         </div>
-        
     </div>
+    <button class="burger-menu-btn" #burgerMenuButton (click)="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+    </button>
 </div>
+
+
+<p-drawer header="" [(visible)]="isShowBurgerMenu" position="right">
+    <div class="burger-nav">
+        <div routerLink="/" style="cursor: pointer;">
+            <img [src]="'../../../assets/logo.png'" width="150px" alt="">
+        </div>
+        <div class="burger-menu">
+            <a class="burger-item" *ngFor="let item of _mainService.menu" (click)="onNavigate(item)"
+                >
+                {{item.title}}
+            </a>
+        </div>
+        <div class="burger-social_media_contact">
+            <a target="_blank" class="social_link" href="https://www.facebook.com/2f.art">
+                <fa-icon [icon]="IconFacebook"></fa-icon>
+            </a>
+            <a target="_blank" class="social_link" href="https://www.instagram.com/c.o.c.o.house/">
+                <fa-icon [icon]="IconInstagram"></fa-icon>
+            </a>
+            <div class="telephone">
+                <div>+84938434666</div>
+            </div>
+        </div>
+    </div>
+</p-drawer>

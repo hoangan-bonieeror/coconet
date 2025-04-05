@@ -19,11 +19,12 @@ export interface MenuItem {
 })
 export class NavbarComponent implements OnInit, AfterViewInit {
   @ViewChild('navbar') navbarEl!: ElementRef<HTMLDivElement>;
-
+  @ViewChild('burgerMenuButton') burgerButton!: ElementRef<HTMLButtonElement>;
   readonly IconFacebook = faFacebook
   readonly IconInstagram = faInstagram;
   readonly IconPhone = faPhone;
   readonly Menu = Menu
+  isShowBurgerMenu: boolean = false
   constructor(
     private _router: Router,
     public _mainService: MainServiceService
@@ -40,4 +41,11 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this._mainService.activateEndpoint(item)
   }
   
+  toggleMenu() {
+    if(this.burgerButton) {
+      const isActive = this.burgerButton.nativeElement.classList.toggle('active');
+      this.burgerButton.nativeElement.setAttribute('aria-expanded', isActive + '');
+      this.isShowBurgerMenu = isActive
+    }
+  }
 }

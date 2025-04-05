@@ -6,13 +6,15 @@ import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AccordionComponent } from './accordion/accordion.component';
+import { DrawerModule } from 'primeng/drawer';
 
 @NgModule({
   declarations: [NavbarComponent, FooterComponent, SidebarComponent, AccordionComponent],
   imports: [
     CommonModule,
     RouterLink,
-    FontAwesomeModule
+    FontAwesomeModule,
+    DrawerModule
   ],
   exports: [NavbarComponent, FooterComponent, SidebarComponent, AccordionComponent]
 })

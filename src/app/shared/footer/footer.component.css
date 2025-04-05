@@ -27,7 +27,7 @@ footer > div header {
 .list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     font-size: 1em;
 }
 
@@ -93,4 +93,12 @@ footer > div header {
   height: 1.3em;
   width: 1.3em;
   fill: var(--dark-color);
+}
+
+@media only screen and (max-width: 768px)
+{ 
+  footer {
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+  }
 }

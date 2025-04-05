@@ -30,7 +30,8 @@
                 </div>
             </div>
         </div>
-        <p-divider [layout]="'vertical'"></p-divider>
+        <p-divider class="vertical-divider" [layout]="'vertical'"></p-divider>
+        <p-divider class="horizontal-divider"></p-divider>
         <div class="personal info">
             <header>Thông tin liên hệ</header>
             <div class="form">
@@ -44,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div style="display: flex; justify-content: flex-end; margin-top: 20px; grid-column: span 3;">
+        <div class="send-request-bn">
             <button 
                 pButton
                 [loading]="loading"
