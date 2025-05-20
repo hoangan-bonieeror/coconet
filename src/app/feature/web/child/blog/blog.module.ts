@@ -12,6 +12,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { TableModule } from 'primeng/table';
+import { BlogDetailComponent } from './child/blog-detail/blog-detail.component';
 
 
 
@@ -21,7 +22,8 @@ import { TableModule } from 'primeng/table';
     MainComponent,
     TagComponent,
     PostComponent,
-    SidebarContentComponent
+    SidebarContentComponent,
+    BlogDetailComponent
   ],
   imports: [
     CommonModule,

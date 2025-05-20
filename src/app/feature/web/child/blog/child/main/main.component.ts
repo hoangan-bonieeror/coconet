@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from '../../../../../../interface/category';
 import { ApiService } from '../../../../../../core/service/api.service';
 import { JoinPost, Post } from '../../../../../../interface/post';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -114,11 +115,15 @@ export class MainComponent implements OnInit {
   ];
   blogs : JoinPost[];
   constructor(
-    private _apiService: ApiService
+    private _apiService: ApiService,
+    private _router: Router
   ) {
     this.blogs = []
   }
 
+  navigateBlog(id : number) {
+    this._router.navigate([`blog/${id}`])
+  }
   ngOnInit(): void {
       this._apiService.getAllCategories().subscribe(res => {
         if(res.ok) {

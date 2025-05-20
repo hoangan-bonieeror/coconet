@@ -6,6 +6,7 @@ import { TagComponent } from './child/tag/tag.component';
 import { PostComponent } from './component/post/post.component';
 import { MainComponent } from './child/main/main.component';
 import { CategoryComponent } from './child/category/category.component';
+import { BlogDetailComponent } from './child/blog-detail/blog-detail.component';
 
 
 const routes : Route[] = [
@@ -13,6 +14,10 @@ const routes : Route[] = [
     path: '',
     component: BlogComponent,
     children: [
+      {
+        path: ':id',
+        component : BlogDetailComponent
+      },
       {
         path: 'tag',
         component: TagComponent

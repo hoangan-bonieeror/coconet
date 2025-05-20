@@ -1,1 +1,5 @@
-<p>blog-detail works!</p>
+<div class="blog" *ngIf="post">
+    <div class="title">{{post.title}}</div>
+    <small class="category">{{post.category.name}}</small>
+    <div class="content" [innerHTML]="post.content"></div>
+</div>
