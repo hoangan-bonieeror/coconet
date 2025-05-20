@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MainServiceService } from '../../../../core/service/main.service.service';
 import { Menu } from '../../../../config';
 import { Service } from '../service/service.component';
@@ -7,16 +7,26 @@ import { ApiService } from '../../../../core/service/api.service';
 import { CustomerRequest, CustomerRequestInput } from '../../../../interface/request';
 import { MessageService } from 'primeng/api';
 
+import '@maptiler/sdk/dist/maptiler-sdk.css';
+import { faMapMarker, faPhone, faVoicemail } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
+  readonly MarkerIcon = faMapMarker;
+  readonly EmailIcon = faVoicemail;
+  readonly PhoneIcon = faPhone;
+  readonly FacebookIcon = faFacebook;
+  readonly InstagramIcon = faInstagram;
   serviceOptions: string[] = [];
   formContact: FormGroup;
   submit: boolean;
   loading: boolean;
+
+  @ViewChild('map') mapContainer!: ElementRef<HTMLElement>;
   constructor(
     private _mainService: MainServiceService,
     private _apiService: ApiService,
@@ -48,6 +58,10 @@ export class ContactComponent implements OnInit {
       Service.RENOVATION
     ]
   }
+
+  ngAfterViewInit(): void {}
+
+  ngOnDestroy() {}
 
   sendReuquest() {
     this.submit = true

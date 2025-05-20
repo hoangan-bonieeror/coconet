@@ -1,0 +1,16 @@
+.user-header {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title header {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.tool {
+    display: flex;
+    align-items: center;
+}

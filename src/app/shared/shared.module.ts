@@ -7,6 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AccordionComponent } from './accordion/accordion.component';
 import { DrawerModule } from 'primeng/drawer';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
   declarations: [NavbarComponent, FooterComponent, SidebarComponent, AccordionComponent],
@@ -14,7 +15,8 @@ import { DrawerModule } from 'primeng/drawer';
     CommonModule,
     RouterLink,
     FontAwesomeModule,
-    DrawerModule
+    DrawerModule,
+    InputTextModule
   ],
   exports: [NavbarComponent, FooterComponent, SidebarComponent, AccordionComponent]
 })

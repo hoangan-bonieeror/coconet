@@ -51,18 +51,18 @@
             <div class="modal-content">
                 <div class="dialog" data-aos="fade-left">
                     @if (project.gallery[currentIndex].ratio < 1) {
-                        <img [src]="processImageUrl(project.gallery[currentIndex].img_url)" height="100%" alt="">
+                        <img [src]="processImageUrl(project.gallery[currentIndex].img_url)" class="modal-img-vertical" alt="">
                     } @else {
-                        <img [src]="processImageUrl(project.gallery[currentIndex].img_url)" width="70%" alt="">
+                        <img [src]="processImageUrl(project.gallery[currentIndex].img_url)" class="modal-img-horizontal" alt="">
                     }
                 </div>
         
                 <div>
                     <div class="control">
-                        <div class="arrow_left">
+                        <div class="arrow_left" #arrowLeft id="arrowLeft">
                             <ng-icon (click)="onSlideBackward()" name="heroArrowLeft" ></ng-icon>
                         </div>                   
-                        <div class="arrow_right">
+                        <div class="arrow_right" #arrowRight id="arrowright">
                             <ng-icon (click)="onSlideForward()" name="heroArrowRight"></ng-icon>
                         </div>
                         <div class="close" >

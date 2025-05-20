@@ -1,0 +1,20 @@
+.container > * {
+    padding: 10px 0;
+}
+
+.user-header {
+    display: grid;
+    grid-template-columns: 1fr max-content;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title header {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+.tool-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

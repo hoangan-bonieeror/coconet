@@ -14,6 +14,7 @@ import { TextareaModule } from 'primeng/textarea';
 import { EditorModule } from 'primeng/editor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     TextareaModule,
     EditorModule,
     ReactiveFormsModule,
-    MultiSelectModule
+    MultiSelectModule,
+    DialogModule
   ]
 })
 export class BlogModule { }

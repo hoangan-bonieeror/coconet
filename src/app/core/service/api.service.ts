@@ -10,7 +10,7 @@ import { PostInput } from '../../interface/post';
   providedIn: 'root'
 })
 export class ApiService {
-  private readonly baseUrl = "http://localhost:3000"
+  private readonly baseUrl = "http://192.168.1.90:3000"
   constructor(
     private _httpCLient: HttpClient
   ) { }
@@ -146,7 +146,7 @@ export class ApiService {
   }
   createUser(userInput : UserInput){ 
     return this._httpCLient.post(
-      `${this.baseUrl}/user`,
+      `${this.baseUrl}/users`,
       JSON.stringify(userInput),
       {
         headers: {
@@ -159,7 +159,7 @@ export class ApiService {
   }
   getAllUsers() {
     return this._httpCLient.get(
-       `${this.baseUrl}/user`,
+       `${this.baseUrl}/users`,
        {
         headers: {
           "Content-Type": "application/json"
@@ -171,7 +171,7 @@ export class ApiService {
   }
   updateUser(id: number, userInput : UserInput) {
     return this._httpCLient.put(
-      `${this.baseUrl}/user/${id}`,
+      `${this.baseUrl}/users/${id}`,
       JSON.stringify(userInput),
       {
         headers: {
@@ -183,7 +183,7 @@ export class ApiService {
     )
   }
   deleteUser(id: number) {
-    return this._httpCLient.delete(`${this.baseUrl}/user/${id}`, {
+    return this._httpCLient.delete(`${this.baseUrl}/users/${id}`, {
         observe: "response",
         responseType: "json"
     })

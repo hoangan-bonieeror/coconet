@@ -299,6 +299,666 @@
                     "ratio": 1.5
                 }
             ]
+        },
+        {
+            "name": "Dalat Villa",
+            "description": "",
+            "cover_img": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2058.jpg",
+            "location": "",
+            "gallery": [
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%200.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%201.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%202.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%203.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%204.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%205.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%206.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%207.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%208.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%209.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2010.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2011.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2012.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2013.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2014.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2015.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2017.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2019.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2020.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2021.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2022.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2023.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2025.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2026.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2027.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2028.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2029.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2030.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2031.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2033.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2034.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2035.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2036.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2037.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2038.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2039.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2040.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2041.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2042.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2043.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2044.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2045.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2046.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2047.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2048.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2049.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2050.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2051.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2052.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2053.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2054.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2055.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2056.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2057.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2058.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2059.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2060.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2061.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2062.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2063.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2064.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2065.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2066.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2067.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2068.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2069.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2070.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2071.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2072.jpg",
+                  "ratio": 0.6666666666666666
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2073.jpg",
+                  "ratio": 1.5
+                },
+                {
+                  "img_url": "https://cocostudio.vn/projects/DALAT%20VILLA/Bản%20sao%20của%2074.jpg",
+                  "ratio": 0.6666666666666666
+                }
+              ]
+        },
+        {
+          "name": "Biệt thự Thủ Đức",
+          "cover_img": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/03.jpg",
+          "description": "",
+          "location": "",
+          "gallery": [
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/03.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/08.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/10.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/11.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/17.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/19.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/20.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/21.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/22.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/25.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/26.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/31.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/33.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/34.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/35.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/36.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/37.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/38.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/39.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/40.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/43.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/44.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/45.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/46.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/48.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/49.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/50.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/51.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/52.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/53.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/0.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/55.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/56.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/59.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/60.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/62.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/64.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/65.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/66.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/67.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/71.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/74.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/76.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/78.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/79.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/80.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/CAI%20TAO%20BIET%20THU%20-%20THU%20DUC%20-%20CO%20LOGO/81.jpg",
+              "ratio": 1.5
+            }
+          ]
+        },
+        {
+          "name": "Landmark",
+          "cover_img": "https://www.cocostudio.vn/projects/LANDMARK/C05.jpg",
+          "description": "",
+          "location": "",
+          "gallery": [
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C01.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C02.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C03.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C04.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C05.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C06.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C07.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C09.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C10.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C22.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C23.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C24.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C25.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C26.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C27.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C28.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C29.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C30.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C31.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C32.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C33.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C34.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C35.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C36.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C37.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C38.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C39.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C40.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C41.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C42.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C43.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C44.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C45.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C46.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C47.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C48.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C49.jpg",
+              "ratio": 1.5
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C50.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C51.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C52.jpg",
+              "ratio": 0.6666666666666666
+            },
+            {
+              "img_url": "https://www.cocostudio.vn/projects/LANDMARK/C53.jpg",
+              "ratio": 1.5
+            }
+          ]
         }
     ]
 }

@@ -15,6 +15,14 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
 }
+
+
+@media only screen and (max-width: 768px)
+{
+  html {
+    font-size: 0.8em;
+  }
+}
 body {
   background-color: var(--bright-color);
   color: var(--dark-color);
@@ -44,6 +52,15 @@ body {
   width: 1px;
   height: 100%;
   background-color: var(--neutral-color);
+}
+
+.divider-vertical {
+  height: 1px;
+  width: 100%;
+}
+
+.divider-dark {
+  background-color: var(--dark-color) !important;
 }
 
 input {
@@ -190,14 +207,31 @@ button {
   font-size: 0.7em;
 }
 
-.admin-button-dark, button {
+.admin-button-dark {
   color: var(--admin-bright-color) !important;
   background-color: var(--dark-color) !important;
+  border-color: var(--dark-color) !important;
 }
 
 .admin-button {
-  color: var(--dark-color);
+  color: var(--dark-color) !important;
   background-color: var(--bright-color) !important;
+  border-color: var(--bright-color) !important;
+}
+
+.admin-button-dark:hover {
+  filter: brightness(1.1);
+}
+
+.admin-button-dark:active, .admin-button-dark:focus {
+  filter: brightness(1.2);
+}
+
+.admin-button:hover {
+  filter: brightness(0.9);
+}
+.admin-button:active, .admin-button:focus {
+  filter: brightness(0.8);
 }
 
 .flex {
@@ -218,4 +252,47 @@ button {
 
 .gap-10 {
   gap: 10px;
+}
+
+.p-error {
+  color: red;
+}
+
+.blog-container {
+  width: auto;
+  max-width: 100%;
+  max-height: 70vh;
+  overflow: auto;
+}
+
+
+.blog-container .title {
+  font-size: 1.5em;
+}
+
+.blog-container .publish-time {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(0,0,0,.3);
+}
+
+.blog-container .content > * {
+  max-width: 100%;
+  width: auto;
+}
+
+/* Custom Prime */
+.p-password, .p-password-input {
+  width: 100% !important;
+}
+
+.p-breadcrumb {
+  background-color: var(--bright-color) !important;
+}
+
+.p-textarea:enabled:focus,
+.p-select:not(.p-disabled).p-focus,
+.p-multiselect:not(.p-disabled).p-focus,
+.p-inputtext:enabled:focus {
+  border-color: var(--dark-color) !important;
 }

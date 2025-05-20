@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WebRouteModule } from './web.route.module';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
 import { WebComponent } from './web.component';
 import { HomeComponent } from './child/home/home.component';
@@ -23,6 +23,9 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { InputMaskModule } from 'primeng/inputmask';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
+import { NgOptimizedImage } from '@angular/common'
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { AboutComponent } from './child/about/about.component';
 @NgModule({
   declarations: [
     WebComponent,
@@ -31,7 +34,8 @@ import { ToastModule } from 'primeng/toast';
     ProjectDetailComponent,
     ServiceComponent,
     BlogComponent,
-    ContactComponent
+    ContactComponent,
+    AboutComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +56,10 @@ import { ToastModule } from 'primeng/toast';
     ReactiveFormsModule,
     InputMaskModule,
     ButtonModule,
-    ToastModule
+    ToastModule,
+    NgOptimizedImage,
+    BreadcrumbModule,
+    RouterModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

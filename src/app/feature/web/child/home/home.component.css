@@ -10,10 +10,15 @@ header {
     font-weight: 600;
 }
 
+.panel_section {
+    min-height: 100vh;
+    width: 100%;;
+}
+
 .carousel {
     position: relative;
     height: 100vh;
-    /* transform: translateY(-70px); */
+    width: 100%;;
 }
 
 .carousel_item {
@@ -133,7 +138,7 @@ header {
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     justify-content: center;
-
+    row-gap: 30px;
 }
 
 .service_item {
@@ -382,19 +387,22 @@ header {
 }
 
 .parner_list {
-    max-height: 150px;
     width: 100%; 
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 50px;
-    padding: 40px 0;
+    margin: 40px 0;
 }
 
 .parner_list > * {
+    display: flex;
+    place-content: center center;
+}
+
+.parner_list > * img {
     width: 200px;
-    height: max-content;
 }
 
 .parner_img {
@@ -409,6 +417,27 @@ header {
     /* max-height: 0vh; */
 }
 
+
+.loading {
+    display: flex;
+    place-content: center center;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    min-height: 30vh;
+}
+
+.loading::after {
+    content: "Loading";
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+
+}
+
+.media_header {
+    margin-bottom: 20px;
+}
 .media_container {
     position: relative;
 }
@@ -448,6 +477,11 @@ header {
     transition-duration: 250ms;
 }
 
+.media_source {
+    width: 700px;
+    height: 394px;
+}
+
 .media_control {
     /* z-index: 10; */
     position: absolute;
@@ -464,3 +498,56 @@ header {
 .media_control > div > * {
     position: absolute;
 }
+
+
+/* Ipad Viewport */
+@media screen and (max-width: 768px) {
+    .service_section {
+        grid-template-columns: 100%;
+        grid-template-rows: repeat(3, 1fr);
+    }
+    .service_item {
+        gap: 10px;
+    }
+
+    .service_item .img-overview {
+        width: 150px;
+        height: 150px;
+    }
+
+    .service_item > label {
+        /* font-size: 1.2em; */
+    }
+
+    .portfolio_content {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .portfolio_item {
+        width: 100%;
+        height: 100%;
+    }
+
+    .media_item {
+        max-width: 100%;
+    }
+
+    .parner_list {
+        margin: 20px 0;
+        gap: 10px;
+    }
+
+    .parner_list > * img {
+        width: 100px;
+    }
+
+    .media_source {
+        width: 400px;
+        height: 200px;
+    }
+
+    .carousel {
+        height: 50vh;
+    }
+  }

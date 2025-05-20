@@ -11,38 +11,34 @@
         showGridlines
     >
         <ng-template #header>
-            <tr>
+            <!-- <tr>
                 <th colspan="5">Về dự án</th>
                 <th colspan="3"> Về khách hàng</th>
                 <th colspan="2"></th>
-            </tr>
+            </tr> -->
             <tr>
-                <th>Tên dự án</th>
-                <th>Diện tích</th>
-                <th>Thời gian hoàn thành</th>
-                <th>Chi phí dự kiến</th>
-                <th>Dịch vụ</th>
                 <th>Tên khách hàng</th>
                 <th>Số điện thoại</th>
                 <th>Email</th>
+                <th>Tên dự án</th>
+                <th>Dịch vụ</th>
                 <th>Thời gian yêu cầu</th>
-                <th>Thời gian cập nhật</th>
+                <th style="width: max-content;"></th>
             </tr>
         </ng-template>
         <ng-template #body let-request>
             <tr>
-                <td>{{ request.projectName }}</td>
-                <td>{{ request.projectArea }} m&#178;</td>
-                <td>{{ request.completionTime }}</td>
-                <td>
-                    {{ request.minEstimatedPrice | currency : "VND" : "" }} -> {{ request.maxEstimatedPrice | currency : "VND" : "" }}
-                </td>
-                <td>{{request.selectedService}}</td>
                 <td>{{request.customerFullname}}</td>
                 <td>{{request.customerPhone}}</td>
                 <td>{{request.customerEmail}}</td>
+                <td>{{ request.projectName }}</td>
+                <td>{{request.selectedService}}</td>
                 <td>{{request.createdAt | date}}</td>
-                <td>{{request.updatedAt | date}}</td>
+                <td>
+                    <div class="info-btn">
+                        <fa-icon [icon]="InfoIcon"></fa-icon>
+                    </div>
+                </td>
             </tr>
         </ng-template>
     </p-table>

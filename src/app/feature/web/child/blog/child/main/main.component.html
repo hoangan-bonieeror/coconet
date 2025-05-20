@@ -36,6 +36,15 @@
         </div>
     </div>
     <div class="blog-list">
-
+        @for (blog of blogs; track $index; let idx = $index) {
+            <div class="blog-item"data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="idx * 100">
+                <img class="img_overview" src="https://res.cloudinary.com/halshop/image/upload/v1742726996/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3264_xu9h5e.jpg" [alt]="blog.id">
+                <div class="item-content">
+                    <div class="title">{{blog.title}}</div>
+                    <small class="category">{{blog.category.name}}</small>
+                    <button pButton class="admin-button read-more-btn">Xem thêm <i class="pi pi-arrow-right"></i></button>
+                </div>
+            </div>
+        }
     </div>
 </div>

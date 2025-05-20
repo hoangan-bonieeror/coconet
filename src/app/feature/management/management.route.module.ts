@@ -8,6 +8,7 @@ import { UserComponent } from './child/user/user.component';
 import { ManagementComponent } from './management.component';
 import { CustomerRequestComponent } from './child/customer-request/customer-request.component';
 import { adminGuard } from '../../core/guard/admin.guard';
+import { UserModule } from './child/user/user.module';
 
 const routes : Route[] = [
   {
@@ -31,7 +32,7 @@ const routes : Route[] = [
       },
       {
         path: "user",
-        component: UserComponent,
+        loadChildren: () => import('./child/user/user.module').then(m => UserModule),
         canActivate: [adminGuard]
       },
       {

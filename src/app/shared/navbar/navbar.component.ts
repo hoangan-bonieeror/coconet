@@ -32,11 +32,14 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {}
   ngAfterViewInit(): void {
-    console.log(this.navbarEl.nativeElement.clientHeight)
+    window.onresize = () => {
+      this._mainService.setNavbarHeight(this.navbarEl.nativeElement.clientHeight)
+    }
     this._mainService.setNavbarHeight(this.navbarEl.nativeElement.clientHeight)
   }
 
   onNavigate(item: MenuItem) {
+    if(this.isShowBurgerMenu) this.isShowBurgerMenu = false
     this._mainService.exploreService(Service.GENERAL)
     this._mainService.activateEndpoint(item)
   }

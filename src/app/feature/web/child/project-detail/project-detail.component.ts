@@ -1,4 +1,4 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, ElementRef, input, OnInit, ViewChild } from '@angular/core';
 import { DataService, ImgRatio, Project } from '../../../../core/service/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { heroArrowLeft, heroArrowRight, heroXMark } from '@ng-icons/heroicons/outline';
@@ -8,6 +8,8 @@ import { heroArrowLeft, heroArrowRight, heroXMark } from '@ng-icons/heroicons/ou
   styleUrl: './project-detail.component.css'
 })
 export class ProjectDetailComponent implements OnInit {
+  @ViewChild('arrowLeft', {static: true}) arrowLeft!: ElementRef<HTMLDivElement>;
+  @ViewChild('arrowRight', {static: true}) arrowRight!: ElementRef<HTMLDivElement>;
   readonly heroArrowLeft = heroArrowLeft
   readonly heroArrowRight = heroArrowRight
   readonly heroXMark = heroXMark
@@ -31,6 +33,15 @@ export class ProjectDetailComponent implements OnInit {
         }
         
       })
+
+      window.onkeydown = (ev : KeyboardEvent) => {
+         if(!this.isDisplayDialog) return
+         if(ev.key == 'ArrowLeft') {
+          this.onSlideBackward()
+         } else if(ev.key == 'ArrowRight') {
+          this.onSlideForward()
+         }
+      }
   }
 
   processImageUrl(filename: string) {

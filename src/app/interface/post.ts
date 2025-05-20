@@ -8,7 +8,8 @@ export interface Post {
     categoryId: number,
     authorId: string,
     createdAt: Date,
-    updatedAt: Date
+    updatedAt: Date,
+    img_overview: string;
 }
 
 export interface JoinPost {
@@ -25,5 +26,6 @@ export interface PostInput {
     title: string,
     content: string,
     authorId: string,
-    categoryId: number
+    categoryId: number,
+    tagIds : number[];
 }

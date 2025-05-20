@@ -69,6 +69,14 @@
     height: 100%;
 }
 
+.modal-img-vertical {
+    height: 100%;
+}
+
+.modal-img-horizontal {
+    width: 70%;
+}
+
 .dialog {
     overflow: hidden;
     display: flex;
@@ -136,6 +144,11 @@
 
 @media only screen and (max-width: 768px)
 {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
     .gallery {
         grid-template-columns: 100% !important;
         grid-template-rows: auto;
@@ -144,4 +157,15 @@
     .gallery-item {
         grid-column: auto !important;
     }
+
+    .modal-img-vertical {
+        height: auto;
+        width: 100%;
+    }
+    
+    .modal-img-horizontal {
+        width: 100%;
+        height: auto;
+    }
+    
 }

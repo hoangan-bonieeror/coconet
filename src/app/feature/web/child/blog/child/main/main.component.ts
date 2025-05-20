@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../../../../../../interface/category';
 import { ApiService } from '../../../../../../core/service/api.service';
-import { Post } from '../../../../../../interface/post';
+import { JoinPost, Post } from '../../../../../../interface/post';
 
 @Component({
   selector: 'app-main',
@@ -18,7 +18,8 @@ export class MainComponent implements OnInit {
       categoryId: 1, // Assuming 1 is "Minimalist Design"
       authorId: "user123", // Assuming "user123" is a valid user ID
       createdAt: new Date("2023-10-26T10:00:00Z"),
-      updatedAt: new Date("2023-10-26T10:00:00Z")
+      updatedAt: new Date("2023-10-26T10:00:00Z"),
+      img_overview: ""
     },
     {
       id: 2,
@@ -27,7 +28,8 @@ export class MainComponent implements OnInit {
       categoryId: 2, // Assuming 2 is "Biophilic Design"
       authorId: "user456",
       createdAt: new Date("2023-10-25T14:30:00Z"),
-      updatedAt: new Date("2023-10-25T14:30:00Z")
+      updatedAt: new Date("2023-10-25T14:30:00Z"),
+      img_overview: ""
     },
     {
       id: 3,
@@ -36,7 +38,8 @@ export class MainComponent implements OnInit {
       categoryId: 3, // Assuming 3 is "Art Deco"
       authorId: "user789",
       createdAt: new Date("2023-10-24T08:00:00Z"),
-      updatedAt: new Date("2023-10-24T08:00:00Z")
+      updatedAt: new Date("2023-10-24T08:00:00Z"),
+      img_overview: ""
     },
     {
       id: 4,
@@ -45,7 +48,8 @@ export class MainComponent implements OnInit {
       categoryId: 4, // Assuming 4 is "Small Space Design"
       authorId: "user123",
       createdAt: new Date("2023-10-23T16:00:00Z"),
-      updatedAt: new Date("2023-10-23T16:00:00Z")
+      updatedAt: new Date("2023-10-23T16:00:00Z"),
+      img_overview: ""
     },
     {
       id: 5,
@@ -54,7 +58,8 @@ export class MainComponent implements OnInit {
       categoryId: 5, // Assuming 5 is "Color Trends"
       authorId: "user456",
       createdAt: new Date("2023-10-22T11:30:00Z"),
-      updatedAt: new Date("2023-10-22T11:30:00Z")
+      updatedAt: new Date("2023-10-22T11:30:00Z"),
+      img_overview: ""
     },
     {
       id: 6,
@@ -63,7 +68,8 @@ export class MainComponent implements OnInit {
       categoryId: 6, // Assuming 6 is "Sustainable Design"
       authorId: "user789",
       createdAt: new Date("2023-10-21T09:00:00Z"),
-      updatedAt: new Date("2023-10-21T09:00:00Z")
+      updatedAt: new Date("2023-10-21T09:00:00Z"),
+      img_overview: ""
     },
       {
       id: 7,
@@ -72,7 +78,8 @@ export class MainComponent implements OnInit {
       categoryId: 7, // Assuming 7 is "Mid-Century Modern"
       authorId: "user123",
       createdAt: new Date("2023-10-20T13:00:00Z"),
-      updatedAt: new Date("2023-10-20T13:00:00Z")
+      updatedAt: new Date("2023-10-20T13:00:00Z"),
+      img_overview: ""
     },
     {
       id: 8,
@@ -81,7 +88,8 @@ export class MainComponent implements OnInit {
       categoryId: 8, // Assuming 8 is "Lighting Design"
       authorId: "user456",
       createdAt: new Date("2023-10-19T17:00:00Z"),
-      updatedAt: new Date("2023-10-19T17:00:00Z")
+      updatedAt: new Date("2023-10-19T17:00:00Z"),
+      img_overview: ""
     },
     {
       id: 9,
@@ -90,7 +98,8 @@ export class MainComponent implements OnInit {
       categoryId: 9, // Assuming 9 is "Textiles & Fabrics"
       authorId: "user789",
       createdAt: new Date("2023-10-18T10:30:00Z"),
-      updatedAt: new Date("2023-10-18T10:30:00Z")
+      updatedAt: new Date("2023-10-18T10:30:00Z"),
+      img_overview: ""
     },
     {
       id: 10,
@@ -99,18 +108,29 @@ export class MainComponent implements OnInit {
       categoryId: 10, // Assuming 10 is "DIY Projects"
       authorId: "user123",
       createdAt: new Date("2023-10-17T14:00:00Z"),
-      updatedAt: new Date("2023-10-17T14:00:00Z")
+      updatedAt: new Date("2023-10-17T14:00:00Z"),
+      img_overview: ""
     }
   ];
+  blogs : JoinPost[];
   constructor(
     private _apiService: ApiService
-  ) {}
+  ) {
+    this.blogs = []
+  }
 
   ngOnInit(): void {
-      this._apiService.getAllCategories().subscribe(res =>{
+      this._apiService.getAllCategories().subscribe(res => {
         if(res.ok) {
           let data = res.body as Category[]
           this.categories = data
+        }
+      })
+
+      this._apiService.getAllPosts().subscribe(res => {
+        if(res.ok) {
+          let data = res.body as JoinPost[];
+          this.blogs = data
         }
       })
   }

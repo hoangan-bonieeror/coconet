@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="user-header">
+        <div class="title">
+            <header>Người dùng</header>
+        </div>
+        <!-- <div class="filter">
+            <p-button label="Sort by" icon="pi pi-sort-alt" (click)="menu.toggle($event)" />
+            <p-tieredmenu #menu [model]="items" [popup]="true" />
+            <p-select [options]="items" optionLabel="label" placeholder="Sort by"
+                (onChange)="onChangeOrder($event)"
+            >
+                <ng-template let-item #item>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <i [class]="item.icon"></i>
+                        <div>{{ item.label }}</div>
+                    </div>
+                </ng-template>
+                <ng-template #selectedItem let-selectedOption>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <i [class]="selectedOption.icon"></i>
+                        <div>{{ selectedOption.label }}</div>
+                    </div>
+                </ng-template>
+            </p-select>
+        </div> -->
+        <div class="tool">
+            <button pButton icon="pi pi-plus" class="admin-button-dark" (click)="navigateToCreate()">Tạo người dùng</button>
+        </div>
+    </div>
+    <div class="user-content" data-aos="fade-up" data-aos-duration="500">
+        <p-table stripedRows [value]="(_adminService.users | async) ?? []"
+            [tableStyle]="{ 'min-width': '50rem', 'font-size': '1em' }" [paginator]="true" [rows]="5"
+            [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            dataKey="id" editMode="row">
+            <ng-template #header>
+                <tr>
+                    <th style="width: 20%;" pSortableColumn="id">
+                        ID <p-sortIcon field="id"></p-sortIcon>
+                    </th>
+                    <th style="width: 20%;" pSortableColumn="name">
+                        Username <p-sortIcon field="name"></p-sortIcon>
+                    </th>
+                    <th style="width: 20%;" pSortableColumn="createdAt">
+                        Ngày tạo <p-sortIcon field="createdAt"></p-sortIcon>
+                    </th>
+                    <th style="width: 20%;" pSortableColumn="updatedAt">
+                        Ngày cập nhật <p-sortIcon field="updatedAt"></p-sortIcon>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-user let-ri="rowIndex" let-editing="editing">
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.createdAt | date }}</td>
+                    <td>{{ user.updatedAt | date }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

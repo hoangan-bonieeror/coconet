@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="user-header">
+        <div class="title">
+            <header>Người dùng mới</header>
+        </div>
+        <!-- <div class="filter">
+            <p-button label="Sort by" icon="pi pi-sort-alt" (click)="menu.toggle($event)" />
+            <p-tieredmenu #menu [model]="items" [popup]="true" />
+            <p-select [options]="items" optionLabel="label" placeholder="Sort by"
+                (onChange)="onChangeOrder($event)"
+            >
+                <ng-template let-item #item>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <i [class]="item.icon"></i>
+                        <div>{{ item.label }}</div>
+                    </div>
+                </ng-template>
+                <ng-template #selectedItem let-selectedOption>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <i [class]="selectedOption.icon"></i>
+                        <div>{{ selectedOption.label }}</div>
+                    </div>
+                </ng-template>
+            </p-select>
+        </div> -->
+        <div class="tool-bar">
+            <button class="admin-button-dark" pButton label="Lưu người dùng" (click)="saveUser()" [loading]="loading"></button>
+            <button class="admin-button-dark" pButton label="Quay về" (click)="backToMain()"></button>
+        </div>
+    </div>
+    <div class="user-content">
+        <div class="form blog-form" data-aos="fade-up" data-aos-duration="500">
+            <div class="form-content" style="align-items: baseline;" [formGroup]="userForm">
+                <label for="username">Tên người dùng</label>
+                <div class="input-field">
+                    <input style="width: 100%;" type="text" formControlName="username" pInputText autocomplete="off">
+                    <small class="p-error" *ngIf="userForm.invalid && submitted">
+                        @if (userForm.controls['username'].hasError('required')) {
+                            {{ 'Tên người dùng trống' }}
+                        } @else if (userForm.controls['username'].hasError('usernameExist')) {
+                            {{ 'Tên người dùng đã tồn tại' }}
+                        }
+                    </small>
+                </div>
+                <label for="password">Mật khẩu</label>
+                <div class="input-field">
+                    <p-password formControlName="password" autocomplete="off" [feedback]="false" [toggleMask]="true" ></p-password>
+                    <small class="p-error" *ngIf="userForm.invalid && submitted">
+                        @if (userForm.controls['password'].hasError('required')) {
+                            {{ 'Mật khẩu không được để trống' }}
+                        }
+                    </small>
+                </div>
+                <label for="re-password">Nhập lại mật khẩu</label>
+                <div class="input-field">
+                    <p-password formControlName="re_password" autocomplete="off" [feedback]="false" [toggleMask]="true" ></p-password>
+                    <small class="p-error" *ngIf="userForm.invalid && submitted">
+                        @if (userForm.controls['re_password'].hasError('reEnterWrong')) {
+                            {{ 'Mật khẩu không trùng khớp' }}
+                        } @else if (userForm.controls['re_password'].hasError('required')) {
+                            Nhập lại mật khẩu không được để trống
+                        }
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

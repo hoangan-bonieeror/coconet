@@ -11,3 +11,5 @@ export enum LOCALSTORAGE_KEY {
 export enum SESSION_STORAGE_KEY {
     CURRENT_PAGE = "current_page"
 }
+
+export const GG_MAP_API_KEY = "AIzaSyAzqeQhH4T80xqzZkv2gQbn3mz-toqaWgU"

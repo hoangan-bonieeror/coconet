@@ -9,7 +9,11 @@ import { Router } from '@angular/router';
   styleUrl: './main.component.css'
 })
 export class MainComponent implements OnInit {
-  posts: JoinPost[] = []
+  posts: JoinPost[] = [];
+  isPreview: boolean = false;
+  previewContent: string|undefined = undefined;
+
+  selectedPost: JoinPost | undefined;
   constructor(
     private _apiService: ApiService,
     private _router: Router
@@ -25,5 +29,20 @@ export class MainComponent implements OnInit {
 
   createNewBlog() {
     this._router.navigate(['admin/blog/new'])
+  }
+
+  previewPost(postId: number) {
+    let foundPost = this.posts.find(o=>o.id==postId);
+    
+    this.previewContent = foundPost?.content;
+    this.selectedPost = foundPost
+    this.showPreview()
+  }
+
+  showPreview() {
+    this.isPreview = true
+  }
+  hidePreview() {
+    this.isPreview = false
   }
 }

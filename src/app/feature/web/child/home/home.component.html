@@ -1,51 +1,52 @@
-<div class="carousel" [style.transform]="'translateY(-' + (_mainService.navbarHeight) +'px)'" data-aos="fade-up"
-    data-aos-duration="500">
-    <div *ngFor="let item of carouselItem; index as i" class="carousel_item"
-        [style.opacity]="selectCarouselIndex == i ? 1 : 0">
-        <div>
-            <img [src]="item.itemUrl" width="100%" height="100%" alt="">
-            <caption>{{item.caption}}</caption>
+<div style="position: relative;" [style.transform]="'translateY(-' + (_mainService.navbarHeight) +'px)'">
+    <div class="carousel" data-aos="fade-up" data-aos-duration="500">
+        <div *ngFor="let item of carouselItem; index as i" class="carousel_item"
+            [style.opacity]="selectCarouselIndex == i ? 1 : 0">
+            <div>
+                <img [src]="item.itemUrl" width="100%" height="100%" alt="" loading="lazy">
+                <caption>{{item.caption}}</caption>
+            </div>
+        </div>
+        <div class="control">
+            <div style="position: relative; width: 100%; height: 100%;">
+                <div class="arrow_left" (click)="onDecrease()">
+                    <ng-icon name="heroArrowLeft"></ng-icon>
+                </div>
+                <div class="shortcut">
+                    <div *ngFor="let item of carouselItem; index as i" class="shortcut_item"
+                        [ngClass]="{ active: selectCarouselIndex == i }" (click)="selectCarouselIndex = i"></div>
+                </div>
+
+                <div class="arrow_right" (click)="onIncrease()">
+                    <ng-icon name="heroArrowRight"></ng-icon>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="control">
-        <div style="position: relative; width: 100%; height: 100%;">
-            <div class="arrow_left" (click)="onDecrease()">
-                <ng-icon name="heroArrowLeft"></ng-icon>
-            </div>
-            <div class="shortcut">
-                <div *ngFor="let item of carouselItem; index as i" class="shortcut_item"
-                    [ngClass]="{ active: selectCarouselIndex == i }" (click)="selectCarouselIndex = i"></div>
-            </div>
 
-            <div class="arrow_right" (click)="onIncrease()">
-                <ng-icon name="heroArrowRight"></ng-icon>
+    <section #service>
+        <div class="service_section">
+            <div class="service_header">
+                <header class=" header">Dịch vụ</header>
+                <div class="outline-btn" (click)="exploreMore()">
+                    Xem thêm
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<section #service>
-    <div class="service_section">
-        <div class="service_header">
-            <header class=" header">Dịch vụ</header>
-            <div class="outline-btn" (click)="exploreMore()">
-                Xem thêm
-            </div>
-        </div>
-        @for (service of _mainService.services; track $index; let index = $index) {
-        <div class="service_item">
-            <div class="img-overview" data-aos="fade-up" data-aos-duration="500">
-                <img [src]="service.imgFileName" alt="">
-            </div>
-            <label for="" data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="100">{{ service.label }}</label>
-            <!-- <div class="service_content" data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="100">
+            @for (service of _mainService.services; track $index; let index = $index) {
+            <div class="service_item" data-aos="fade-up" data-aos-duration="500">
+                <div class="img-overview" >
+                    <img [src]="service.imgFileName" alt="" loading="lazy">
+                </div>
+                <label for="">{{ service.label
+                    }}</label>
+                <!-- <div class="service_content" data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="100">
                 {{ service.description }}
             </div> -->
+            </div>
+            }
         </div>
-        }
-    </div>
-</section>
-<!-- <section #read data-aos="fade-up" data-aos-duration="500">
+    </section>
+    <!-- <section #read data-aos="fade-up" data-aos-duration="500">
     <div class="read_section">
         <div class="read_header">
             <header style="padding-left: 0;">Lastest read</header>
@@ -211,79 +212,82 @@
         </div>
     </div>
 </section> -->
-<section #portfolio>
-    <div class="portfolio_section">
-        <div class="portfolio_header">
-            <header>Dự án nổi bật</header>
-            <div class="header-underline-dark"></div>
-        </div>
-        <div class="portfolio_content">
-            @for (project of _dataService.projects; track $index) {
-                <div class="portfolio_item" (click)="viewProjectGallery(project)" data-aos="fade-up" data-aos-duration="1000">
+    <section #portfolio>
+        <div class="portfolio_section">
+            <div class="portfolio_header">
+                <header>Dự án nổi bật</header>
+                <div class="header-underline-dark"></div>
+            </div>
+            <div class="portfolio_content">
+                @for (project of _dataService.projects; track $index) {
+                <div class="portfolio_item" (click)="viewProjectGallery(project)" data-aos="fade-up"
+                    data-aos-duration="1000">
                     <img class="portfolio_img" [src]="project.cover_img" alt="">
                     <div class="portfolio_title">
                         {{project.name}}
                     </div>
-                    <div class="portfolio_brief">
+                    <!-- <div class="portfolio_brief">
                         {{project.description}}
+                    </div> -->
+                </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section #media>
+        <div class="media_section">
+            <div class="media_header">
+                <header>Sự kiện công ty</header>
+                <div class="header-underline-dark"></div>
+            </div>
+            <div class="media_container loading">
+                <div class="media_slider" #mediaSlider>
+                    <div class="media_list">
+                        @for (media of _dataService.medias; track $index) {
+                        <div class="media_item">
+                            @switch (media.type) {
+                                @case (MediaType.IMAGE) {
+                                    <img [src]="'../../../../../assets/media/' + media.url" alt="" class="media_source">
+                                }
+                                @case (MediaType.VIDEO) {
+                                    <video loop [src]="'../../../../../assets/media/' + media.url" class="media_source" controls></video>
+                                }
+                            }
+                        </div>
+                        }
                     </div>
                 </div>
-            }
+                <!-- <h1 style="color: white;">Loading...</h1> -->
+                <div class="arrow_left" (click)="onSlideBackward()">
+                    <ng-icon name="heroArrowLeft"></ng-icon>
+                </div>
+                <div class="arrow_right" (click)="onSlideForward()">
+                    <ng-icon name="heroArrowRight"></ng-icon>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section #media>
-    <div class="media_section">
-        <div class="media_header">
-            <header>Sự kiện công ty</header>
-            <div class="header-underline-dark"></div>
-        </div>
-        <div class="media_container">
-            <div class="media_slider" #mediaSlider>
-                <div class="media_list">
-                    @for (media of _dataService.medias; track $index) {
-                    <div class="media_item">
-                        @switch (media.type) {
-                        @case (MediaType.IMAGE) {
-                        <img [src]="media.url" alt="" width="700" height="394">
-                        }
-                        @case (MediaType.VIDEO) {
-                        <video autoplay loop [src]="media.url" controls width="700"></video>
-                        }
-                        }
+    <section #parner>
+        <div class="parner_section">
+            <div class="parner_header">
+                <header>Đối Tác</header>
+                <div class="header-underline"></div>
+            </div>
+            <div class="parner_content">
+                <div class="parner_list">
+                    <div data-aos="fade-up" data-aos-duration="500">
+                        <img class="parner_img" src="../../../../../assets/parner/goman.jpg" alt="">
                     </div>
-                    }
-                </div>
-            </div>
-            <div class="arrow_left" (click)="onSlideBackward()">
-                <ng-icon name="heroArrowLeft"></ng-icon>
-            </div>
-            <div class="arrow_right" (click)="onSlideForward()">
-                <ng-icon name="heroArrowRight"></ng-icon>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section #parner>
-    <div class="parner_section">
-        <div class="parner_header">
-            <header>Đối Tác</header>
-            <div class="header-underline"></div>
-        </div>
-        <div class="parner_content">
-            <div class="parner_list">
-                <div data-aos="fade-up" data-aos-duration="500">
-                    <img class="parner_img" src="../../../../../assets/parner/goman.jpg" alt="">
-                </div>
-                <div data-aos="fade-up" data-aos-duration="500">
-                    <img class="parner_img" src="../../../../../assets/parner/dura.jpg" alt="">
-                </div>
-                <div data-aos="fade-up" data-aos-duration="500">
-                    <img class="parner_img" src="../../../../../assets/parner/eco.png" alt="">
+                    <div data-aos="fade-up" data-aos-duration="500">
+                        <img class="parner_img" src="../../../../../assets/parner/dura.jpg" alt="">
+                    </div>
+                    <div data-aos="fade-up" data-aos-duration="500">
+                        <img class="parner_img" src="../../../../../assets/parner/eco.png" alt="">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>

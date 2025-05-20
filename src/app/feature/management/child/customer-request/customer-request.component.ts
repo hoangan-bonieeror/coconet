@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerRequest } from '../../../../interface/request';
 import { ApiService } from '../../../../core/service/api.service';
 import { AdminService, SidebarMenu } from '../../../../core/service/admin.service';
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-customer-request',
@@ -9,6 +10,7 @@ import { AdminService, SidebarMenu } from '../../../../core/service/admin.servic
   styleUrl: './customer-request.component.css'
 })
 export class CustomerRequestComponent implements OnInit {
+  readonly InfoIcon = faCircleInfo;
   isDisplayDialog: boolean = false;
   // items: MenuItem[] | undefined;
   requests: CustomerRequest[] = [];

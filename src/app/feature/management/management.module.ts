@@ -23,10 +23,11 @@ import { CustomerRequestComponent } from './child/customer-request/customer-requ
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BadgeModule } from 'primeng/badge';
 import { OverlayBadgeModule } from 'primeng/overlaybadge';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 @NgModule({
   declarations: [
     TagComponent,
-    UserComponent,
     CategoryComponent,
     ManagementComponent,
     CustomerRequestComponent
@@ -51,7 +52,11 @@ import { OverlayBadgeModule } from 'primeng/overlaybadge';
     ReactiveFormsModule,
     FontAwesomeModule,
     BadgeModule,
-    OverlayBadgeModule
+    OverlayBadgeModule,
+    ToastModule
+  ],
+  providers: [
+    MessageService
   ]
 })
 export class ManagementModule { }

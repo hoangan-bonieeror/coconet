@@ -1,12 +1,52 @@
 <div class="container">
     <div class="header" data-aos="fade-up" data-aos-duration="500">
         <header>Liên hệ</header>
+        
     </div>
-
-    <div class="contact-content" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
-        <div class="overview">
-            <p>Vui lòng nhập thông tin sau đây, Coco studio sẽ chủ động liên hệ đến bạn để săp xếp lịch gặp tại văn phòng của chúng tôi.</p>
+    <div class="contact-channel">
+        <div class="contact-item" data-aos="fade-up" data-aos-duration="500">
+            <div class="icon">
+                <fa-icon [icon]="MarkerIcon"></fa-icon>
+            </div>
+            <label for="">Địa chỉ</label>
+            <span>140 Trương Văn Bang, Phường Thạnh Mỹ Lợi, Tp. Thủ Đức, TP.HCM</span>
         </div>
+        <div class="contact-item" data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="100">
+            <div class="icon">
+                <fa-icon [icon]="EmailIcon"></fa-icon>
+            </div>
+            <label for="">Email</label>
+            <span>cocostudio.interior&#64;gmail.com</span>
+        </div>
+        <div class="contact-item" data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="200">
+            <div class="icon">
+                <fa-icon [icon]="PhoneIcon"></fa-icon>
+            </div>
+            <label>Điện thoại</label>
+            <span>0905 966 687</span>
+        </div>
+        <div class="contact-item" data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="300">
+            <div class="icon">
+                <fa-icon [icon]="FacebookIcon"></fa-icon>
+            </div>
+            <label for="">Facebook</label>
+            <a target="_blank" href="https://www.facebook.com/Cocostudio.Interior">CoCo.Studio</a>
+        </div>
+        <div class="contact-item" data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="400">
+            <div class="icon">
+                <fa-icon [icon]="InstagramIcon"></fa-icon>
+            </div>
+            <label for="">Instagram</label>
+            <a target="_blank" href="https://www.instagram.com/coco.studiosaigon/">coco.studiosaigon</a>
+        </div>
+    </div>
+    <div class="office-location" data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="100">
+        <iframe allowfullscreen src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4283290358135!2d106.752844!3d10.778469599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317525dc78c6e9af%3A0xbd980fe177c138e5!2zMTQwIFRyxrDGoW5nIFbEg24gQmFuZywgUGjGsOG7nW5nIFRo4bqhbmggTeG7uSBM4bujaSwgVGjhu6cgxJDhu6ljLCBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1745332604245!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+   <div class="form-register">
+    <header data-aos="fade-up" data-aos-duration="500">Đăng ký tư vấn</header>
+    <span data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="100">Vui lòng nhập thông tin sau đây, Coco studio sẽ chủ động liên hệ đến bạn để săp xếp lịch gặp tại văn phòng của chúng tôi.</span>
+    <div class="contact-content" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
         <div class="requirement info">
             <header>Yêu cầu dự án</header>
             <div class="form">
@@ -30,8 +70,6 @@
                 </div>
             </div>
         </div>
-        <p-divider class="vertical-divider" [layout]="'vertical'"></p-divider>
-        <p-divider class="horizontal-divider"></p-divider>
         <div class="personal info">
             <header>Thông tin liên hệ</header>
             <div class="form">
@@ -55,6 +93,7 @@
             ></button>
         </div>
     </div>
+   </div>
 </div>
 
 <p-toast></p-toast>

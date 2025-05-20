@@ -1,5 +1,5 @@
 .container {
-    padding: 0 20px;
+    /* padding: 0 20px; */
     padding-bottom: 20px;
     display: flex;
     flex-direction: column;
@@ -16,7 +16,7 @@
     width: 100%;
     padding: 20px 0;
     /* text-align: center; */
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 600;
     display: flex;
     justify-content: space-between;
@@ -38,3 +38,11 @@
     justify-content: flex-end;
 }
 
+
+@media only screen and (max-width: 768px)
+{
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

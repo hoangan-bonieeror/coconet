@@ -100,5 +100,6 @@ footer > div header {
   footer {
     grid-template-columns: 1fr;
     row-gap: 30px;
+    padding: 50px 25px;
   }
 }

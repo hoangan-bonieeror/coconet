@@ -152,31 +152,31 @@ export class DataService {
     this.projects = [...testData]
 
     this.medias = [
-      {
-        title: "Media 1",
-        type: MediaType.IMAGE,
-        url: "http://localhost:4200/assets/media/jason-goodman-bzqU01v-G54-unsplash.jpg"
-      },
-      {
-        title: "Media 2",
-        type: MediaType.VIDEO,
-        url : "http://localhost:4200/assets/media/6057154_Cctv Monitor Pistol Security_By_Thomas_Gellert_Artlist_HD.mp4"
-      },
-      {
-        title: "Media 3",
-        type: MediaType.VIDEO,
-        url : "http://localhost:4200/assets/media/6356743_Tv Zombies Movie Apartment_By_Pressmaster_Artlist_HD.mp4"
-      },
-      {
-        title: "Media 4",
-        type: MediaType.IMAGE,
-        url : "http://localhost:4200/assets/media/pexels-canvastudio-3277808.jpg"
-      },
-      {
-        title: "Media 5",
-        type: MediaType.VIDEO,
-        url : "http://localhost:4200/assets/media/6064430_Home Styling Interior Decor House Living Room_By_SeventyFour_Artlist_HD.mp4"
-      }
+      // {
+      //   title: "Media 1",
+      //   type: MediaType.IMAGE,
+      //   url: "jason-goodman-bzqU01v-G54-unsplash.jpg"
+      // },
+      // {
+      //   title: "Media 2",
+      //   type: MediaType.VIDEO,
+      //   url : "6057154_Cctv Monitor Pistol Security_By_Thomas_Gellert_Artlist_HD.mp4"
+      // },
+      // {
+      //   title: "Media 3",
+      //   type: MediaType.VIDEO,
+      //   url : "6356743_Tv Zombies Movie Apartment_By_Pressmaster_Artlist_HD.mp4"
+      // },
+      // {
+      //   title: "Media 4",
+      //   type: MediaType.IMAGE,
+      //   url : "pexels-canvastudio-3277808.jpg"
+      // },
+      // {
+      //   title: "Media 5",
+      //   type: MediaType.VIDEO,
+      //   url : "6064430_Home Styling Interior Decor House Living Room_By_SeventyFour_Artlist_HD.mp4"
+      // }
     ]
   }
 

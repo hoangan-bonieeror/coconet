@@ -16,3 +16,36 @@
     </div>
 </div>
 
+
+<div #navbar class="navbar">
+    <div routerLink="/" style="cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
+        <img [src]="'../../../assets/logo.png'" width="150px" alt="">
+        <span style="letter-spacing: 1px;">admin</span>
+    </div>
+    <button class="burger-menu-btn" #burgerMenuButton (click)="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+    </button>
+</div>
+
+
+<p-drawer header="" [(visible)]="isShowBurgerMenu" position="right" [style]="{'background-color' :  'var(--neutral-color)'}">
+    <div class="burger-nav">
+        <div routerLink="/" style="cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <img [src]="'../../../assets/logo.png'" width="150px" alt="">
+            <span style="letter-spacing: 1px;">admin</span>
+        </div>
+        <div class="burger-menu">
+            <a class="burger-item" *ngFor="let item of _adminService.menus" (click)="onNavigate(item)"
+                >
+                {{item.tittle}}
+            </a>
+        </div>
+        <div class="account" (click)="logout()">
+            <span>Logout</span>
+            <fa-icon class="icon" [icon]="logoutIcon"></fa-icon>
+        </div>
+    </div>
+</p-drawer>
+

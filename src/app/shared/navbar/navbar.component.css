@@ -10,6 +10,7 @@
     background-color: transparent;
     color: var(--dark-color);
     background-color: var(--neutral-color);
+    width: 100%;
 }
 
 .floating {
@@ -92,7 +93,7 @@
   justify-content: center;
   cursor: pointer;
   border-radius: 50%;
-  padding: 10px;
+  padding: 20px;
   background-color: var(--neutral-color);
   width: 30px;
   height: 30px;
@@ -152,12 +153,13 @@
 .burger-nav {
   display: flex;
   flex-direction: column;
-  padding: 15px 25px;
+  padding: 15px;
   border-bottom: 1px;
   transition-duration: 250ms;
   background-color: transparent;
   color: var(--dark-color);
   background-color: var(--neutral-color);
+  gap: 20px;
 }
 
 .burger-menu {
@@ -208,6 +210,11 @@
 .burger-menu > *:hover::after,
 .burger-menu > *:focus::after {
   transform: translate3d(0, 0, 0);
+}
+
+.burger-social_media_contact {
+  display: flex;
+  align-items: center;
 }
 
 @media only screen and (max-width: 768px)

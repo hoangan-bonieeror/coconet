@@ -4,55 +4,76 @@
             <header>Blog</header>
         </div>
         <div class="tool">
-            <button pButton icon="pi pi-plus" (click)="createNewBlog()">Blog mới</button>
-        </div> 
+            <button class="admin-button-dark" pButton icon="pi pi-plus" (click)="createNewBlog()">Blog mới</button>
+        </div>
     </div>
-    
-<div class="post-content">
-    <p-table 
-        stripedRows
-        [value]="posts" 
-        [tableStyle]="{ 'min-width': '50rem', 'font-size': '1em' }" 
-        [paginator]="true" 
-        [rows]="5" 
-        [showCurrentPageReport]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        dataKey="id" editMode="row"
-    >
-        <ng-template #header>
-            <tr>
-                <th pSortableColumn="id">
-                    ID <p-sortIcon field="id"></p-sortIcon>
-                </th>
-                <th pSortableColumn="name">
-                    Chủ đề <p-sortIcon field="name"></p-sortIcon>
-                </th>
-                <th pSortableColumn="name">
-                    Phân loại <p-sortIcon field="name"></p-sortIcon>
-                </th>
-                <th pSortableColumn="name">
-                    Người viết <p-sortIcon field="name"></p-sortIcon>
-                </th>
-                <th pSortableColumn="createdAt">
-                    Ngày tạo <p-sortIcon field="createdAt"></p-sortIcon>
-                </th>
-                <th pSortableColumn="updatedAt">
-                    Ngày cập nhật <p-sortIcon field="updatedAt"></p-sortIcon>
-                </th>
-                <th></th>
-            </tr>
-        </ng-template>
-        <ng-template #body let-post let-ri="rowIndex" let-editing="editing">
-            <tr>
-                <td>{{ post.id }}</td>
-                <td>{{ post.title }}</td>
-                <td>{{ post.category.name }}</td>
-                <td>{{ post.user.username }}</td>
-                <td>{{ post.createdAt | date }}</td>
-                <td>{{ post.updatedAt | date }}</td>
-            </tr>
-        </ng-template>
-    </p-table>
-</div>
+
+    <div class="post-content" data-aos="fade-up" data-aos-duration="500">
+        <p-table stripedRows [value]="posts" [tableStyle]="{ 'min-width': '50rem', 'font-size': '1em' }"
+            [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" dataKey="id" editMode="row">
+            <ng-template #header>
+                <tr>
+                    <th pSortableColumn="id">
+                        ID <p-sortIcon field="id"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="name">
+                        Chủ đề <p-sortIcon field="name"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="name">
+                        Phân loại <p-sortIcon field="name"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="name">
+                        Người viết <p-sortIcon field="name"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="createdAt">
+                        Ngày tạo <p-sortIcon field="createdAt"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="updatedAt">
+                        Ngày cập nhật <p-sortIcon field="updatedAt"></p-sortIcon>
+                    </th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template #body let-post let-ri="rowIndex" let-editing="editing">
+                <tr>
+                    <td>{{ post.id }}</td>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.category.name }}</td>
+                    <td>
+                        @if (post.user) {
+                        {{ post.user.username }}
+                        }
+                    </td>
+                    <td>{{ post.createdAt | date }}</td>
+                    <td>{{ post.updatedAt | date }}</td>
+                    <td>
+                        <div class="flex items-center justify-center gap-2">
+                            <button pButton pRipple type="button" icon="pi pi-pencil" text rounded severity="secondary"
+                                (click)="previewPost(post.id)"></button>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
 </div>
 
+
+<p-dialog
+    [visible]="isPreview" header="Bản xem trước" [modal]="true" [style]="{ width: '80%' }" [maximizable]="true"
+    maskStyleClass="backdrop-blur-sm" styleClass="!border-0 !bg-transparent">
+    <ng-template #headless>
+        <div style="margin: 20px;">
+            <div class="flex" style="justify-content: space-between; margin-bottom: 20px; align-items: center;">
+                <header style="font-size: 1.5em;"><b>Bản xem trước</b></header>
+                <p-button icon="pi pi-times" [rounded]="true" [text]="true" (onClick)="hidePreview()" />
+            </div>
+            <div class="blog-container" *ngIf="selectedPost">
+                <h1 class="title">{{ selectedPost.title }}</h1>
+                <small class="publish-time">{{ selectedPost.createdAt | date }}</small>
+                @if (previewContent) { <div class="content" [innerHTML]="previewContent"></div> }
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
