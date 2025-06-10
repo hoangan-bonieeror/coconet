@@ -31,11 +31,9 @@
     gap: 10px;
 }
 
-.footer {
+.post_img_overview {
+    object-fit: cover;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
 }
 
 

@@ -24,7 +24,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BadgeModule } from 'primeng/badge';
 import { OverlayBadgeModule } from 'primeng/overlaybadge';
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 @NgModule({
   declarations: [
     TagComponent,
@@ -53,10 +54,12 @@ import { MessageService } from 'primeng/api';
     FontAwesomeModule,
     BadgeModule,
     OverlayBadgeModule,
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule
   ],
   providers: [
-    MessageService
+    MessageService,
+    ConfirmationService
   ]
 })
 export class ManagementModule { }

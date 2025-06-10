@@ -31,6 +31,8 @@ export class AdminService {
 
   private _users: BehaviorSubject<User[]>;
   public users: Observable<User[]>;
+
+  
   
   constructor(
     private _router: Router,
@@ -106,7 +108,7 @@ export class AdminService {
     return apiResponse
   }
 
-  async createPost(postInput: PostInput) {
+  async createPost(postInput: FormData) {
     let observe = this._apiService.createPost(postInput)
     let response = await lastValueFrom(observe)
     let apiResponse : ApiResponse = {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../../../../core/service/api.service';
 import { JoinPost } from '../../../../../../interface/post';
 import { Router } from '@angular/router';
+import { POST_STATUS_MAP } from '../../../../../../config/config';
 
 @Component({
   selector: 'app-main',
@@ -14,6 +15,7 @@ export class MainComponent implements OnInit {
   previewContent: string|undefined = undefined;
 
   selectedPost: JoinPost | undefined;
+  readonly POST_STATUS_MAP = POST_STATUS_MAP;
   constructor(
     private _apiService: ApiService,
     private _router: Router
@@ -44,5 +46,9 @@ export class MainComponent implements OnInit {
   }
   hidePreview() {
     this.isPreview = false
+  }
+
+  editPost(id: number) {
+    this._router.navigate([`admin/blog/edit/${id}`])
   }
 }

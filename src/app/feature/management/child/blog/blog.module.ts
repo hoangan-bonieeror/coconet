@@ -15,7 +15,7 @@ import { EditorModule } from 'primeng/editor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DialogModule } from 'primeng/dialog';
-
+import { FileUploadModule } from 'primeng/fileupload';
 @NgModule({
   declarations: [
     BlogComponent,
@@ -35,7 +35,8 @@ import { DialogModule } from 'primeng/dialog';
     EditorModule,
     ReactiveFormsModule,
     MultiSelectModule,
-    DialogModule
+    DialogModule,
+    FileUploadModule
   ]
 })
 export class BlogModule { }

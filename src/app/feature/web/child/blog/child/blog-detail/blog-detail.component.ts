@@ -26,6 +26,15 @@ export class BlogDetailComponent implements OnInit {
           if(res.ok) {
             let data = res.body as JoinPost[];
             let foundPost = data.find(o=>o.id==id)
+
+            const parser = new DOMParser();
+            if(foundPost) {
+              let doc = parser.parseFromString(foundPost.content, 'text/html')
+              console.log("Header 1 found : ", doc.querySelectorAll('h1'))
+              console.log("Header 2 found : ", doc.querySelectorAll('h2'))
+              console.log("Header 3 found : ", doc.querySelectorAll('h3'))
+            }
+            
             this.post = foundPost
           }
         })

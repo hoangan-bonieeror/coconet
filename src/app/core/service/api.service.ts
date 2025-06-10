@@ -10,7 +10,7 @@ import { PostInput } from '../../interface/post';
   providedIn: 'root'
 })
 export class ApiService {
-  private readonly baseUrl = "http://192.168.1.90:3000"
+  private readonly baseUrl = "http://localhost:3000"
   constructor(
     private _httpCLient: HttpClient
   ) { }
@@ -28,22 +28,46 @@ export class ApiService {
       }
     )
   }
-  createPost(post: PostInput) {
+  createPost(post: FormData) {
     return this._httpCLient.post(
       `${this.baseUrl}/posts`,
-      JSON.stringify(post),
+      post,
       {
-        headers: {
-          "Content-Type": "application/json"
-        },
         observe: "response",
         responseType: "json"
       }
     )
   }
+
   getAllPosts() {
     return this._httpCLient.get(
       `${this.baseUrl}/posts`,
+      {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        responseType: "json",
+        observe: "response"
+      }
+    )
+  }
+
+  getAllPublishPosts() {
+    return this._httpCLient.get(
+      `${this.baseUrl}/posts/publish`,
+      {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        responseType: "json",
+        observe: "response"
+      }
+    )
+  }
+
+  getAllDraftPosts() {
+    return this._httpCLient.get(
+      `${this.baseUrl}/posts/draft`,
       {
         headers: {
           "Content-Type": "application/json"

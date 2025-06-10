@@ -148,7 +148,6 @@ export class DataService {
 
     ]
     let testData = projectData.projects as Project[]
-    console.log(testData)
     this.projects = [...testData]
 
     this.medias = [

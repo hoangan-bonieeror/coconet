@@ -1,50 +1,52 @@
 <div class="container">
+    <header class="blog-page-title">BLOG</header>
     <div class="tool-bar">
-        <div class="search-area">
-            <p-inputgroup>
-                <p-inputgroup-addon>
-                    <p-button icon="pi pi-search" severity="secondary" variant="text"/>
-                </p-inputgroup-addon>
-                <input pInputText placeholder="Search..." />
-            </p-inputgroup>
-        </div>
         <div class="categories-area">
-            <div class="header">
-                <header>Phân loại</header>
-            </div>
             <div class="categories-list">
+                <div class="item" [ngClass]="{'active': currentCategory == 'Tất cả'}" (click)="selectCategory('Tất cả')">Tất cả</div>
                 @for (category of categories; track $index) {
-                    <div class="item">
+                    <div class="item" [ngClass]="{'active': currentCategory == category.name}" (click)="selectCategory(category.name)">
                         {{category.name}}
                     </div>
                 }
             </div>
         </div>
-        <div class="top-blog">
-            <div class="header">
-                <header>Top Blog</header>
-            </div> 
-            @for (item of topBlogs; track $index; let index = $index) {
-                <div class="item">
-                    <div class="num-header">{{index + 1}}</div>
-                    <div class="content">
-                        <div>{{item.title}}</div>
-                        <small style="opacity: 0.8;">{{item.categoryId}} - {{ item.updatedAt | date }}</small>
-                    </div>
-                </div>
-            }
-        </div>
     </div>
-    <div class="blog-list">
-        @for (blog of blogs; track $index; let idx = $index) {
-            <div (click)="navigateBlog(blog.id)" class="blog-item"data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="idx * 100">
-                <img class="img_overview" src="https://res.cloudinary.com/halshop/image/upload/v1742726996/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3264_xu9h5e.jpg" [alt]="blog.id">
-                <div class="item-content">
-                    <div class="title">{{blog.title}}</div>
-                    <small class="category">{{blog.category.name}}</small>
-                    <button pButton class="admin-button read-more-btn">Xem thêm <i class="pi pi-arrow-right"></i></button>
-                </div>
-            </div>
-        }
+    <div class="search-bar">
+        <p-inputgroup>
+            <input pInputText placeholder="Tiêu đề..." />
+            <p-inputgroup-addon>
+                <p-button icon="pi pi-search" severity="secondary" variant="text" />
+            </p-inputgroup-addon>
+        </p-inputgroup>
+    </div>
+    <div class="filter-bar">
+        <div class="sort-filter">
+            
+        </div>
+        <div class="tag-filter"></div>
+    </div>
+    <div class="blog-section">
+        <div class="header">
+            Bài blog mới nhất
+        </div>
+        <div class="blog-list">
+            @let filterPosts = filterPost();
+            @if (filterPosts.length == 0) {
+                <div><i>Không tìm thấy bài blog nào</i></div>
+            } @else {
+                @for (blog of filterPosts; track $index; let idx = $index) {
+                    <div (click)="navigateBlog(blog.id)" class="blog-item"data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="idx * 100">
+                        <img class="img_overview" src="https://res.cloudinary.com/halshop/image/upload/v1742726996/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3264_xu9h5e.jpg" [alt]="blog.id">
+                        <div class="item-content">
+                            <div class="title">{{blog.title}}</div>
+                            <small class="category">{{blog.category.name}}</small>
+                            <button pButton class="admin-button read-more-btn">Xem thêm <i class="pi pi-arrow-right"></i></button>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
     </div>
 </div>

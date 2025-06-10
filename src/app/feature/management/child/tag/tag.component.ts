@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Tag, TagInput } from '../../../../interface/tag';
-import { MenuItem } from 'primeng/api';
+import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 import { SelectChangeEvent } from 'primeng/select';
 import { SORT_ORDER } from '../../../../config/config';
 import { FormControl, Validators } from '@angular/forms';
@@ -25,7 +25,9 @@ export class TagComponent implements OnInit {
 
   constructor(
     private _apiService: ApiService,
-    public _adminService: AdminService
+    public _adminService: AdminService,
+    private _messageService: MessageService,
+    private _confirmService: ConfirmationService
   ) {
     this.submit = false
     this.createLoading = false
@@ -144,14 +146,28 @@ export class TagComponent implements OnInit {
           let data = res.body as Tag;
           this.tags.push(data)
           this.isDisplayDialog = false
+          this.createLoading = false
+          this.tagNameControl.setValue("")
+          this.submit = false
+          this._messageService.add({
+            severity: 'success',
+            summary: 'Tạo thẻ gán',
+            detail: 'Thành công',
+            life: 3000
+          })
         }, 2000)
-      }
-
-      setTimeout(() => {
+      } else {
+        this.submit = false
         this.createLoading = false
+        this.isDisplayDialog = false
         this.tagNameControl.setValue("")
-      }, 2000)
-      this.submit = false
+        this._messageService.add({
+          severity: 'error',
+          summary: 'Tạo thẻ gán',
+          detail: 'Thất bại',
+          life: 3000
+        })
+      }
     })
   }
 
@@ -162,10 +178,43 @@ export class TagComponent implements OnInit {
   }
 
   deleteTag(tag: Tag) {
-    this._apiService.deleteTag(tag.id).subscribe((res) => {
-      if(res.ok) {
-        this.tags = this.tags.filter(item => item.id != tag.id)
-      }
+    this._confirmService.confirm({
+      message: 'Bạn có chắc chắn muốn xóa thẻ gán này ?',
+      header: 'Xác nhận',
+      closable: true,
+      closeOnEscape: true,
+      icon: 'pi pi-exclamation-triangle',
+      rejectButtonProps: {
+          label: 'Không',
+          severity: 'secondary',
+          outlined: true,
+      },
+      acceptButtonProps: {
+          label: 'Có',
+          styleClass: 'admin-button-dark'
+      },
+      accept: () => {
+        this._apiService.deleteTag(tag.id).subscribe((res) => {
+          if(res.ok) {
+            this.tags = this.tags.filter(item => item.id != tag.id)
+            this._messageService.add({
+              severity: 'success',
+              summary: 'Xóa thẻ gán',
+              detail: 'Thành công',
+              life: 3000
+            })
+          } else {
+            this._messageService.add({
+              severity: 'error',
+              summary: 'Xóa thẻ gán',
+              detail: 'Thất bại',
+              life: 3000
+            })
+          }
+        });
+      },
+      reject: () => {},
     })
+
   }
 }

@@ -20,7 +20,7 @@ const routes : Route[] = [
         component: CreateBlogComponent
       },
       {
-        path: "update",
+        path: "edit/:id",
         component: UpdateBlogComponent
       },
     ]

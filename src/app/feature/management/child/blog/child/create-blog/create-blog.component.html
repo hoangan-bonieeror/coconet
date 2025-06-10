@@ -10,8 +10,49 @@
     <div class="form blog-form" data-aos="fade-up" data-aos-duration="500" >
         <div class="form-content" style="align-items: baseline;" [formGroup]="blogForm">
             <label for="">Chủ đề</label>
-            <!-- <input type="text" pInputText placeholder="Nhập chủ đề blog..."> -->
             <textarea rows="5" cols="30" pTextarea style="resize: none;" formControlName="title"></textarea>
+            <label for="">Ảnh cover</label>
+            <input type="file" hidden #inputFile accept="image/*" (change)="onSelectOverviewImg(inputFile.files)">
+            <div class="drag-drop-img" (click)="inputFile.click()" (drag)="onDragOverviewImg($event)" >
+                @if (img_file == null) {
+                    <div class="flex align-items-center flex-column" style="justify-content: center;">
+                        <i class="pi pi-cloud-upload" style="padding: 1rem; border-radius: 50%; border-width: 2px; font-size: 2.25rem; font-weight: 600;"></i>
+                        <p class="mt-6 mb-0">Drag and drop files to here to upload.</p>
+                    </div>
+                } @else {
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                        <b style="font-size: 1.2em;">{{ img_file.name }}</b>
+                        <div>{{ formatSize(img_file.size) }}</div>
+                        <img class="post_img_overview" role="presentation" [alt]="img_file.name" [src]="img_overview_source" />
+                    </div>
+                }
+            </div>
+            <!-- <p-fileupload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" [multiple]="false" accept="image/*" maxFileSize="1000000" mode="advanced" (onSelect)="onSelectedFiles($event)">
+                <ng-template #header let-files let-chooseCallback="chooseCallback" let-clearCallback="clearCallback">
+                    <div class="flex flex-wrap justify-between items-center flex-1 gap-4">
+                        <div class="flex" style="gap: 10px;">
+                            <p-button (onClick)="chooseCallback()" icon="pi pi-images" [rounded]="true" [outlined]="true" />
+                            <p-button (onClick)="onClearImgOverview(clearCallback)" icon="pi pi-times" [rounded]="true" [outlined]="true" severity="danger" [disabled]="!files || files.length === 0" />
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template #content>
+                    <div *ngIf="files.length > 0" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                        <b style="font-size: 1.2em;">{{ files[0].name }}</b>
+                        <div>{{ formatSize(files[0].size) }}</div>
+                        <img class="post_img_overview" role="presentation" [alt]="files[0].name" [src]="files[0].objectURL" />
+                    </div>
+                </ng-template>
+                <ng-template #file></ng-template>
+                <ng-template #empty>
+                    <div class="flex items-center justify-center flex-col">
+                        <i class="pi pi-cloud-upload !border-2 !rounded-full !p-8 !text-4xl !text-muted-color"></i>
+                        <p class="mt-6 mb-0">Drag and drop files to here to upload.</p>
+                    </div>
+                </ng-template>
+            </p-fileupload> -->
+            <label for="">Slug</label>
+            <input pInputText formControlName="slug">
             <label for="">Phân loại</label>
             <p-select [options]="categoryOptions" optionLabel="name" optionValue="id" placeholder="Chọn phân loại" formControlName="category" appendTo="body" />
             <label for="tags">Thẻ gán</label>
@@ -28,14 +69,25 @@
     </div>
 </div>
 
-<p-dialog [visible]="isPreview" header="Bản xem trước" [modal]="true" [style]="{ width: '80%' }" [maximizable]="true" maskStyleClass="backdrop-blur-sm" styleClass="!border-0 !bg-transparent">
+<p-dialog
+    [visible]="isPreview" header="Bản xem trước" [modal]="true" [style]="{ width: '80%' }" [maximizable]="true"
+    maskStyleClass="backdrop-blur-sm" styleClass="!border-0 !bg-transparent">
     <ng-template #headless>
-        <div class="flex" style="justify-content: space-between; margin: 20px; align-items: center;">
-            <header style="font-size: 1.5em;"><b>Bản xem trước</b></header>
-            <p-button icon="pi pi-times" [rounded]="true" [text]="true" (onClick)="hidePreview()" />
-        </div>
-        <div [innerHTML]="blogForm.controls['content'].value">
+        <div style="margin: 20px;">
+            <div class="flex" style="justify-content: space-between; margin-bottom: 20px; align-items: center;">
+                <header style="font-size: 1.5em;"><b>Bản xem trước</b></header>
+                <p-button icon="pi pi-times" [rounded]="true" [text]="true" (onClick)="hidePreview()" />
+            </div>
+            <div class="blog-container">
+                <h1 class="title">{{ blogForm.controls['title'].value }}</h1>
+                <!-- <small class="publish-time">{{ selectedPost.publishedAt | date }}</small> -->
+                <small class="category">{{ blogForm.controls['category'].value }}</small>
+                <div class="tags">
+                    <div *ngFor="let tag in blogForm.controls['tags'].value"></div>
+                </div>
+                <img class="img_overview" [src]="img_overview_source" alt="">
+                <div class="content" [innerHTML]="blogForm.controls['content'].value"></div>
+            </div>
         </div>
     </ng-template>
-
 </p-dialog>
