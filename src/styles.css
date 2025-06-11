@@ -302,6 +302,12 @@ button {
   
 }
 /* Custom Prime */
+.p-textarea,
+.p-inputtext,
+.p-select,
+.p-multiselect  {
+  width: 100%;
+}
 .p-password, .p-password-input {
   width: 100% !important;
 }

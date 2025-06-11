@@ -16,12 +16,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DialogModule } from 'primeng/dialog';
 import { FileUploadModule } from 'primeng/fileupload';
+import { DragDropDirective } from '../../../../core/directive/drag-drop.directive';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 @NgModule({
   declarations: [
     BlogComponent,
     CreateBlogComponent,
     UpdateBlogComponent,
-    MainComponent
+    MainComponent,    
+    DragDropDirective
   ],
   imports: [
     CommonModule,
@@ -36,7 +39,10 @@ import { FileUploadModule } from 'primeng/fileupload';
     ReactiveFormsModule,
     MultiSelectModule,
     DialogModule,
-    FileUploadModule
+    FileUploadModule,
+    ConfirmDialogModule
+  ],
+  providers: [
   ]
 })
 export class BlogModule { }

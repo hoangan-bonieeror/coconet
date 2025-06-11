@@ -12,14 +12,14 @@
             </div>
 
             <div class="account-tool-bar">
-                <div class="icon" pBadge value="2" badgeSize="small" severity="danger">
+                <div class="icon"  severity="danger">
                     <fa-icon [icon]="bellIcon"></fa-icon>
                 </div>
                 <div class="account">
                     <div class="user-icon icon">
                         <fa-icon [icon]="userIcon"></fa-icon>
                     </div>
-                    <span>Username</span>
+                    <span>{{currentUser ? currentUser.username : '---'}}</span>
                 </div>
             </div>
         </div>

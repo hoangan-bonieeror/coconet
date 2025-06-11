@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../../../../../../interface/category';
 import { ApiService } from '../../../../../../core/service/api.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PostInput } from '../../../../../../interface/post';
 import { Tag } from '../../../../../../interface/tag';
 import { EditorTextChangeEvent } from 'primeng/editor';
@@ -36,11 +36,11 @@ export class CreateBlogComponent implements OnInit {
     private config: PrimeNG
   ) {
     this.blogForm = new FormGroup({
-      title: new FormControl(""),
-      category: new FormControl(),
-      tags: new FormControl(),
-      content: new FormControl(""),
-      slug: new FormControl("")
+      title: new FormControl(null, [Validators.required]),
+      category: new FormControl(null, [Validators.required]),
+      tags: new FormControl(null, [Validators.required]),
+      content: new FormControl(null, [Validators.required]),
+      slug: new FormControl(null, [Validators.required])
     })
   }
   ngOnInit(): void {
@@ -97,6 +97,8 @@ export class CreateBlogComponent implements OnInit {
         summary: 'Tạo blog mới',
         detail: 'Thành công'
       })
+
+      this.backToMain()
     } else {
       this._messageService.add({
         severity: 'error',
@@ -167,5 +169,9 @@ export class CreateBlogComponent implements OnInit {
         this.img_file = file
       });    
     }
+  }
+
+  onFileDrop(event) {
+    this.onSelectOverviewImg(event)
   }
 }

@@ -39,6 +39,27 @@ export class ApiService {
     )
   }
 
+  updatePost(postId: number, post: FormData) {
+    return this._httpCLient.put(
+      `${this.baseUrl}/posts/${postId}`,
+      post,
+      {
+        observe: "response",
+        responseType: "json"
+      }
+    )
+  }
+
+  deletePost(postId: number) {
+    return this._httpCLient.delete(
+      `${this.baseUrl}/posts/${postId}`,
+      {
+        observe: "response",
+        responseType: "json"
+      }
+    )
+  }
+
   getAllPosts() {
     return this._httpCLient.get(
       `${this.baseUrl}/posts`,
@@ -233,4 +254,5 @@ export class ApiService {
       }
     )
   }
+
 }
