@@ -7,6 +7,7 @@ import {
 import { ApiService } from '../../../../core/service/api.service';
 import { FormControl, Validators } from '@angular/forms';
 import { categoryNameExistValidator } from '../../../../../utils/validator';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-category',
@@ -22,7 +23,9 @@ export class CategoryComponent implements OnInit {
   isDisplayDialog: boolean;
   constructor(
     public _adminService: AdminService,
-    private _apiService: ApiService
+    private _apiService: ApiService,
+    private _messageService: MessageService,
+    private _confirmService: ConfirmationService
   ) {
     this.submit = false;
     this.createLoading = false;
@@ -41,6 +44,10 @@ export class CategoryComponent implements OnInit {
     ]);
   }
   ngOnInit(): void {
+    let foundMenu = this._adminService.menus.find(o=>o.tittle==SidebarMenu.CATEGORY)
+    if(foundMenu) {
+      this._adminService.activeEndpoint(foundMenu)
+    }
     this._apiService.getAllCategories().subscribe((res) => {
       if (res.ok) {
         let data = res.body as Category[];
@@ -52,7 +59,7 @@ export class CategoryComponent implements OnInit {
     if (foundMenuItem) this._adminService.activeEndpoint(foundMenuItem, false);
   }
   onRowEditInit(category: Category) {
-    this.categoryNameControl.setValue(category.name);
+    this.categoryNameUpdateControl.setValue(category.name);
   }
   onRowEditSave(category: Category) {
     this.submit = true;
@@ -64,6 +71,7 @@ export class CategoryComponent implements OnInit {
     let categoryInput: CategoryInput = {
       name: name,
     };
+
     this._apiService
       .updateCategory(category.id, categoryInput)
       .subscribe((res) => {
@@ -78,6 +86,17 @@ export class CategoryComponent implements OnInit {
             }
           }
           this.categoryNameUpdateControl.setValue('');
+          this._messageService.add({
+            severity: 'success',
+            summary: 'Cập nhật phân loại',
+            detail: 'Thành công'
+          })
+        } else {
+          this._messageService.add({
+            severity: 'error',
+            summary: 'Cập nhật phân loại',
+            detail: 'Thất bại'
+          })
         }
 
         this.submit = false;
@@ -106,7 +125,21 @@ export class CategoryComponent implements OnInit {
           let data = res.body as Category;
           this.categories.push(data);
           this.isDisplayDialog = false;
+
+          this._messageService.add({
+            severity: 'success',
+            summary: 'Tạo phân loại',
+            detail: 'Thành công'
+          })
         }, 2000);
+      } else {
+        setTimeout(() => {
+          this._messageService.add({
+            severity: 'error',
+            summary: 'Tạo phân loại',
+            detail: 'Thất bại'
+          })
+        })
       }
 
       setTimeout(() => {
@@ -124,10 +157,40 @@ export class CategoryComponent implements OnInit {
   }
 
   deleteCategory(category: Category) {
-    this._apiService.deleteCategory(category.id).subscribe((res) => {
-      if(res.ok) {
-        this.categories = this.categories.filter(item => item.id != category.id)
-      }
+    this._confirmService.confirm({
+      message: 'Bạn có chắc chắn muốn xóa phân loại này ?',
+      header: 'Xác nhận',
+      closable: true,
+      closeOnEscape: true,
+      icon: 'pi pi-exclamation-triangle',
+      rejectButtonProps: {
+          label: 'Không',
+          severity: 'secondary',
+          outlined: true,
+      },
+      acceptButtonProps: {
+          label: 'Có',
+          styleClass: 'admin-button-dark'
+      },
+      accept: () => {
+        this._apiService.deleteCategory(category.id).subscribe((res) => {
+          if(res.ok) {
+            this.categories = this.categories.filter(item => item.id != category.id)
+            this._messageService.add({
+              severity: 'success',
+              summary: 'Xóa phân loại',
+              detail: 'Thành công'
+            })
+          } else {
+            this._messageService.add({
+              severity: 'error',
+              summary: 'Xóa phân loại',
+              detail: 'Thất bại'
+            })
+          }
+        })
+      },
+      reject: () => {},
     })
   }
 }

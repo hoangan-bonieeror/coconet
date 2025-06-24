@@ -8,9 +8,27 @@
   --admin-dark-color: #1f214d;
   --admin-bright-color: #f7f6fb;
 }
-* {
-  line-height: 1.5;
+
+.ql-editor {
+  font-family: Roboto !important;
+  font-size: 1rem;
+  width: 100%;
+  min-height: 300px;
 }
+
+.ql-toolbar {
+  border-radius: 6px 6px 0 0;
+}
+
+.ql-container {  
+  border-radius: 0 0 6px 6px;
+}
+quill-editor {
+  width: 100%;
+  border-radius: 6px;
+  background-color: white;
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
@@ -178,15 +196,22 @@ button {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  /* width: 100%; */
 }
 
 .form .form-content {
-  display: grid;
-  grid-template-columns: 30% auto;
-  row-gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   column-gap: 10px;
-  align-items: center;
 }
+
+.form-content .field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .form .form-footer {
   display: flex;
   align-items: center;
@@ -292,6 +317,9 @@ button {
   background-color: var(--admin-dark-color);
 }
 
+.blog-container .content {
+  font-family: Roboto !important;
+}
 .blog-container .content > * {
   max-width: 100%;
   width: auto;
@@ -302,10 +330,7 @@ button {
   
 }
 /* Custom Prime */
-.p-textarea,
-.p-inputtext,
-.p-select,
-.p-multiselect  {
+.p-textarea {
   width: 100%;
 }
 .p-password, .p-password-input {
@@ -340,4 +365,28 @@ button {
 .drag-drop-img:active,
 .drag-drop-img:focus-within {
   filter: brightness(0.95);
+}
+
+/* General */
+.flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.gap-10 {
+  gap: 10px;
+}
+
+.mr-tb-1_2 {
+  margin: 5px 0;
+}
+.mr-tb-1 {
+  margin: 10px 0;
+}
+
+.mr-tb-2 {
+  margin: 20px 0;
 }

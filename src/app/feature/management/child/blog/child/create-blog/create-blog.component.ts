@@ -12,6 +12,7 @@ import { LOCALSTORAGE_KEY } from '../../../../../../config/config';
 import { AdminService } from '../../../../../../core/service/admin.service';
 import { MessageService } from 'primeng/api';
 import { PrimeNG } from 'primeng/config';
+
 @Component({
   selector: 'app-create-blog',
   templateUrl: './create-blog.component.html',
@@ -27,6 +28,9 @@ export class CreateBlogComponent implements OnInit {
   submitted: boolean = false;
   loading: boolean = false;
   isPreview: boolean = false;
+
+  isAutoGenerateSlug: boolean = true;
+
   constructor(
     private _apiService: ApiService,
     private _adminService: AdminService,
@@ -40,8 +44,12 @@ export class CreateBlogComponent implements OnInit {
       category: new FormControl(null, [Validators.required]),
       tags: new FormControl(null, [Validators.required]),
       content: new FormControl(null, [Validators.required]),
-      slug: new FormControl(null, [Validators.required])
+      slug: new FormControl(null, [Validators.required]),
+      meta_description: new FormControl(null, [Validators.required]),
+      isAutoGenerateSlug: new FormControl(this.isAutoGenerateSlug)
     })
+
+    this.blogForm.get('slug')?.disable()
   }
   ngOnInit(): void {
       this._apiService.getAllCategories().subscribe(res => {
@@ -65,7 +73,8 @@ export class CreateBlogComponent implements OnInit {
     let category = this.blogForm.get("category")?.value
     let content = this.blogForm.get("content")?.value
     let tags = this.blogForm.get('tags')?.value
-    let slug = this.blogForm.get("slug")?.value
+    let slug = this.blogForm.get("slug")?.value    
+    let meta_description = this.blogForm.get("meta_description")?.value
     let userObjFromLocal = this._localStorageService.getObject(LOCALSTORAGE_KEY.USER);
     if('id' in userObjFromLocal == false) {
       this.loading = false
@@ -86,6 +95,7 @@ export class CreateBlogComponent implements OnInit {
     formData.append('tagIds', tags)
     formData.append('authorId', authorId)
     formData.append('slug', slug)
+    formData.append('meta_description', meta_description)
     if(this.img_file) {
       formData.append('img_overview', this.img_file)
     }
@@ -173,5 +183,42 @@ export class CreateBlogComponent implements OnInit {
 
   onFileDrop(event) {
     this.onSelectOverviewImg(event)
+  }
+
+  onInputTitle() {
+    let title = this.blogForm.get('title')?.value
+    if(title && this.isAutoGenerateSlug) {
+      this.blogForm.get('slug')?.setValue(this.generateSlug(title))
+    }
+  }
+
+  toggleAutoGenerateSlug() {
+    this.isAutoGenerateSlug = !this.isAutoGenerateSlug
+    this.blogForm.get('isAutoGenerateSlug')?.setValue(this.isAutoGenerateSlug)
+    if(this.isAutoGenerateSlug) {
+      this.onInputTitle()
+
+      this.blogForm.get('slug')?.disable()
+    } else {
+      this.blogForm.get('slug')?.enable()
+    }
+  }
+
+  generateSlug(title: string) {
+    return title
+    .normalize("NFD")                         // Tách các dấu ra khỏi chữ
+    .replace(/[\u0300-\u036f]/g, '')          // Loại bỏ dấu tiếng Việt
+    .replace(/đ/g, 'd')                       // Chuyển đ -> d
+    .replace(/Đ/g, 'D')                       // Chuyển Đ -> D
+    .replace(/[!@%^*()+=<>?\/,.:;'\"&#[\]~$_`{}|\\]/g, '') // Xóa dấu câu
+    .replace(/\s+/g, '-')                     // Thay khoảng trắng bằng dấu gạch ngang
+    .replace(/-+/g, '-')                      // Gộp nhiều dấu gạch ngang
+    .replace(/^-+|-+$/g, '')                  // Xóa gạch đầu và cuối chuỗi
+    .toLowerCase();                           // Chuyển về chữ thường
+  }
+
+
+  formatLink() {
+    return `${window.location.protocol}//${window.location.host}/blog/`;
   }
 }

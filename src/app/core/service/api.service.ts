@@ -10,7 +10,8 @@ import { PostInput } from '../../interface/post';
   providedIn: 'root'
 })
 export class ApiService {
-  private readonly baseUrl = "http://localhost:3000"
+  private readonly baseUrl = "http://localhost:3000";
+  private readonly headers = {'rejectUnauthorized': 'false'};
   constructor(
     private _httpCLient: HttpClient
   ) { }
@@ -21,7 +22,8 @@ export class ApiService {
       JSON.stringify(userLogin),
       {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          ...this.headers
         },
         observe: "response",
         responseType: "json"
@@ -33,6 +35,7 @@ export class ApiService {
       `${this.baseUrl}/posts`,
       post,
       {
+        headers: {...this.headers},
         observe: "response",
         responseType: "json"
       }
@@ -44,6 +47,7 @@ export class ApiService {
       `${this.baseUrl}/posts/${postId}`,
       post,
       {
+        headers: {...this.headers},
         observe: "response",
         responseType: "json"
       }
@@ -54,6 +58,7 @@ export class ApiService {
     return this._httpCLient.delete(
       `${this.baseUrl}/posts/${postId}`,
       {
+        headers: {...this.headers},
         observe: "response",
         responseType: "json"
       }
@@ -65,7 +70,8 @@ export class ApiService {
       `${this.baseUrl}/posts`,
       {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          ...this.headers
         },
         responseType: "json",
         observe: "response"
@@ -78,7 +84,8 @@ export class ApiService {
       `${this.baseUrl}/posts/publish`,
       {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          ...this.headers
         },
         responseType: "json",
         observe: "response"
@@ -91,7 +98,8 @@ export class ApiService {
       `${this.baseUrl}/posts/draft`,
       {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          ...this.headers
         },
         responseType: "json",
         observe: "response"
@@ -105,7 +113,8 @@ export class ApiService {
       JSON.stringify(tagInput),
       {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          ...this.headers
         },
         observe: "response",
         responseType: "json"
@@ -117,7 +126,8 @@ export class ApiService {
        `${this.baseUrl}/tags`,
        {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          ...this.headers
         },
         observe: "response",
         responseType: "json"
@@ -130,7 +140,8 @@ export class ApiService {
       JSON.stringify(tagInput),
       {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          ...this.headers
         },
         observe: "response",
         responseType: "json"
@@ -139,6 +150,7 @@ export class ApiService {
   }
   deleteTag(id: number) {
     return this._httpCLient.delete(`${this.baseUrl}/tags/${id}`, {
+        headers : {...this.headers},
         observe: "response",
         responseType: "json"
     })
@@ -149,7 +161,8 @@ export class ApiService {
       JSON.stringify(categroyInput),
       {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          ...this.headers
         },
         observe: "response",
         responseType: "json"
@@ -161,7 +174,8 @@ export class ApiService {
        `${this.baseUrl}/categories`,
        {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          ...this.headers
         },
         observe: "response",
         responseType: "json"
@@ -174,7 +188,8 @@ export class ApiService {
       JSON.stringify(categroyInput),
       {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          ...this.headers
         },
         observe: "response",
         responseType: "json"
@@ -184,6 +199,7 @@ export class ApiService {
   deleteCategory(id: number) {
     return this._httpCLient.delete(`${this.baseUrl}/categories/${id}`,
       {
+        headers: {...this.headers},
         observe: "response",
         responseType: "json"
       }
@@ -195,7 +211,8 @@ export class ApiService {
       JSON.stringify(userInput),
       {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          ...this.headers
         },
         observe: "response",
         responseType: "json"
@@ -207,7 +224,8 @@ export class ApiService {
        `${this.baseUrl}/users`,
        {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          ...this.headers
         },
         observe: "response",
         responseType: "json"
@@ -220,7 +238,8 @@ export class ApiService {
       JSON.stringify(userInput),
       {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          ...this.headers
         },
         observe: "response",
         responseType: "json"
@@ -229,6 +248,7 @@ export class ApiService {
   }
   deleteUser(id: number) {
     return this._httpCLient.delete(`${this.baseUrl}/users/${id}`, {
+        headers: {...this.headers},
         observe: "response",
         responseType: "json"
     })
@@ -239,7 +259,8 @@ export class ApiService {
       JSON.stringify(request),
       {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          ...this.headers
         },
         observe: "response",
         responseType: "json"
@@ -249,6 +270,7 @@ export class ApiService {
   getAllRequests() {
     return this._httpCLient.get(`${this.baseUrl}/customer-request`,
       {
+        headers: {...this.headers},
         observe: "response",
         responseType: "json"
       }

@@ -15,9 +15,9 @@
         <a target="_blank" class="social_link" href="https://www.instagram.com/coco.studiosaigon">
             <fa-icon [icon]="IconInstagram"></fa-icon>
         </a>
-        <!-- <div class="telephone">
-            <div>+84938434666</div>
-        </div> -->
+        <div class="navbar_menu">
+            <a class="navbar_item"  (click)="headToAdmin()">Quản trị</a>
+        </div>
     </div>
     <button class="burger-menu-btn" #burgerMenuButton (click)="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
         <span class="burger-line"></span>
@@ -45,9 +45,9 @@
             <a target="_blank" class="social_link" href="https://www.instagram.com/coco.studiosaigon/">
                 <fa-icon [icon]="IconInstagram"></fa-icon>
             </a>
-            <!-- <div class="telephone">
-                <div>+84938434666</div>
-            </div> -->
+            <div class="navbar_menu">
+                <a class="navbar_item"  (click)="headToAdmin()">Quản trị</a>
+            </div>
         </div>
     </div>
 </p-drawer>

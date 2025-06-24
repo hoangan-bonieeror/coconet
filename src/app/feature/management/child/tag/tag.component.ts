@@ -57,6 +57,10 @@ export class TagComponent implements OnInit {
   clonedTags: { [s: string]: Tag } = {};
 
   ngOnInit(): void {
+      let foundMenu = this._adminService.menus.find(o=>o.tittle==SidebarMenu.TAG)
+      if(foundMenu) {
+        this._adminService.activeEndpoint(foundMenu)
+      }
       this._apiService.getAllTags().subscribe(res => {
         if(res.ok) {
           let data = res.body as Tag[];

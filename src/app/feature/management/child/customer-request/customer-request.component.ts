@@ -20,6 +20,10 @@ export class CustomerRequestComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+      let foundMenu = this._adminService.menus.find(o=>o.tittle==SidebarMenu.REQUEST)
+      if(foundMenu) {
+        this._adminService.activeEndpoint(foundMenu)
+      }
       this._apiService.getAllRequests().subscribe(res => {
         if(res.ok) {
           let data = res.body as CustomerRequest[]

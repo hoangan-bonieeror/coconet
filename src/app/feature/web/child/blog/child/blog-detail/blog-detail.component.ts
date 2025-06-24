@@ -18,21 +18,21 @@ export class BlogDetailComponent implements OnInit {
     private _apiService: ApiService
   ){
     this._activedRoute.params.subscribe(data => {
-      if(('id' in data) == false) {
+      if(('slug' in data) == false) {
         this._router.navigate(['blog'])
       } else {
-        let id = data['id'] as number;
+        let slug = data['slug'] as string;
         this._apiService.getAllPosts().subscribe(res => {
           if(res.ok) {
             let data = res.body as JoinPost[];
-            let foundPost = data.find(o=>o.id==id)
+            let foundPost = data.find(o=>o.slug==slug)
 
             const parser = new DOMParser();
             if(foundPost) {
               let doc = parser.parseFromString(foundPost.content, 'text/html')
-              console.log("Header 1 found : ", doc.querySelectorAll('h1'))
-              console.log("Header 2 found : ", doc.querySelectorAll('h2'))
-              console.log("Header 3 found : ", doc.querySelectorAll('h3'))
+              // console.log("Header 1 found : ", doc.querySelectorAll('h1'))
+              // console.log("Header 2 found : ", doc.querySelectorAll('h2'))
+              // console.log("Header 3 found : ", doc.querySelectorAll('h3'))
             }
             
             this.post = foundPost

@@ -1,0 +1,36 @@
+.list-feature {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    column-gap: 50px;
+    row-gap: 50px;
+}
+
+.feature {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    border-radius: 6px;
+    background-color: white;
+    padding: 30px;
+    font-size: 1.2em;
+    transition-duration: 250ms;
+    cursor: pointer;
+}
+
+.feature:hover {
+    filter: brightness(0.97);
+}
+
+.feature:active,
+.feature:focus {
+    filter: brightness(0.95);
+}
+
+@media only screen and (max-width: 768px)
+{
+    .list-feature {
+        grid-template-columns: 1fr;
+    }
+}

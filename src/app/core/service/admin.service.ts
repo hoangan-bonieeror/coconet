@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { faUser, faBlog, faTag, faLayerGroup, faMailReply } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBlog, faTag, faLayerGroup, faMailReply, faDashboard } from '@fortawesome/free-solid-svg-icons';
 import { MenuItem } from 'primeng/api';
 import { User, UserInput } from '../../interface/user';
 import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
@@ -19,7 +19,8 @@ export enum SidebarMenu {
   BLOG = "Bài blog",
   TAG = "Thẻ gán",
   CATEGORY = "Phân loại",
-  REQUEST = "Yêu cầu khách hàng"
+  REQUEST = "Yêu cầu khách hàng",
+  DASHBOARD = "Bảng điều khiển"
 }
 
 @Injectable({
@@ -40,11 +41,17 @@ export class AdminService {
   ) {
     this.menus = [
         {
-          tittle: SidebarMenu.USER,
-          icon: faUser,
+          tittle: SidebarMenu.DASHBOARD,
+          icon: faDashboard,
           isActive: false,
-          endpoint: "admin/user"
+          endpoint: "admin/dashboard"
         },
+        // {
+        //   tittle: SidebarMenu.USER,
+        //   icon: faUser,
+        //   isActive: false,
+        //   endpoint: "admin/user"
+        // },
         {
           tittle: SidebarMenu.BLOG,
           icon: faBlog,

@@ -1,17 +1,6 @@
 <div class="container">
     <header class="blog-page-title">BLOG</header>
-    <div class="tool-bar">
-        <div class="categories-area">
-            <div class="categories-list">
-                <div class="item" [ngClass]="{'active': currentCategory == 'Tất cả'}" (click)="selectCategory('Tất cả')">Tất cả</div>
-                @for (category of categories; track $index) {
-                    <div class="item" [ngClass]="{'active': currentCategory == category.name}" (click)="selectCategory(category.name)">
-                        {{category.name}}
-                    </div>
-                }
-            </div>
-        </div>
-    </div>
+    <!--
     <div class="search-bar">
         <p-inputgroup>
             <input pInputText placeholder="Tiêu đề..." />
@@ -25,10 +14,52 @@
             
         </div>
         <div class="tag-filter"></div>
-    </div>
+    </div> -->
     <div class="blog-section">
         <div class="header">
             Bài blog mới nhất
+        </div>
+        <div class="blog-list">
+            @let recentBlog = getRecentBlog();
+            @if (recentBlog.length == 0) {
+                <div><i>Không tìm thấy bài blog nào</i></div>
+            } @else {
+                @for (blog of recentBlog; track $index; let idx = $index) {
+                    <div (click)="navigateBlog(blog.slug)" class="blog-item"data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="idx * 100">
+                        <img class="img_overview" [src]="blog.img_overview" [alt]="blog.id">
+                        <div class="item-content">
+                            <small class="item-publish_date">{{ blog.publishedAt | date }}</small>
+                            <div class="title">{{blog.title}}</div>
+                            <small class="category">{{blog.category.name}}</small>
+                            <div class="tags">
+                                @for (tag of blog.tags; track $index) {
+                                    <div>{{ tag.name }}</div>
+                                }
+                            </div>
+                            <!-- <button pButton class="admin-button read-more-btn">Xem thêm <i class="pi pi-arrow-right"></i></button> -->
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+
+    <div class="blog-by-category blog-section">
+        <div class="header" style="text-align: center;">
+            Chủ đề
+        </div>
+        <div class="tool-bar">
+            <div class="categories-area">
+                <div class="categories-list">
+                    <div class="item" [ngClass]="{'active': currentCategory == 'Tất cả'}" (click)="selectCategory('Tất cả')">Tất cả</div>
+                    @for (category of categories; track $index) {
+                        <div class="item" [ngClass]="{'active': currentCategory == category.name}" (click)="selectCategory(category.name)">
+                            {{category.name}}
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
         <div class="blog-list">
             @let filterPosts = filterPost();
@@ -36,12 +67,18 @@
                 <div><i>Không tìm thấy bài blog nào</i></div>
             } @else {
                 @for (blog of filterPosts; track $index; let idx = $index) {
-                    <div (click)="navigateBlog(blog.id)" class="blog-item"data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="idx * 100">
-                        <img class="img_overview" src="https://res.cloudinary.com/halshop/image/upload/v1742726996/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3264_xu9h5e.jpg" [alt]="blog.id">
+                    <div (click)="navigateBlog(blog.slug)" class="blog-item"data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="idx * 100">
+                        <img class="img_overview" [src]="blog.img_overview" [alt]="blog.id">
                         <div class="item-content">
+                            <small class="item-publish_date">{{ blog.publishedAt | date }}</small>
                             <div class="title">{{blog.title}}</div>
                             <small class="category">{{blog.category.name}}</small>
-                            <button pButton class="admin-button read-more-btn">Xem thêm <i class="pi pi-arrow-right"></i></button>
+                            <div class="tags">
+                                @for (tag of blog.tags; track $index) {
+                                    <div>{{ tag.name }}</div>
+                                }
+                            </div>
+                            <!-- <button pButton class="admin-button read-more-btn">Xem thêm <i class="pi pi-arrow-right"></i></button> -->
                         </div>
                     </div>
                 }

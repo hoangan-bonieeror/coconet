@@ -26,12 +26,14 @@ import { OverlayBadgeModule } from 'primeng/overlaybadge';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DashboardComponent } from './child/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     TagComponent,
     CategoryComponent,
     ManagementComponent,
-    CustomerRequestComponent
+    CustomerRequestComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,

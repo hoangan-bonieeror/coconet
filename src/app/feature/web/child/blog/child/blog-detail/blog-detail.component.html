@@ -1,5 +1,13 @@
 <div class="blog" *ngIf="post">
+    <div class="blog-header">{{post.category.name}}</div>
     <div class="title">{{post.title}}</div>
-    <small class="category">{{post.category.name}}</small>
+    <small class="publish_date">{{post.publishedAt|date}}</small>
+    <!-- <small class="category">{{post.category.name}}</small> -->
+    <div class="tags" *ngIf="post.tags.length > 0">
+        @for (tag of post.tags; track $index) {
+            <div>{{ tag.name }}</div>
+        }
+    </div>
+    <img class="img_overview" [src]="post.img_overview" alt="">
     <div class="content" [innerHTML]="post.content"></div>
 </div>

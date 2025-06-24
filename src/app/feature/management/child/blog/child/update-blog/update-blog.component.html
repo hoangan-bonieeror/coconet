@@ -8,37 +8,59 @@
         </div>
     </div>
     <div class="form blog-form" data-aos="fade-up" data-aos-duration="500" >
-        <div class="form-content" style="align-items: baseline;" [formGroup]="updateForm">
-            <label for="">Chủ đề</label>
-            <textarea rows="5" cols="30" pTextarea style="resize: none;" formControlName="title"></textarea>
-            <label for="">Ảnh cover</label>
-            <input type="file" hidden #inputFile accept="image/*" (change)="onSelectOverviewImg(inputFile.files)">
-            <div class="drag-drop-img" (click)="inputFile.click()" (drag)="onDragOverviewImg($event)" >
-                @if (img_file == null) {
-                    <div class="flex align-items-center flex-column" style="justify-content: center;">
-                        <i class="pi pi-cloud-upload" style="padding: 1rem; border-radius: 50%; border-width: 2px; font-size: 2.25rem; font-weight: 600;"></i>
-                        <p class="mt-6 mb-0">Drag and drop files to here to upload.</p>
-                    </div>
-                } @else {
-                    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-                        <b style="font-size: 1.2em;">{{ img_file.name }}</b>
-                        <div>{{ formatSize(img_file.size) }}</div>
-                        <img class="post_img_overview" role="presentation" [alt]="img_file.name" [src]="img_overview_source" />
-                    </div>
-                }
+        <div class="form-content" [formGroup]="updateForm">
+            <div class="field">
+                <label for="">Chủ đề</label>
+                <div>
+                    <textarea rows="5" cols="30" pTextarea style="resize: none;" formControlName="title"></textarea>
+                    <small 
+                    *ngIf="submitted
+                        && updateForm.invalid
+                    ">
+                        @if (updateForm.controls['title'].hasError('required')) {
+                            Không được để trống trường này
+                        }
+                    </small>
+                </div>
             </div>
-            <label for="">Slug</label>
-            <input pInputText formControlName="slug">
-            <label for="">Phân loại</label>
-            <p-select [options]="categoryOptions" optionLabel="name" optionValue="id" placeholder="Chọn phân loại" formControlName="category" appendTo="body" />
-            <label for="tags">Thẻ gán</label>
-            <p-multiselect [options]="tagOptions" formControlName="tags" placeholder="Chọn thẻ..." optionLabel="name" display="chip" appendTo="body" optionValue="id" />
-            <label style="grid-column: span 2;" for="">Nội dung bài blog</label>
-            <div style="grid-column: span 2;">
-                <p-editor 
-                    formControlName="content" 
-                    [style]="{ height: '500px' }"
-                />
+            <div class="field">
+                <label for="">Ảnh cover</label>
+                <input type="file" hidden #inputFile accept="image/*" (change)="onSelectOverviewImg(inputFile.files)">
+                <div class="drag-drop-img" (click)="inputFile.click()" (drag)="onDragOverviewImg($event)" >
+                    @if (img_file == null) {
+                        <div class="flex align-items-center flex-column" style="justify-content: center;">
+                            <i class="pi pi-cloud-upload" style="padding: 1rem; border-radius: 50%; border-width: 2px; font-size: 2.25rem; font-weight: 600;"></i>
+                            <p class="mt-6 mb-0">Drag and drop files to here to upload.</p>
+                        </div>
+                    } @else {
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                            <b style="font-size: 1.2em;">{{ img_file.name }}</b>
+                            <div>{{ formatSize(img_file.size) }}</div>
+                            <img class="post_img_overview" role="presentation" [alt]="img_file.name" [src]="img_overview_source" />
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="field">
+                <label for="">Slug</label>
+                <input pInputText formControlName="slug">
+            </div>
+            <div class="field">
+                <label for="">Phân loại</label>
+                <p-select [options]="categoryOptions" optionLabel="name" optionValue="id" placeholder="Chọn phân loại" formControlName="category" appendTo="body" />
+            </div>
+            <div class="field">
+                <label for="tags">Thẻ gán</label>
+                <p-multiselect [options]="tagOptions" formControlName="tags" placeholder="Chọn thẻ..." optionLabel="name" display="chip" appendTo="body" optionValue="id" />
+            </div>
+            <div class="field">
+                <label style="grid-column: span 2;" for="">Nội dung bài blog</label>
+                <div style="grid-column: span 2;">
+                    <p-editor 
+                        formControlName="content" 
+                        [style]="{ height: '500px' }"
+                    />
+                </div>
             </div>
         </div>
     </div>
@@ -46,11 +68,21 @@
 
 <p-dialog [visible]="isPreview" header="Bản xem trước" [modal]="true" [style]="{ width: '80%' }" [maximizable]="true" maskStyleClass="backdrop-blur-sm" styleClass="!border-0 !bg-transparent">
     <ng-template #headless>
-        <div class="flex" style="justify-content: space-between; margin: 20px; align-items: center;">
-            <header style="font-size: 1.5em;"><b>Bản xem trước</b></header>
-            <p-button icon="pi pi-times" [rounded]="true" [text]="true" (onClick)="hidePreview()" />
-        </div>
-        <div class="content" [innerHTML]="updateForm.controls['content'].value">
+        <div style="margin: 20px;">
+            <div class="flex" style="justify-content: space-between; margin-bottom: 20px; align-items: center;">
+                <header style="font-size: 1.5em;"><b>Bản xem trước</b></header>
+                <p-button icon="pi pi-times" [rounded]="true" [text]="true" (onClick)="hidePreview()" />
+            </div>
+            <div class="blog-container">
+                <h1 class="title">{{ updateForm.controls['title'].value }}</h1>
+                <!-- <small class="publish-time">{{ selectedPost.publishedAt | date }}</small> -->
+                <small class="category">{{ updateForm.controls['category'].value }}</small>
+                <div class="tags">
+                    <div *ngFor="let tag in updateForm.controls['tags'].value"></div>
+                </div>
+                <img class="img_overview" [src]="img_overview_source" alt="">
+                <div class="content" [innerHTML]="updateForm.controls['content'].value"></div>
+            </div>
         </div>
     </ng-template>
 

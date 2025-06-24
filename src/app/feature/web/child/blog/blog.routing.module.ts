@@ -15,7 +15,7 @@ const routes : Route[] = [
     component: BlogComponent,
     children: [
       {
-        path: ':id',
+        path: ':slug',
         component : BlogDetailComponent
       },
       {

@@ -9,12 +9,18 @@ import { ManagementComponent } from './management.component';
 import { CustomerRequestComponent } from './child/customer-request/customer-request.component';
 import { adminGuard } from '../../core/guard/admin.guard';
 import { UserModule } from './child/user/user.module';
+import { DashboardComponent } from './child/dashboard/dashboard.component';
 
 const routes : Route[] = [
   {
     path: "",
     component: ManagementComponent,
     children: [
+      {
+        path: "dashboard",
+        component: DashboardComponent,
+        canActivate: [adminGuard]
+      },
       {
         path: "tag",
         component: TagComponent,

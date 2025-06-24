@@ -12,7 +12,9 @@ export interface Post {
     updatedAt: Date,
     img_overview: string;
     status: string,
-    publishedAt: Date
+    publishedAt: Date,
+    meta_description: string,
+    slug: string
 }
 
 export interface JoinPost {
@@ -27,7 +29,8 @@ export interface JoinPost {
     publishedAt: Date,
     img_overview: string,
     tags: Tag[],
-    slug: string
+    slug: string,
+    meta_description: string
 }
 
 export interface PostInput {

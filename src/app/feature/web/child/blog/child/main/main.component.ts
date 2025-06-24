@@ -23,8 +23,8 @@ export class MainComponent implements OnInit {
     this.currentCategory = 'Tất cả'
   }
 
-  navigateBlog(id : number) {
-    this._router.navigate([`blog/${id}`])
+  navigateBlog(slug : string) {
+    this._router.navigate([`blog/${slug}`])
   }
   ngOnInit(): void {
       this._apiService.getAllCategories().subscribe(res => {
@@ -44,6 +44,12 @@ export class MainComponent implements OnInit {
 
   filterPost() {     
     return this.blogs.filter(o=>o.category.name==this.currentCategory || this.currentCategory == 'Tất cả')
+  }
+
+  getRecentBlog() {
+    return this.blogs.sort((a,b)=> {
+      return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    })
   }
   selectCategory(name: string) {
     this.currentCategory = name;

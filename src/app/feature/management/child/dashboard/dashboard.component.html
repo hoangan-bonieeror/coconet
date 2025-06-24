@@ -1,0 +1,8 @@
+<div class="list-feature">
+    @for (item of processMenu(); track $index; let index = $index) {
+        <div class="feature" [class.active]="item.isActive" (click)="onClick(item)">
+            <div class="icon"><fa-icon [icon]="item.icon"></fa-icon></div>
+            <div class="title">{{item.tittle}}</div>
+        </div>
+    }
+</div>

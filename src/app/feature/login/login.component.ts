@@ -66,7 +66,7 @@ export class LoginComponent {
           if(current_page) {
             this._router.navigate([current_page])
           } else {
-            const defaultPage = "admin/user"
+            const defaultPage = "admin/dashboard"
             this._router.navigate([defaultPage])            
           }
         }

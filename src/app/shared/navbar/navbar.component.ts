@@ -51,4 +51,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
       this.isShowBurgerMenu = isActive
     }
   }
+
+  headToAdmin() {
+    this._router.navigate(['admin/dashboard'])
+  }
 }

@@ -12,12 +12,16 @@ import { InputTextModule } from 'primeng/inputtext';
 import { SelectModule } from 'primeng/select';
 import { TextareaModule } from 'primeng/textarea';
 import { EditorModule } from 'primeng/editor';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DialogModule } from 'primeng/dialog';
 import { FileUploadModule } from 'primeng/fileupload';
 import { DragDropDirective } from '../../../../core/directive/drag-drop.directive';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { CheckboxModule } from 'primeng/checkbox';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { QuillModule } from 'ngx-quill'
 @NgModule({
   declarations: [
     BlogComponent,
@@ -40,7 +44,11 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     MultiSelectModule,
     DialogModule,
     FileUploadModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    InputGroupAddonModule,
+    InputGroupModule,
+    CheckboxModule,
+    QuillModule.forRoot()
   ],
   providers: [
   ]

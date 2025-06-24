@@ -23,7 +23,7 @@
         </p-select>
     </div> -->
     <div class="tool">
-        <button pButton icon="pi pi-plus" (click)="isDisplayDialog = true">Phân loại mới</button>
+        <button pButton icon="pi pi-plus" class="admin-button-dark" (click)="isDisplayDialog = true">Phân loại mới</button>
     </div>
 </div>
 <div class="category-content">
@@ -124,6 +124,7 @@
                             rounded
                             severity="secondary"
                         ></button>
+                        <button pButton pRipple type="button" icon="pi pi-trash" (click)="deleteCategory(category)" text rounded severity="secondary"></button>
                     </div>
                 </td>
             </tr>
@@ -152,8 +153,9 @@
             
         </div>
         <div class="form-footer">
-            <p-button label="Tạo" [loading]="createLoading" (click)="onSave()" />
+            <button pButton label="Tạo" class="admin-button-dark" [loading]="createLoading" (click)="onSave()"></button>
             <p-button label="Hủy" severity="secondary" (click)="onCancel()" />
         </div>
     </div>
 </p-dialog>
+<p-confirmdialog />
