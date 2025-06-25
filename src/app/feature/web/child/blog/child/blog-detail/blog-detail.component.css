@@ -1,6 +1,6 @@
 .blog {
     margin: 30px 20%;
-    font-size: 1rem;
+    font-size: 1em;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -40,7 +40,8 @@
 }
 
 .blog .content {
-    font-size: 1em;
+    font-size: 1em !important;
+    width: 100%;
 }
 
 .img_overview {

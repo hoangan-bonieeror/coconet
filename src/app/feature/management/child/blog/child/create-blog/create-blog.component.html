@@ -167,9 +167,12 @@
                 <h1 class="title">{{ blogForm.controls['title'].value }}</h1>
                 <!-- <small class="publish-time">{{ selectedPost.publishedAt | date }}</small> -->
                 <small class="category">{{ blogForm.controls['category'].value }}</small>
-                <div class="tags">
-                    <div *ngFor="let tag in blogForm.controls['tags'].value"></div>
-                </div>
+                @let tags = blogForm.controls['tags'].value;
+                @if (tags) {
+                    <div class="tags">
+                        <div *ngFor="let tag in tags"></div>
+                    </div>
+                }
                 <img class="img_overview" [src]="img_overview_source" alt="">
                 <div class="content" [innerHTML]="blogForm.controls['content'].value"></div>
             </div>

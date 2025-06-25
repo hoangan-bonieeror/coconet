@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { POST_STATUS, POST_STATUS_MAP } from '../../../../../../config/config';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { SafeHtml } from '@angular/platform-browser';
+import { DataService } from '../../../../../../core/service/data.service';
 
 @Component({
   selector: 'app-main',
@@ -15,7 +17,7 @@ export class MainComponent implements OnInit {
   private post$: BehaviorSubject<JoinPost[]> = new BehaviorSubject<JoinPost[]>([]);
   public _posts: Observable<JoinPost[]>;
   isPreview: boolean = false;
-  previewContent: string|undefined = undefined;
+  previewContent: SafeHtml|undefined = undefined;
 
   selectedPost: JoinPost | undefined;
   publishing = -1;
@@ -26,17 +28,15 @@ export class MainComponent implements OnInit {
     private _apiService: ApiService,
     private _router: Router,
     private _messageService: MessageService,
-    private _confirmService: ConfirmationService
+    private _confirmService: ConfirmationService,
+    private _dataService: DataService
   ) {}
   ngOnInit(): void {
-      this._apiService.getAllPosts().subscribe(res => {
-        if(res.ok) {
-          let data = res.body as JoinPost[];
-          this.post$.next(data)
-        }
-      })
-
       this._posts = this.post$.asObservable()
+
+      this._dataService.getAllPost().then(data => {
+        this.post$.next(data)
+      })
   }
 
   createNewBlog() {

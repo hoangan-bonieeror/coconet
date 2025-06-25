@@ -118,6 +118,7 @@ export class AdminService {
   async createPost(postInput: FormData) {
     let observe = this._apiService.createPost(postInput)
     let response = await lastValueFrom(observe)
+    console.log(response)
     let apiResponse : ApiResponse = {
       code: response.status,
       msg: ''

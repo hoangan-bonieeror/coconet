@@ -10,7 +10,7 @@ import { PostInput } from '../../interface/post';
   providedIn: 'root'
 })
 export class ApiService {
-  private readonly baseUrl = "http://localhost:3000";
+  private readonly baseUrl = "http://192.168.2.15:3000";
   private readonly headers = {'rejectUnauthorized': 'false'};
   constructor(
     private _httpCLient: HttpClient
@@ -75,6 +75,33 @@ export class ApiService {
         },
         responseType: "json",
         observe: "response"
+      }
+    )
+  }
+
+  getPostBySlug(slug: string) {
+    return this._httpCLient.get(
+      `${this.baseUrl}/posts/${slug}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          ...this.headers
+        },
+        responseType: "json",
+        observe: "response"
+      }
+    )
+  }
+
+  getBlogFile(slug: string) {
+    return this._httpCLient.get(
+      `${this.baseUrl}/post_file/${slug}.html`,
+      {
+        headers: {
+          "Content-Type": "text/html",
+          ...this.headers
+        },
+        responseType: "text"
       }
     )
   }
@@ -275,6 +302,12 @@ export class ApiService {
         responseType: "json"
       }
     )
+  }
+
+  getBlob(url: string) {
+    return this._httpCLient.get(url, {
+      responseType: 'blob'
+    })
   }
 
 }

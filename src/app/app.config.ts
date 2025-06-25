@@ -8,7 +8,7 @@ import Lara from '@primeng/themes/lara';
 import Material from '@primeng/themes/material';
 import Nora from '@primeng/themes/nora';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { provideQuillConfig } from 'ngx-quill/config';
+import { provideQuillConfig, QuillModules } from 'ngx-quill/config';
 
 import Quill from 'quill';
 
@@ -20,7 +20,13 @@ FontAttributor.whitelist = [
 // @ts-ignore
 Quill.register(FontAttributor, true);
 
-const modules = {
+import ImageResize from 'quill-image-resize';
+ 
+Quill.register('modules/imageResize', ImageResize);
+const modules : QuillModules = {
+  imageResize: {
+    displaySize: true
+  },
   toolbar: [
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
     ['blockquote', 'code-block'],

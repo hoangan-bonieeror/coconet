@@ -241,7 +241,7 @@ button {
 .admin-button {
   color: var(--dark-color) !important;
   background-color: var(--bright-color) !important;
-  border-color: var(--bright-color) !important;
+  border-color: var(--dark-color) !important;
 }
 
 .admin-button-dark:hover {
@@ -317,8 +317,9 @@ button {
   background-color: var(--admin-dark-color);
 }
 
-.blog-container .content {
+.blog-container .content, .blog {
   font-family: Roboto !important;
+  font-size: 18px !important;
 }
 .blog-container .content > * {
   max-width: 100%;
@@ -346,6 +347,10 @@ button {
 .p-multiselect:not(.p-disabled).p-focus,
 .p-inputtext:enabled:focus {
   border-color: var(--dark-color) !important;
+}
+
+.p-checkbox-checked .p-checkbox-box {
+  background-color: var(--dark-color) !important;
 }
 
 .drag-drop-img {
@@ -378,6 +383,10 @@ button {
 
 .gap-10 {
   gap: 10px;
+}
+
+.gap-5 {
+  gap: 5px;
 }
 
 .mr-tb-1_2 {

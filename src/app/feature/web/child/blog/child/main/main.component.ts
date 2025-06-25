@@ -3,6 +3,7 @@ import { Category } from '../../../../../../interface/category';
 import { ApiService } from '../../../../../../core/service/api.service';
 import { JoinPost, Post } from '../../../../../../interface/post';
 import { Router } from '@angular/router';
+import { Tag } from '../../../../../../interface/tag';
 
 
 @Component({
@@ -11,15 +12,34 @@ import { Router } from '@angular/router';
   styleUrl: './main.component.css'
 })
 export class MainComponent implements OnInit {
+  isShowFilter: boolean = false;
   currentCategory: string;
-  categories: Category[] = [];
+  categories: {name: string, value: boolean}[] = [];
+  tags: {name: string, value: boolean}[] = []
+  sortOptions: {value: boolean, title: string}[] = [
+    {
+      title: 'Mới nhất', value: false
+    },
+    {
+      title: 'Cũ nhất', value: true
+    }
+  ]
   blogs : JoinPost[];
+  filterBlogs : JoinPost[];
+
+  selectedCategory: Category | null = null;
+  selectedTags: Tag[] = [];
+  searchStr: string = '';
+  selectedSort: {value: boolean, title: string} = {
+    value: false, title: 'Mới nhất'
+  }
   
   constructor(
     private _apiService: ApiService,
     private _router: Router
   ) {
-    this.blogs = []
+    this.blogs = [];
+    this.filterBlogs = [];
     this.currentCategory = 'Tất cả'
   }
 
@@ -30,7 +50,24 @@ export class MainComponent implements OnInit {
       this._apiService.getAllCategories().subscribe(res => {
         if(res.ok) {
           let data = res.body as Category[]
-          this.categories = data
+          for(const category of data) {
+            this.categories.push({
+              name: category.name,
+              value : false
+            })
+          }
+        }
+      })
+
+      this._apiService.getAllTags().subscribe(res => {
+        if(res.ok) {
+          let data = res.body as Tag[]
+          for(const tag of data) {
+            this.tags.push({
+              name: tag.name,
+              value : false
+            })
+          }
         }
       })
 
@@ -38,6 +75,7 @@ export class MainComponent implements OnInit {
         if(res.ok) {
           let data = res.body as JoinPost[];
           this.blogs = data
+          this.filterBlogs = this.blogs
         }
       })
   }
@@ -53,5 +91,47 @@ export class MainComponent implements OnInit {
   }
   selectCategory(name: string) {
     this.currentCategory = name;
+  }
+
+
+  triggerFilter() {
+    let listCategory = this.categories.filter(o=>o.value).map(o=>o.name)
+    let listTag = this.tags.filter(o=>o.value).map(o=>o.name)
+
+    this.filterBlogs = this.blogs.filter(o=> {
+      let matchCategory = listCategory.length == 0 || listCategory.includes(o.category.name)
+      let matchTag = listTag.length == 0 || o.tags.some(tag => listTag.includes(tag.name))
+
+      let queryStr = this.removeVietnameseTones(this.searchStr.trim().toLocaleLowerCase())
+      let titleStr = this.removeVietnameseTones(o.title)
+      let matchSearchStr = this.searchStr.trim().length == 0 || titleStr.includes(queryStr)
+      return matchCategory && matchTag && matchSearchStr
+    })
+
+    this.filterBlogs = this.sortByDate()
+  }
+
+
+  sortByDate(): JoinPost[] {
+    return this.filterBlogs.sort((a, b) => {
+      const dateA = new Date(a.publishedAt).getTime();
+      const dateB = new Date(b.publishedAt).getTime();
+      return this.selectedSort.value ? dateA - dateB : dateB - dateA;
+    });
+  }
+
+  removeVietnameseTones(str: string): string {
+    return str
+      .normalize("NFD")                             // Tách dấu khỏi ký tự gốc
+      .replace(/[\u0300-\u036f]/g, "")             // Loại bỏ dấu
+      .replace(/đ/g, "d").replace(/Đ/g, "D")       // Chuyển đ -> d
+      .replace(/[^\w\s]/gi, '')                    // Loại bỏ ký tự đặc biệt
+      .replace(/\s+/g, ' ')                        // Bỏ khoảng trắng dư
+      .trim()
+      .toLowerCase();                              // Viết thường để so sánh
+  }
+
+  toggleFilter() {
+    this.isShowFilter = !this.isShowFilter
   }
 }

@@ -22,6 +22,8 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { QuillModule } from 'ngx-quill'
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 @NgModule({
   declarations: [
     BlogComponent,
@@ -48,9 +50,11 @@ import { QuillModule } from 'ngx-quill'
     InputGroupAddonModule,
     InputGroupModule,
     CheckboxModule,
-    QuillModule.forRoot()
+    QuillModule.forRoot(),
+    ToastModule
   ],
   providers: [
+    MessageService
   ]
 })
 export class BlogModule { }

@@ -1,3 +1,4 @@
+import { SafeHtml } from "@angular/platform-browser";
 import { Category } from "./category"
 import { Tag } from "./tag";
 import { User } from "./user"
@@ -20,7 +21,7 @@ export interface Post {
 export interface JoinPost {
     id: number,
     title: string,
-    content: string,
+    content: SafeHtml,
     status: string
     category: Category,
     user: User,

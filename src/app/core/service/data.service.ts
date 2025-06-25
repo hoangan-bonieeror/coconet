@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import * as projectData from '../../config/project.json'
+import { lastValueFrom } from 'rxjs';
+import { ApiService } from './api.service';
+import { JoinPost } from '../../interface/post';
 export enum MediaType {
   VIDEO = "video",
   IMAGE = "image"
@@ -80,7 +83,9 @@ let fake_gallery = [
 export class DataService {
   projects : Project[] = [];
   medias: Media[] = [];
-  constructor() {
+  constructor(
+    private _apiService: ApiService
+  ) {
     this.projects = [
       {
         name: "Project 1",
@@ -193,5 +198,61 @@ export class DataService {
       if(firstCond || secondCond || thirdCond) filterProjectResult.push(pro)
     })
     return filterProjectResult
+  }
+
+  async getAllPost() {
+    let response = await lastValueFrom(this._apiService.getAllPosts());
+    if(!response.ok) return []
+
+    let posts = response.body as JoinPost[];
+    for await (const post of posts) {
+      let content = await lastValueFrom(this._apiService.getBlogFile(post.slug))
+      post.content = content;
+    }
+
+    return posts
+  }
+
+  async getAllDraftPost() {
+    let response = await lastValueFrom(this._apiService.getAllDraftPosts());
+    if(!response.ok) return []
+
+    let posts = response.body as JoinPost[];
+    for await (const post of posts) {
+      let content = await lastValueFrom(this._apiService.getBlogFile(post.slug))
+      post.content = content;
+    }
+
+    return posts
+  }
+
+  async getAllPusblishPost() {
+    let response = await lastValueFrom(this._apiService.getAllPublishPosts());
+    if(!response.ok) return []
+
+    let posts = response.body as JoinPost[];
+    for await (const post of posts) {
+      let content = await lastValueFrom(this._apiService.getBlogFile(post.slug))
+      post.content = content;
+    }
+
+    return posts
+  }
+
+  async getPostBySlug(slug: string) {
+    let response = await lastValueFrom(this._apiService.getPostBySlug(slug))
+    if(!response.ok) return null
+
+    let post = response.body as JoinPost;
+    let content = await lastValueFrom(this._apiService.getBlogFile(post.slug))
+    post.content = content
+    return post
+  }
+
+  async getPostById(id: number) {
+    let posts = await this.getAllPost();
+    if(posts.length == 0 ) return undefined
+    
+    return posts.find(o=>o.id == id)
   }
 }

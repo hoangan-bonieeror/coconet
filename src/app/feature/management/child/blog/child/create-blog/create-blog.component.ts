@@ -73,7 +73,7 @@ export class CreateBlogComponent implements OnInit {
     let category = this.blogForm.get("category")?.value
     let content = this.blogForm.get("content")?.value
     let tags = this.blogForm.get('tags')?.value
-    let slug = this.blogForm.get("slug")?.value    
+    let slug = this.blogForm.get("slug")?.value
     let meta_description = this.blogForm.get("meta_description")?.value
     let userObjFromLocal = this._localStorageService.getObject(LOCALSTORAGE_KEY.USER);
     if('id' in userObjFromLocal == false) {
@@ -100,6 +100,7 @@ export class CreateBlogComponent implements OnInit {
       formData.append('img_overview', this.img_file)
     }
 
+    console.log(blogHtml)
     const response = await this._adminService.createPost(formData)
     if(response.code == 201) {
       this._messageService.add({

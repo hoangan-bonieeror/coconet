@@ -1,73 +1,79 @@
 <div class="container">
     <header class="blog-page-title">BLOG</header>
-    <!--
-    <div class="search-bar">
-        <p-inputgroup>
-            <input pInputText placeholder="Tiêu đề..." />
-            <p-inputgroup-addon>
-                <p-button icon="pi pi-search" severity="secondary" variant="text" />
-            </p-inputgroup-addon>
-        </p-inputgroup>
-    </div>
+    
     <div class="filter-bar">
-        <div class="sort-filter">
-            
-        </div>
-        <div class="tag-filter"></div>
-    </div> -->
-    <div class="blog-section">
-        <div class="header">
-            Bài blog mới nhất
-        </div>
-        <div class="blog-list">
-            @let recentBlog = getRecentBlog();
-            @if (recentBlog.length == 0) {
-                <div><i>Không tìm thấy bài blog nào</i></div>
-            } @else {
-                @for (blog of recentBlog; track $index; let idx = $index) {
-                    <div (click)="navigateBlog(blog.slug)" class="blog-item"data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="idx * 100">
-                        <img class="img_overview" [src]="blog.img_overview" [alt]="blog.id">
-                        <div class="item-content">
-                            <small class="item-publish_date">{{ blog.publishedAt | date }}</small>
-                            <div class="title">{{blog.title}}</div>
-                            <small class="category">{{blog.category.name}}</small>
-                            <div class="tags">
-                                @for (tag of blog.tags; track $index) {
-                                    <div>{{ tag.name }}</div>
-                                }
-                            </div>
-                            <!-- <button pButton class="admin-button read-more-btn">Xem thêm <i class="pi pi-arrow-right"></i></button> -->
-                        </div>
-                    </div>
-                }
-            }
-
-        </div>
-    </div>
-
-    <div class="blog-by-category blog-section">
-        <div class="header" style="text-align: center;">
-            Chủ đề
-        </div>
         <div class="tool-bar">
-            <div class="categories-area">
-                <div class="categories-list">
-                    <div class="item" [ngClass]="{'active': currentCategory == 'Tất cả'}" (click)="selectCategory('Tất cả')">Tất cả</div>
+            <div class="flex align-items-center gap-10">
+                <button
+                    [ngClass]="{'admin-button-dark': isShowFilter, 'admin-button': !isShowFilter}" 
+                    pButton 
+                    icon="pi pi-filter"
+                    label="Bộ lọc"
+                    text="true"
+                    (click)="toggleFilter()"></button>
+                <div class="search-filter">
+                    <p-inputgroup>
+                        <input [(ngModel)]="searchStr" (input)="triggerFilter()" pInputText placeholder="Nhập tiêu đề..." />
+                        <p-inputgroup-addon>
+                            <p-button icon="pi pi-search" severity="secondary" variant="text" />
+                        </p-inputgroup-addon>
+                    </p-inputgroup>
+                </div>
+            </div>
+            <div>
+                <div class="sort-filter">
+                    <p-select [options]="sortOptions" [(ngModel)]="selectedSort" (onChange)="triggerFilter()" optionLabel="title" placeholder="Sắp xếp" class="w-full md:w-56">
+                        <ng-template #selectedItem let-selectedOption>
+                            <div class="flex items-center gap-2" *ngIf="selectedOption">
+                                <div>{{ selectedOption.title }}</div>
+                            </div>
+                        </ng-template>
+                    </p-select>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-expand" *ngIf="isShowFilter" data-aos="zoom-in" data-aos-duration="200">
+            <div class="category-filter">
+                <label for="">Thể loại</label>
+                <!-- <p-select [options]="categories" [(ngModel)]="selectedCategory" (onChange)="triggerFilter()" optionLabel="name" placeholder="Phân loại" class="w-full md:w-56">
+                    <ng-template #selectedItem let-selectedOption>
+                        <div class="flex items-center gap-2" *ngIf="selectedOption">
+                            <div>Phân loại: {{ selectedOption.name }}</div>
+                        </div>
+                    </ng-template>
+                </p-select> -->
+                <div class="list flex flex-column gap-10">
                     @for (category of categories; track $index) {
-                        <div class="item" [ngClass]="{'active': currentCategory == category.name}" (click)="selectCategory(category.name)">
-                            {{category.name}}
+                        <div class="item flex align-items-center gap-10">
+                            <p-checkbox (onChange)="triggerFilter()" [(ngModel)]="category.value" [binary]="true"/>
+                            <span>{{category.name}}</span>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="tag-filter">
+                <label for="">Thẻ</label>
+                <!-- <p-multiselect [options]="tags" [(ngModel)]="selectedTags" (onChange)="triggerFilter()" [filter]="true" optionLabel="name" placeholder="Chọn thẻ" [maxSelectedLabels]="3" display="chip" /> -->
+                <div class="list flex flex-column gap-10">
+                    @for (tag of tags; track $index) {
+                        <div class="item flex align-items-center gap-10">
+                            <p-checkbox (onChange)="triggerFilter()" [(ngModel)]="tag.value" [binary]="true"/>
+                            <span>{{tag.name}}</span>
                         </div>
                     }
                 </div>
             </div>
         </div>
+
+    </div>
+    <div class="blog-section">
         <div class="blog-list">
-            @let filterPosts = filterPost();
-            @if (filterPosts.length == 0) {
+            @if (filterBlogs.length == 0) {
                 <div><i>Không tìm thấy bài blog nào</i></div>
             } @else {
-                @for (blog of filterPosts; track $index; let idx = $index) {
-                    <div (click)="navigateBlog(blog.slug)" class="blog-item"data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="idx * 100">
+                @for (blog of filterBlogs; track $index; let idx = $index) {
+                    <div (click)="navigateBlog(blog.slug)" class="blog-item" data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="idx * 100">
                         <img class="img_overview" [src]="blog.img_overview" [alt]="blog.id">
                         <div class="item-content">
                             <small class="item-publish_date">{{ blog.publishedAt | date }}</small>

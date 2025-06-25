@@ -13,8 +13,11 @@ import { ButtonModule } from 'primeng/button';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { TableModule } from 'primeng/table';
 import { BlogDetailComponent } from './child/blog-detail/blog-detail.component';
-
-
+import { SelectModule } from 'primeng/select';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { FormsModule } from '@angular/forms';
+import { PopoverModule } from 'primeng/popover';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,12 @@ import { BlogDetailComponent } from './child/blog-detail/blog-detail.component';
     InputTextModule,
     ButtonModule,
     InputGroupModule,
-    TableModule
+    TableModule,
+    SelectModule,
+    MultiSelectModule,
+    FormsModule,
+    PopoverModule,
+    CheckboxModule
   ]
 })
 export class BlogModule { }
