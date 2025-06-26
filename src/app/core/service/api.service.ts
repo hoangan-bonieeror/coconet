@@ -10,7 +10,7 @@ import { PostInput } from '../../interface/post';
   providedIn: 'root'
 })
 export class ApiService {
-  private readonly baseUrl = "http://192.168.2.15:3000";
+  private readonly baseUrl = "https://cocostudio.vn:3000";
   private readonly headers = {'rejectUnauthorized': 'false'};
   constructor(
     private _httpCLient: HttpClient

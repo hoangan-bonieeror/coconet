@@ -31,14 +31,21 @@ quill-editor {
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
+  font-size: 18px;
+}
+
+
+.blog img, .blog-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
 }
 
 
 @media only screen and (max-width: 768px)
 {
   html {
-    font-size: 0.8em;
+    font-size: 16px;
   }
 }
 body {
@@ -241,7 +248,7 @@ button {
 .admin-button {
   color: var(--dark-color) !important;
   background-color: var(--bright-color) !important;
-  border-color: var(--dark-color) !important;
+  border-color: var(--bright-color) !important;
 }
 
 .admin-button-dark:hover {
@@ -319,7 +326,7 @@ button {
 
 .blog-container .content, .blog {
   font-family: Roboto !important;
-  font-size: 18px !important;
+  font-size: 1rem !important;
 }
 .blog-container .content > * {
   max-width: 100%;
@@ -347,10 +354,6 @@ button {
 .p-multiselect:not(.p-disabled).p-focus,
 .p-inputtext:enabled:focus {
   border-color: var(--dark-color) !important;
-}
-
-.p-checkbox-checked .p-checkbox-box {
-  background-color: var(--dark-color) !important;
 }
 
 .drag-drop-img {

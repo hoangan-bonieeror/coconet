@@ -27,7 +27,7 @@
 }
 
 .blog .title {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 600;
     text-align: center;
 }
@@ -44,6 +44,10 @@
     width: 100%;
 }
 
+.blog > * {
+    line-height: 1.5;
+}
+
 .img_overview {
     width: 100%;
     border-radius: 6px;
@@ -52,6 +56,6 @@
 @media only screen and (max-width: 768px)
 {
     .blog {
-        margin: 10px 1em;
+        margin: 20px 1em;
     }    
 }
