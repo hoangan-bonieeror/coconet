@@ -4,8 +4,8 @@ import { JoinPost } from '../../../../../../interface/post';
 import { Router } from '@angular/router';
 import { POST_STATUS, POST_STATUS_MAP } from '../../../../../../config/config';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { SafeHtml } from '@angular/platform-browser';
+import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { DataService } from '../../../../../../core/service/data.service';
 
 @Component({
@@ -24,18 +24,32 @@ export class MainComponent implements OnInit {
   readonly POST_STATUS_MAP = POST_STATUS_MAP;
   readonly POST_STATUS = POST_STATUS
   
+  loadingTable: boolean = false
   constructor(
     private _apiService: ApiService,
     private _router: Router,
     private _messageService: MessageService,
     private _confirmService: ConfirmationService,
-    private _dataService: DataService
+    private _dataService: DataService,
+    private sanitizer: DomSanitizer
   ) {}
   ngOnInit(): void {
       this._posts = this.post$.asObservable()
-
-      this._dataService.getAllPost().then(data => {
-        this.post$.next(data)
+      this.loadingTable = true
+      this._dataService.getAllPost().then(async data => {
+        let posts : JoinPost[] = []
+        for(let post of data) {
+          try {
+            let content = await lastValueFrom(this._apiService.getBlogFile(post.slug))
+            if(content) {
+              post.content = this.sanitizer.bypassSecurityTrustHtml(content)
+              posts.push(post)
+            }
+          } catch(err) {}
+          posts.push(post)
+        }
+        this.loadingTable = false
+        this.post$.next(posts)
       })
   }
 

@@ -8,7 +8,7 @@ import { EditorTextChangeEvent } from 'primeng/editor';
 import { parse } from 'node-html-parser';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../../../../../../core/service/localstorage.service';
-import { LOCALSTORAGE_KEY } from '../../../../../../config/config';
+import { LOCALSTORAGE_KEY, POST_STATUS } from '../../../../../../config/config';
 import { AdminService } from '../../../../../../core/service/admin.service';
 import { MessageService } from 'primeng/api';
 import { PrimeNG } from 'primeng/config';
@@ -27,6 +27,8 @@ export class CreateBlogComponent implements OnInit {
   tagOptions : Tag[] = []
   submitted: boolean = false;
   loading: boolean = false;
+  loadingPublish: boolean = false;
+  loadingDraft: boolean = false;
   isPreview: boolean = false;
 
   isAutoGenerateSlug: boolean = true;
@@ -46,6 +48,7 @@ export class CreateBlogComponent implements OnInit {
       content: new FormControl(null, [Validators.required]),
       slug: new FormControl(null, [Validators.required]),
       meta_description: new FormControl(null, [Validators.required]),
+      status: new FormControl(POST_STATUS.DRAFT),
       isAutoGenerateSlug: new FormControl(this.isAutoGenerateSlug)
     })
 
@@ -66,6 +69,20 @@ export class CreateBlogComponent implements OnInit {
       })
   }
 
+  async saveDraft() {
+    this.loadingDraft = true
+    this.blogForm.get('status')?.setValue(POST_STATUS.DRAFT)
+    await this.saveBlog()
+    this.loadingDraft = false
+  }
+
+  async publishPost() {
+    this.loadingPublish = true
+    this.blogForm.get('status')?.setValue(POST_STATUS.PUBLISH)
+    await this.saveBlog()   
+    this.loadingPublish = false
+  }
+
   async saveBlog() {
     this.submitted = true
     this.loading = true
@@ -75,6 +92,7 @@ export class CreateBlogComponent implements OnInit {
     let tags = this.blogForm.get('tags')?.value
     let slug = this.blogForm.get("slug")?.value
     let meta_description = this.blogForm.get("meta_description")?.value
+    let status = this.blogForm.get("status")?.value
     let userObjFromLocal = this._localStorageService.getObject(LOCALSTORAGE_KEY.USER);
     if('id' in userObjFromLocal == false) {
       this.loading = false
@@ -96,11 +114,12 @@ export class CreateBlogComponent implements OnInit {
     formData.append('authorId', authorId)
     formData.append('slug', slug)
     formData.append('meta_description', meta_description)
+    formData.append('status', status)
+    
     if(this.img_file) {
       formData.append('img_overview', this.img_file)
     }
 
-    console.log(blogHtml)
     const response = await this._adminService.createPost(formData)
     if(response.code == 201) {
       this._messageService.add({
@@ -218,8 +237,11 @@ export class CreateBlogComponent implements OnInit {
     .toLowerCase();                           // Chuyển về chữ thường
   }
 
-
   formatLink() {
     return `${window.location.protocol}//${window.location.host}/blog/`;
+  }
+
+  processBlogContent(content) {
+    return content.replace(/&nbsp;/g, ' ')
   }
 }

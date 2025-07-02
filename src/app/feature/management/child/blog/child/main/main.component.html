@@ -9,7 +9,7 @@
     </div>
 
     <div class="post-content" data-aos="fade-up" data-aos-duration="500">
-        <p-table stripedRows [value]="(_posts | async)" [tableStyle]="{ 'min-width': '50rem', 'font-size': '1em' }"
+        <p-table [loading]="loadingTable" stripedRows [value]="(_posts | async)" [tableStyle]="{ 'min-width': '50rem', 'font-size': '1em' }"
             [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" dataKey="id" editMode="row">
             <ng-template #header>

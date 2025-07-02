@@ -45,7 +45,9 @@ export class LoginComponent {
 
   login() {
     this.submit = true
+    this.loading = true
     if(this.loginForm.invalid) {
+      this.loading = false
       return
     }
     const username = this.loginForm.get("username")?.value
@@ -72,6 +74,9 @@ export class LoginComponent {
         }
         
       }
+
+      
+      this.loading = false
     })
   }
 

@@ -1,14 +1,14 @@
 <div class="container" >
     <div class="header">
         <header>Blog mới</header>
-        <div class="tool-bar">
+        <!-- <div class="tool-bar">
             <button class="admin-button-dark" pButton label="Xem trước" (click)="showPreview()"></button>
             <button class="admin-button-dark" [loading]="loading" pButton label="Lưu blog" (click)="saveBlog()"></button>
             <button class="admin-button-dark" pButton label="Quay về" (click)="backToMain()"></button>
-        </div>
+        </div> -->
     </div>
-    <div class="form blog-form" data-aos="fade-up" data-aos-duration="500" >
-        <div class="form-content" [formGroup]="blogForm">
+    <div class="blog-form" data-aos="fade-up" data-aos-duration="500" [formGroup]="blogForm">     
+        <div class="basic_info block">
             <div class="field">
                 <label for="">Chủ đề</label>
                 <div>
@@ -24,30 +24,6 @@
                     </small>
                 </div>
             </div>
-            <!-- <p-fileupload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" [multiple]="false" accept="image/*" maxFileSize="1000000" mode="advanced" (onSelect)="onSelectedFiles($event)">
-                <ng-template #header let-files let-chooseCallback="chooseCallback" let-clearCallback="clearCallback">
-                    <div class="flex flex-wrap justify-between items-center flex-1 gap-4">
-                        <div class="flex" style="gap: 10px;">
-                            <p-button (onClick)="chooseCallback()" icon="pi pi-images" [rounded]="true" [outlined]="true" />
-                            <p-button (onClick)="onClearImgOverview(clearCallback)" icon="pi pi-times" [rounded]="true" [outlined]="true" severity="danger" [disabled]="!files || files.length === 0" />
-                        </div>
-                    </div>
-                </ng-template>
-                <ng-template #content>
-                    <div *ngIf="files.length > 0" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-                        <b style="font-size: 1.2em;">{{ files[0].name }}</b>
-                        <div>{{ formatSize(files[0].size) }}</div>
-                        <img class="post_img_overview" role="presentation" [alt]="files[0].name" [src]="files[0].objectURL" />
-                    </div>
-                </ng-template>
-                <ng-template #file></ng-template>
-                <ng-template #empty>
-                    <div class="flex items-center justify-center flex-col">
-                        <i class="pi pi-cloud-upload !border-2 !rounded-full !p-8 !text-4xl !text-muted-color"></i>
-                        <p class="mt-6 mb-0">Drag and drop files to here to upload.</p>
-                    </div>
-                </ng-template>
-            </p-fileupload> -->
             <div class="field">
                 <label for="">Slug</label>
                 <div>
@@ -81,34 +57,6 @@
                             Không được để trống trường này
                         }
                 </small>
-                </div>
-            </div>
-            <div class="field">
-                <label for="">Phân loại</label>
-                <div>
-                    <p-select [options]="categoryOptions" optionLabel="name" optionValue="id" placeholder="Chọn phân loại" formControlName="category" appendTo="body" />
-                    <small 
-                        *ngIf="submitted
-                            && blogForm.invalid
-                        ">
-                            @if (blogForm.controls['category'].hasError('required')) {
-                                Không được để trống trường này
-                            }
-                    </small>
-                </div>
-            </div>
-            <div class="field">
-                <label for="tags">Thẻ gán</label>
-                <div>
-                    <p-multiselect [options]="tagOptions" formControlName="tags" placeholder="Chọn thẻ..." optionLabel="name" display="chip" appendTo="body" optionValue="id" />
-                    <small 
-                        *ngIf="submitted
-                            && blogForm.invalid
-                        ">
-                            @if (blogForm.controls['tags'].hasError('required')) {
-                                Không được để trống trường này
-                            }
-                    </small>
                 </div>
             </div>
             <div class="field">
@@ -147,8 +95,48 @@
                     /> -->
 
                     <quill-editor formControlName="content"
-                        placeholder="Enter Text"></quill-editor>
+                        placeholder="Nhập nội dung..."></quill-editor>
                 </div>
+            </div>
+        </div>
+
+        <div class="flex flex-column" style="gap: 1.5em;">
+            <div class="prop_info block">
+                <div class="field">
+                    <label for="">Phân loại</label>
+                    <div>
+                        <p-select [options]="categoryOptions" optionLabel="name" optionValue="id" placeholder="Chọn phân loại" formControlName="category" appendTo="body" />
+                        <small 
+                            *ngIf="submitted
+                                && blogForm.invalid
+                            ">
+                                @if (blogForm.controls['category'].hasError('required')) {
+                                    Không được để trống trường này
+                                }
+                        </small>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="tags">Thẻ gán</label>
+                    <div>
+                        <p-multiselect [maxSelectedLabels]="2" [options]="tagOptions" formControlName="tags" placeholder="Chọn thẻ..." optionLabel="name" display="chip" appendTo="body" optionValue="id" />
+                        <small 
+                            *ngIf="submitted
+                                && blogForm.invalid
+                            ">
+                                @if (blogForm.controls['tags'].hasError('required')) {
+                                    Không được để trống trường này
+                                }
+                        </small>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="flex flex-column gap-10 actions block">
+                <header class="header">Hành động</header>
+                <button pButton label="Bản xem trước" icon="pi pi-eye" class="admin-button" (click)="showPreview()"></button>
+                <button pButton label="Xuất bản" [loading]="loadingDraft" icon="pi pi-send" class="admin-button-dark" (click)="publishPost()"></button>
+                <button pButton label="Lưu bản nháp" [loading]="loadingPublish" icon="pi pi-save" class="admin-button" (click)="saveDraft()"></button>
             </div>
         </div>
     </div>
@@ -165,7 +153,6 @@
             </div>
             <div class="blog-container">
                 <h1 class="title">{{ blogForm.controls['title'].value }}</h1>
-                <!-- <small class="publish-time">{{ selectedPost.publishedAt | date }}</small> -->
                 <small class="category">{{ blogForm.controls['category'].value }}</small>
                 @let tags = blogForm.controls['tags'].value;
                 @if (tags) {
@@ -173,8 +160,9 @@
                         <div *ngFor="let tag in tags"></div>
                     </div>
                 }
+                <span>{{processBlogContent(blogForm.controls['meta_description'].value)}}</span>
                 <img class="img_overview" [src]="img_overview_source" alt="">
-                <div class="content" [innerHTML]="blogForm.controls['content'].value"></div>
+                <div class="content" [innerHTML]="processBlogContent(blogForm.controls['content'].value)"></div>
             </div>
         </div>
     </ng-template>

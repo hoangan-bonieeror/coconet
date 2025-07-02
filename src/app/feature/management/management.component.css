@@ -8,7 +8,7 @@ main {
 .container {
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
+  padding: 20px;
   background-color: var(--bright-color);
   overflow: auto;
 }

@@ -205,10 +205,10 @@ export class DataService {
     if(!response.ok) return []
 
     let posts = response.body as JoinPost[];
-    for await (const post of posts) {
-      let content = await lastValueFrom(this._apiService.getBlogFile(post.slug))
-      post.content = content;
-    }
+    // for await (const post of posts) {
+    //   let content = await lastValueFrom(this._apiService.getBlogFile(post.slug))
+    //   post.content = content;
+    // }
 
     return posts
   }
@@ -218,10 +218,10 @@ export class DataService {
     if(!response.ok) return []
 
     let posts = response.body as JoinPost[];
-    for await (const post of posts) {
-      let content = await lastValueFrom(this._apiService.getBlogFile(post.slug))
-      post.content = content;
-    }
+    // for await (const post of posts) {
+    //   let content = await lastValueFrom(this._apiService.getBlogFile(post.slug))
+    //   post.content = content;
+    // }
 
     return posts
   }
@@ -231,10 +231,10 @@ export class DataService {
     if(!response.ok) return []
 
     let posts = response.body as JoinPost[];
-    for await (const post of posts) {
-      let content = await lastValueFrom(this._apiService.getBlogFile(post.slug))
-      post.content = content;
-    }
+    // for await (const post of posts) {
+    //   let content = await lastValueFrom(this._apiService.getBlogFile(post.slug))
+    //   post.content = content;
+    // }
 
     return posts
   }

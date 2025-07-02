@@ -213,10 +213,13 @@ button {
   column-gap: 10px;
 }
 
-.form-content .field {
+.field {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.field label {
+  font-size: 1.1em;
 }
 
 .form .form-footer {

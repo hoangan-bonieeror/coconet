@@ -1,7 +1,7 @@
 <div class="container">
     <div class="form-login">
         <div class="header">
-            <header>Cocostudio</header>
+            Welcome <header>Cocostudio</header>
         </div>
     
         <div class="form">
@@ -12,7 +12,7 @@
                 <p-password [toggleMask]="true" [feedback]="false" formControlName="password" />
             </div>
             <div class="form-footer">
-                <button class="admin-button-dark" pButton label="LOGIN" (click)="login()"></button>
+                <button class="admin-button-dark" [loading]="loading" pButton label="LOGIN" (click)="login()"></button>
             </div>
         </div>
     </div>

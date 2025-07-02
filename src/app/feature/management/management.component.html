@@ -1,28 +1,7 @@
 <main>
     <app-sidebar></app-sidebar>
     <div class="container">
-        <div class="navbar">
-            <div>
-                <p-inputgroup>
-                    <p-inputgroup-addon>
-                        <p-button icon="pi pi-search" severity="secondary" variant="text"/>
-                    </p-inputgroup-addon>
-                    <input pInputText placeholder="Search..." />
-                </p-inputgroup>
-            </div>
 
-            <div class="account-tool-bar">
-                <!-- <div class="icon"  severity="danger">
-                    <fa-icon [icon]="bellIcon"></fa-icon>
-                </div> -->
-                <div class="account">
-                    <div class="user-icon icon">
-                        <fa-icon [icon]="userIcon"></fa-icon>
-                    </div>
-                    <span>{{currentUser ? currentUser.username : '---'}}</span>
-                </div>
-            </div>
-        </div>
         <router-outlet></router-outlet>
     </div>
 </main>
