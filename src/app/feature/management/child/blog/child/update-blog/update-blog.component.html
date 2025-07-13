@@ -1,21 +1,15 @@
 <div class="container" >
     <div class="header">
         <header>Chỉnh sửa blog</header>
-        <div class="tool-bar">
-            <button class="admin-button-dark" pButton label="Xem trước" (click)="showPreview()"></button>
-            <button class="admin-button-dark" pButton label="Lưu blog" (click)="saveBlog()"></button>
-            <button class="admin-button-dark" pButton label="Quay về" (click)="backToMain()"></button>
-        </div>
     </div>
-    <div class="form blog-form" data-aos="fade-up" data-aos-duration="500" >
-        <div class="form-content" [formGroup]="updateForm">
+    <div class="blog-form" data-aos="fade-up" data-aos-duration="500" [formGroup]="updateForm">     
+        <div class="basic_info block">
             <div class="field">
                 <label for="">Chủ đề</label>
-                <div class="flex flex-column gap-5">
+                <div>
                     <!-- <textarea rows="5" cols="30" pTextarea style="resize: none;" formControlName="title"></textarea> -->
                     <input pInputText formControlName="title" style="width: 100%;" (input)="onInputTitle()">
-                    <small
-                    class="p-error"
+                    <small 
                     *ngIf="submitted
                         && updateForm.invalid
                     ">
@@ -27,7 +21,7 @@
             </div>
             <div class="field">
                 <label for="">Slug</label>
-                <div class="flex flex-column gap-5">
+                <div>
                     <p-inputgroup>
                         <p-inputgroup-addon><span style="color: var(--dark-color);">{{ formatLink() }}</span></p-inputgroup-addon>
                         <input pInputText formControlName="slug">
@@ -36,8 +30,7 @@
                         <p-checkbox formControlName="isAutoGenerateSlug" [binary]="true" (onChange)="toggleAutoGenerateSlug()"/>
                         <span>Liên kết tự động</span>
                     </div>
-                    <small
-                        class="p-error"
+                    <small 
                         *ngIf="submitted
                             && updateForm.invalid
                         ">
@@ -49,10 +42,9 @@
             </div>
             <div class="field">
                 <label for="">Meta</label>
-                <div class="flex flex-column gap-5">
+                <div>
                     <textarea rows="5" cols="30" pTextarea style="resize: none;" formControlName="meta_description"></textarea>
-                    <small
-                    class="p-error"
+                    <small 
                     *ngIf="submitted
                         && updateForm.invalid
                     ">
@@ -63,39 +55,9 @@
                 </div>
             </div>
             <div class="field">
-                <label for="">Phân loại</label>
-                <div class="flex flex-column gap-5">
-                    <p-select [options]="categoryOptions" optionLabel="name" optionValue="id" placeholder="Chọn phân loại" formControlName="category" appendTo="body" />
-                    <small
-                        class="p-error"
-                        *ngIf="submitted
-                            && updateForm.invalid
-                        ">
-                            @if (updateForm.controls['category'].hasError('required')) {
-                                Không được để trống trường này
-                            }
-                    </small>
-                </div>
-            </div>
-            <div class="field">
-                <label for="tags">Thẻ gán</label>
-                <div class="flex flex-column gap-5">
-                    <p-multiselect [options]="tagOptions" formControlName="tags" placeholder="Chọn thẻ..." optionLabel="name" display="chip" appendTo="body" optionValue="id" />
-                    <small
-                        class="p-error"
-                        *ngIf="submitted
-                            && updateForm.invalid
-                        ">
-                            @if (updateForm.controls['tags'].hasError('required')) {
-                                Không được để trống trường này
-                            }
-                    </small>
-                </div>
-            </div>
-            <div class="field">
                 <label for="">Ảnh cover</label>
                 <input type="file" hidden #inputFile accept="image/*" (change)="onSelectOverviewImg(inputFile.files)">
-                <div class="flex flex-column gap-5">
+                <div>
                     <div 
                         #dragContainer
                         class="drag-drop-img" 
@@ -119,8 +81,60 @@
                 </div>
             </div>
             <div class="field">
-                <quill-editor formControlName="content"
-                    placeholder="Nhập nội dung blog..."></quill-editor>
+                <label style="grid-column: span 2;" for="">Nội dung bài blog</label>
+                <div style="grid-column: span 2;">
+                    <!-- <p-editor 
+                        formControlName="content" 
+                        [style]="{ height: '500px' }"
+                        (onTextChange)="onTextChange($event)"
+                    /> -->
+
+                    <quill-editor formControlName="content"
+                        placeholder="Nhập nội dung..."></quill-editor>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-column" style="gap: 1.5em;">
+            <div class="prop_info block">
+                <div class="field">
+                    <label for="">Phân loại</label>
+                    <div>
+                        <p-select [options]="categoryOptions" optionLabel="name" optionValue="id" placeholder="Chọn phân loại" formControlName="category" appendTo="body" />
+                        <small 
+                            *ngIf="submitted
+                                && updateForm.invalid
+                            ">
+                                @if (updateForm.controls['category'].hasError('required')) {
+                                    Không được để trống trường này
+                                }
+                        </small>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="tags">Thẻ gán</label>
+                    <div>
+                        <p-multiselect [maxSelectedLabels]="2" [options]="tagOptions" formControlName="tags" placeholder="Chọn thẻ..." optionLabel="name" display="chip" appendTo="body" optionValue="id" />
+                        <small 
+                            *ngIf="submitted
+                                && updateForm.invalid
+                            ">
+                                @if (updateForm.controls['tags'].hasError('required')) {
+                                    Không được để trống trường này
+                                }
+                        </small>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="flex flex-column gap-10 actions block">
+                <header class="header">Hành động</header>
+                <button pButton label="Bản xem trước" icon="pi pi-eye" class="admin-button" (click)="showPreview()"></button>
+                @if (post && post.status == POST_STATUS.DRAFT) {
+                    <button pButton label="Lưu và xuất bản" [loading]="loadingPublish" icon="pi pi-send" class="admin-button-dark" (click)="publishPost()"></button>
+                }
+                <button pButton label="Lưu chỉnh sửa" [loading]="loading" icon="pi pi-save" class="admin-button" (click)="saveBlog()"></button>
+                <button pButton label="Quay về" icon="pi pi-times" class="admin-button-dark" (click)="backToMain()"></button>
             </div>
         </div>
     </div>
@@ -137,9 +151,12 @@
                 <h1 class="title">{{ updateForm.controls['title'].value }}</h1>
                 <!-- <small class="publish-time">{{ selectedPost.publishedAt | date }}</small> -->
                 <small class="category">{{ updateForm.controls['category'].value }}</small>
-                <div class="tags">
-                    <div *ngFor="let tag in updateForm.controls['tags'].value"></div>
-                </div>
+                @let tags = updateForm.controls['tags'].value;
+                @if (tags) {
+                    <div class="tags">
+                        <div *ngFor="let tag of tags"></div>
+                    </div>
+                }
                 <img class="img_overview" [src]="img_overview_source" alt="">
                 <div class="content" [innerHTML]="updateForm.controls['content'].value"></div>
             </div>

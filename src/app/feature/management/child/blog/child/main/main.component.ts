@@ -43,7 +43,6 @@ export class MainComponent implements OnInit {
             let content = await lastValueFrom(this._apiService.getBlogFile(post.slug))
             if(content) {
               post.content = this.sanitizer.bypassSecurityTrustHtml(content)
-              posts.push(post)
             }
           } catch(err) {}
           posts.push(post)

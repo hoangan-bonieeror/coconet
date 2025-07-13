@@ -7,9 +7,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Category } from '../../../../../../interface/category';
 import { Tag } from '../../../../../../interface/tag';
 import { PrimeNG } from 'primeng/config';
-import { LOCALSTORAGE_KEY } from '../../../../../../config/config';
+import { LOCALSTORAGE_KEY, POST_STATUS } from '../../../../../../config/config';
 import { MessageService } from 'primeng/api';
 import { lastValueFrom } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-update-blog',
@@ -25,17 +26,21 @@ export class UpdateBlogComponent implements OnInit, AfterViewInit {
   tagOptions: Tag[] = [];
   submitted: boolean = false;
   loading: boolean = false;
+  loadingPublish: boolean = false;
   img_overview_source: string | ArrayBuffer | null = null;
   img_file: File | null = null;
 
   isAutoGenerateSlug: boolean = true;
+
+  readonly POST_STATUS = POST_STATUS;
   constructor(
     private _activedRoute: ActivatedRoute,
     private _router: Router,
     private _apiService: ApiService,
     private config: PrimeNG,
     private _messageService: MessageService,
-    private _dataService: DataService
+    private _dataService: DataService,
+    private sanitizer: DomSanitizer
   ) {
     this.updateForm = new FormGroup({
       title: new FormControl(null, [Validators.required]),
@@ -71,8 +76,8 @@ export class UpdateBlogComponent implements OnInit, AfterViewInit {
         let post = await this._dataService.getPostById(id)
         if(post) {
           this.post = post;
+          console.log(this.post)
           this.updateForm.get('title')?.setValue(this.post?.title);
-          this.updateForm.get('content')?.setValue(this.post?.content);
           this.updateForm.get('slug')?.setValue(this.post?.slug);
           this.updateForm.get('category')?.setValue(this.post?.category.id);
           this.updateForm.get('meta_description')?.setValue(this.post?.meta_description)
@@ -90,6 +95,13 @@ export class UpdateBlogComponent implements OnInit, AfterViewInit {
               this.img_file = file;
             });
           }
+
+          let contentRes = await lastValueFrom(this._apiService.getBlogFile(post.slug))
+          if(contentRes) {
+            let contentSafeHtml = this.sanitizer.bypassSecurityTrustHtml(contentRes)
+            let content = contentSafeHtml['changingThisBreaksApplicationSecurity']
+            this.updateForm.get('content')?.setValue(content)
+          }
         } else {
           this._router.navigateByUrl('../')
         }
@@ -99,55 +111,63 @@ export class UpdateBlogComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {}
 
   saveBlog() {
-    if (!this.post) return;
-    this.submitted = true;
-    this.loading = true;
-    let title = this.updateForm.get('title')?.value;
-    let category = this.updateForm.get('category')?.value;
-    let content = this.updateForm.get('content')?.value;
-    let tags = this.updateForm.get('tags')?.value;
-    let slug = this.updateForm.get('slug')?.value;
-    let meta_description = this.updateForm.get("meta_description")?.value
-    if (this.updateForm.invalid) {
+    try {
+      if (!this.post) return;
+      this.submitted = true;
+      this.loading = true;
+      let title = this.updateForm.get('title')?.value;
+      let category = this.updateForm.get('category')?.value;
+      let content = this.updateForm.get('content')?.value;
+      let tags = this.updateForm.get('tags')?.value;
+      let slug = this.updateForm.get('slug')?.value;
+      let meta_description = this.updateForm.get("meta_description")?.value
+      if (this.updateForm.invalid) {
+        this.loading = false;
+        return;
+      }
+      let blogHtml = content as string;
+      blogHtml = blogHtml.replaceAll('&nbsp;', ' ');
+      let formData = new FormData();
+      formData.append('title', title);
+      formData.append('content', blogHtml);
+      formData.append('categoryId', category);
+      formData.append('tagIds', tags);
+      formData.append('slug', slug);
+      formData.append('meta_description', meta_description)
+      if (this.img_file) {
+        formData.append('img_overview', this.img_file);
+      }
+  
+      this._apiService
+        .updatePost(this.post?.id, formData)
+        .subscribe((response) => {
+          if (response.ok) {
+            this._messageService.add({
+              severity: 'success',
+              summary: 'Cập nhật blog',
+              detail: 'Thành công',
+            });
+          } else {
+            this._messageService.add({
+              severity: 'error',
+              summary: 'Cập nhật blog',
+              detail: 'Thất bại',
+            });
+          }
+        });
+  
+      this.submitted = false;
       this.loading = false;
-      return;
-    }
-
-    let blogHtml = content as string;
-    blogHtml = blogHtml.replaceAll('&nbsp;', ' ');
-    let formData = new FormData();
-    formData.append('title', title);
-    formData.append('content', blogHtml);
-    formData.append('categoryId', category);
-    formData.append('tagIds', tags);
-    formData.append('slug', slug);
-    formData.append('meta_description', meta_description)
-    if (this.img_file) {
-      formData.append('img_overview', this.img_file);
-    }
-
-    this._apiService
-      .updatePost(this.post?.id, formData)
-      .subscribe((response) => {
-        if (response.ok) {
-          this._messageService.add({
-            severity: 'success',
-            summary: 'Cập nhật blog',
-            detail: 'Thành công',
-          });
-
-          this.backToMain();
-        } else {
-          this._messageService.add({
-            severity: 'error',
-            summary: 'Cập nhật blog',
-            detail: 'Thất bại',
-          });
-        }
+    } catch (error) {
+      console.log(error)
+      this._messageService.add({
+        severity: 'error',
+        summary: 'Cập nhật blog',
+        detail: 'Thất bại',
       });
-
-    this.submitted = false;
-    this.loading = false;
+      this.submitted = false;
+      this.loading = false;
+    }
   }
   backToMain() {
     this._router.navigate(['admin/blog']);
@@ -250,5 +270,42 @@ export class UpdateBlogComponent implements OnInit, AfterViewInit {
 
   formatLink() {
     return `${window.location.protocol}//${window.location.host}/blog/`;
+  }
+
+  async publishPost() {
+    try {
+      if(!this.post) return
+      this.loadingPublish = true
+      let input = new FormData()
+      input.append('status', POST_STATUS.PUBLISH)
+      this._apiService
+        .updatePost(this.post.id, input)
+        .subscribe((response) => {
+          if (response.ok) {
+            this._messageService.add({
+              severity: 'success',
+              summary: 'Xuất bản blog',
+              detail: 'Thành công',
+            });
+  
+            this.post?.status == POST_STATUS.PUBLISH
+          } else {
+            this._messageService.add({
+              severity: 'error',
+              summary: 'Xuất bản blog',
+              detail: 'Thất bại',
+            });
+          }
+        });
+      this.loadingPublish = false
+    } catch (error) {
+      console.log(error)
+      this._messageService.add({
+        severity: 'error',
+        summary: 'Xuất bản blog',
+        detail: 'Thất bại',
+      });
+      this.loadingPublish = false
+    }
   }
 }

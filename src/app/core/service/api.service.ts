@@ -5,12 +5,13 @@ import { CategoryInput } from '../../interface/category';
 import { UserInput, UserLogin } from '../../interface/user';
 import { CustomerRequest, CustomerRequestInput } from '../../interface/request';
 import { PostInput } from '../../interface/post';
+import { environment } from "../../../environments/environment"
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private readonly baseUrl = "https://cocostudio.vn:3000";
+  private readonly baseUrl = environment.apiUrl;
   private readonly headers = {'rejectUnauthorized': 'false'};
   constructor(
     private _httpCLient: HttpClient

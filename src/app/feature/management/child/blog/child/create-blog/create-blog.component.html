@@ -157,7 +157,7 @@
                 @let tags = blogForm.controls['tags'].value;
                 @if (tags) {
                     <div class="tags">
-                        <div *ngFor="let tag in tags"></div>
+                        <div *ngFor="let tag of tags"></div>
                     </div>
                 }
                 <span>{{processBlogContent(blogForm.controls['meta_description'].value)}}</span>
