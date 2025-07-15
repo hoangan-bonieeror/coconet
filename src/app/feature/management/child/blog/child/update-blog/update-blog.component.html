@@ -9,14 +9,14 @@
                 <div>
                     <!-- <textarea rows="5" cols="30" pTextarea style="resize: none;" formControlName="title"></textarea> -->
                     <input pInputText formControlName="title" style="width: 100%;" (input)="onInputTitle()">
-                    <small 
+                    <p-message severity="error" size="small" variant="simple"
                     *ngIf="submitted
                         && updateForm.invalid
                     ">
                         @if (updateForm.controls['title'].hasError('required')) {
                             Không được để trống trường này
                         }
-                    </small>
+                    </p-message>
                 </div>
             </div>
             <div class="field">
@@ -30,28 +30,28 @@
                         <p-checkbox formControlName="isAutoGenerateSlug" [binary]="true" (onChange)="toggleAutoGenerateSlug()"/>
                         <span>Liên kết tự động</span>
                     </div>
-                    <small 
+                    <p-message severity="error" size="small" variant="simple" 
                         *ngIf="submitted
                             && updateForm.invalid
                         ">
                             @if (updateForm.controls['slug'].hasError('required')) {
                                 Không được để trống trường này
                             }
-                    </small>
+                    </p-message>
                 </div>
             </div>
             <div class="field">
                 <label for="">Meta</label>
                 <div>
                     <textarea rows="5" cols="30" pTextarea style="resize: none;" formControlName="meta_description"></textarea>
-                    <small 
+                    <p-message severity="error" size="small" variant="simple"
                     *ngIf="submitted
                         && updateForm.invalid
                     ">
                         @if (updateForm.controls['meta_description'].hasError('required')) {
                             Không được để trống trường này
                         }
-                </small>
+                    </p-message>
                 </div>
             </div>
             <div class="field">
@@ -101,28 +101,28 @@
                     <label for="">Phân loại</label>
                     <div>
                         <p-select [options]="categoryOptions" optionLabel="name" optionValue="id" placeholder="Chọn phân loại" formControlName="category" appendTo="body" />
-                        <small 
+                        <p-message severity="error" size="small" variant="simple" 
                             *ngIf="submitted
                                 && updateForm.invalid
                             ">
                                 @if (updateForm.controls['category'].hasError('required')) {
                                     Không được để trống trường này
                                 }
-                        </small>
+                        </p-message>
                     </div>
                 </div>
                 <div class="field">
                     <label for="tags">Thẻ gán</label>
                     <div>
                         <p-multiselect [maxSelectedLabels]="2" [options]="tagOptions" formControlName="tags" placeholder="Chọn thẻ..." optionLabel="name" display="chip" appendTo="body" optionValue="id" />
-                        <small 
+                        <p-message severity="error" size="small" variant="simple" 
                             *ngIf="submitted
                                 && updateForm.invalid
                             ">
                                 @if (updateForm.controls['tags'].hasError('required')) {
                                     Không được để trống trường này
                                 }
-                        </small>
+                        </p-message>
                     </div>
                 </div>
             </div>
