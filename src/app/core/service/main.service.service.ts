@@ -48,13 +48,13 @@ export class MainServiceService {
     this.services = [
       {
         label: Service.DESIGN,
-        imgFileName: 'https://res.cloudinary.com/halshop/image/upload/v1742726983/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3231_jrdys6.jpg',
+        imgFileName: 'https://res.cloudinary.com/halshop/image/upload/v1742726951/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V04-2_h6cwni.jpg',
         description: ServiceDescription[Service.DESIGN],
         endpoint: 'service/architectural-design',
       },
       {
         label: Service.CONSTRUCTION,
-        imgFileName: 'https://res.cloudinary.com/halshop/image/upload/v1742726991/cocostudio/midtown/B%E1%BA%A3n_sao_c%E1%BB%A7a__TOM3205_cqadbu.jpg',
+        imgFileName: 'https://res.cloudinary.com/halshop/image/upload/v1742726953/cocostudio/view/B%E1%BA%A3n_sao_c%E1%BB%A7a_V09-1_dqfdah.jpg',
         description: ServiceDescription[Service.CONSTRUCTION],
         endpoint: 'service/interior-design',
       },

@@ -48,6 +48,8 @@
 .overview > div {
     width: 100ch;
     text-align: center;
+    line-height: 1.5;
+    color: var(--dark-color);
 }
 
 .list-services {
@@ -91,6 +93,7 @@
 }
 
 .service .description {
+    line-height: 1.5;
     max-width: 50ch;
 }
 

@@ -10,6 +10,7 @@ import { LOCALSTORAGE_KEY, SESSION_STORAGE_KEY } from '../../config/config';
 import { Router } from '@angular/router';
 import { SessionStorageService } from '../../core/service/session-storage.service';
 import { CoreModule } from '../../core/core.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ import { CoreModule } from '../../core/core.module';
     InputTextModule,
     ButtonModule,
     PasswordModule,
-    CoreModule
+    CoreModule,
+    SharedModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -41,6 +43,13 @@ export class LoginComponent {
       username: new FormControl(),
       password: new FormControl()
     })
+
+
+    window.addEventListener('keydown', (event) => {
+      if(event.key === 'Enter') {
+        this.login()
+      }
+    });
   }
 
   login() {

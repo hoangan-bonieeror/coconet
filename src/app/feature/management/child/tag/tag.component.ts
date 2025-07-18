@@ -53,6 +53,14 @@ export class TagComponent implements OnInit {
       Validators.minLength(1),
       tagNameExistValidator(this.tags)
     ]);
+
+    window.addEventListener('keydown', (event) => {
+      if(event.key === 'Enter') {
+        if(this.isDisplayDialog) {
+          this.onSave()
+        }
+      }
+    });
   }
   clonedTags: { [s: string]: Tag } = {};
 

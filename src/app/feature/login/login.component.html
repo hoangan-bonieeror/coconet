@@ -1,19 +1,23 @@
-<div class="container">
-    <div class="form-login">
-        <div class="header">
-            Welcome <header>Cocostudio</header>
-        </div>
-    
-        <div class="form">
-            <div class="form-content" [formGroup]="loginForm">
-                <label for="">Username</label>
-                <input type="text" pInputText formControlName="username">
-                <label for="">Password</label>
-                <p-password [toggleMask]="true" [feedback]="false" formControlName="password" />
+<main>
+    <app-navbar></app-navbar>
+    <div class="container">
+        <div class="form-login">
+            <div class="header">
+                Welcome <header>Cocostudio</header>
             </div>
-            <div class="form-footer">
-                <button class="admin-button-dark" [loading]="loading" pButton label="LOGIN" (click)="login()"></button>
+        
+            <div class="form">
+                <div class="form-content" [formGroup]="loginForm">
+                    <label for="">Username</label>
+                    <input type="text" pInputText formControlName="username">
+                    <label for="">Password</label>
+                    <p-password [toggleMask]="true" [feedback]="false" formControlName="password" />
+                </div>
+                <div class="form-footer">
+                    <button class="admin-button-dark" [loading]="loading" pButton label="LOGIN" (click)="login()"></button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <app-footer></app-footer>
+</main>

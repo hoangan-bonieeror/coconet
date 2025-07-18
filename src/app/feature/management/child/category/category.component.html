@@ -137,7 +137,7 @@
         <div class="form-content">
             <label for="username" class="font-semibold w-24">Tên phân loại</label>
             <div class="input-field">
-                <input pInputText id="username" [formControl]="categoryNameControl" class="flex-auto" autocomplete="off" />
+                <input pInputText id="username" [formControl]="categoryNameControl" class="flex-auto" autocomplete="off" style="width: 100%;" />
                 @if (submit) {
                     <div class="error-field" *ngIf="categoryNameControl.hasError('required')">
                         Name is required.

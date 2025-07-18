@@ -42,6 +42,14 @@ export class CategoryComponent implements OnInit {
       Validators.minLength(1),
       categoryNameExistValidator(this.categories),
     ]);
+
+    window.addEventListener('keydown', (event) => {
+      if(event.key === 'Enter') {
+        if(this.isDisplayDialog) {
+          this.onSave()
+        }
+      }
+    });
   }
   ngOnInit(): void {
     let foundMenu = this._adminService.menus.find(o=>o.tittle==SidebarMenu.CATEGORY)
