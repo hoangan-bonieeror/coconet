@@ -27,13 +27,15 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DashboardComponent } from './child/dashboard/dashboard.component';
+import { SettingComponent } from './child/setting/setting.component';
 @NgModule({
   declarations: [
     TagComponent,
     CategoryComponent,
     ManagementComponent,
     CustomerRequestComponent,
-    DashboardComponent
+    DashboardComponent,
+    SettingComponent
   ],
   imports: [
     CommonModule,

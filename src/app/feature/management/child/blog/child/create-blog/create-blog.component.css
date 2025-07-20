@@ -76,4 +76,8 @@
         padding-left: 0;
         padding-right: 0;
     }
+
+    .blog-form {
+        grid-template-columns: 1fr;
+    }
 }

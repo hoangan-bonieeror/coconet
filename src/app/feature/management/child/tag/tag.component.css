@@ -1,6 +1,3 @@
-:host {
-    color: var(--admin-dark-color);
-}
 .tag-header {
     display: grid;
     grid-template-columns: 1fr max-content;

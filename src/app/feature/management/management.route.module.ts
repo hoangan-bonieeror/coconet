@@ -10,12 +10,18 @@ import { CustomerRequestComponent } from './child/customer-request/customer-requ
 import { adminGuard } from '../../core/guard/admin.guard';
 import { UserModule } from './child/user/user.module';
 import { DashboardComponent } from './child/dashboard/dashboard.component';
+import { SettingComponent } from './child/setting/setting.component';
 
 const routes : Route[] = [
   {
     path: "",
     component: ManagementComponent,
     children: [
+      {
+        path: "setting",
+        component: SettingComponent,
+        canActivate: [adminGuard]
+      },
       {
         path: "dashboard",
         component: DashboardComponent,

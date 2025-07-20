@@ -8,7 +8,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { AccordionComponent } from './accordion/accordion.component';
 import { DrawerModule } from 'primeng/drawer';
 import { InputTextModule } from 'primeng/inputtext';
-
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
+import { TieredMenuModule } from 'primeng/tieredmenu';
+import { ButtonModule } from 'primeng/button';
 @NgModule({
   declarations: [NavbarComponent, FooterComponent, SidebarComponent, AccordionComponent],
   imports: [
@@ -16,7 +19,11 @@ import { InputTextModule } from 'primeng/inputtext';
     RouterLink,
     FontAwesomeModule,
     DrawerModule,
-    InputTextModule
+    InputTextModule,
+    AvatarModule,
+    AvatarGroupModule,
+    TieredMenuModule,
+    ButtonModule
   ],
   exports: [NavbarComponent, FooterComponent, SidebarComponent, AccordionComponent]
 })

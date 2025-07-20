@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { faUser, faBlog, faTag, faLayerGroup, faMailReply, faDashboard } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBlog, faTag, faLayerGroup, faMailReply, faDashboard, faCog, faGear } from '@fortawesome/free-solid-svg-icons';
 import { MenuItem } from 'primeng/api';
 import { User, UserInput } from '../../interface/user';
 import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
@@ -20,7 +20,8 @@ export enum SidebarMenu {
   TAG = "Thẻ gán",
   CATEGORY = "Phân loại",
   REQUEST = "Yêu cầu khách hàng",
-  DASHBOARD = "Bảng điều khiển"
+  DASHBOARD = "Bảng điều khiển",
+  SETTING = "Cài đặt"
 }
 
 @Injectable({
@@ -28,13 +29,14 @@ export enum SidebarMenu {
 })
 export class AdminService {
   menus : SidebarItem[] = [];
+  settingSidebarItem: SidebarItem;
   breadcrumbItems : MenuItem[];
 
   private _users: BehaviorSubject<User[]>;
   public users: Observable<User[]>;
 
-  
-  
+  public currentUser: string | null = null;
+
   constructor(
     private _router: Router,
     private _apiService: ApiService
@@ -78,6 +80,13 @@ export class AdminService {
         }
       ]
 
+    this.settingSidebarItem = {
+      tittle: SidebarMenu.SETTING,
+      icon: faGear,
+      isActive: false,
+      endpoint: "admin/setting"
+    }
+
     this.breadcrumbItems = [];
     this._users = new BehaviorSubject<User[]>([])
     this.users = this._users.asObservable()
@@ -87,6 +96,7 @@ export class AdminService {
     this.menus.forEach(item => {
       item.isActive = activateItem.tittle == item.tittle
     })
+    this.settingSidebarItem.isActive = activateItem.tittle == SidebarMenu.SETTING
     if(isNavigate) this._router.navigate([activateItem.endpoint])
   }
 

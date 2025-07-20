@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { SessionStorageService } from '../../core/service/session-storage.service';
 import { CoreModule } from '../../core/core.module';
 import { SharedModule } from '../../shared/shared.module';
+import { AdminService } from '../../core/service/admin.service';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +36,8 @@ export class LoginComponent {
     private _apiService: ApiService,
     private _localStorage: LocalStorageService,
     private _router: Router,
-    private _sessionStorage: SessionStorageService
+    private _sessionStorage: SessionStorageService,
+    private _adminService: AdminService
   ) {
     this.loading = false;
     this.submit = false;
@@ -71,6 +73,11 @@ export class LoginComponent {
         let token = (bodyResponse !== null && "token" in bodyResponse) ? bodyResponse["token"] as string : null
         let user = (bodyResponse !== null && "user" in bodyResponse) ? bodyResponse["user"] as Object : null
         if(token) {
+          if(user) {
+            this._adminService.currentUser = user['username']
+          } else {
+            this._adminService.currentUser = null
+          }
           this._localStorage.set(LOCALSTORAGE_KEY.TOKEN, token)
           this._localStorage.setObject(LOCALSTORAGE_KEY.USER, user)
           let current_page = this._sessionStorage.get(SESSION_STORAGE_KEY.CURRENT_PAGE)

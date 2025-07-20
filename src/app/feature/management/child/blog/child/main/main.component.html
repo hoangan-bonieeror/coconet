@@ -9,27 +9,29 @@
     </div>
 
     <div class="post-content" data-aos="fade-up" data-aos-duration="500">
-        <p-table [loading]="loadingTable" stripedRows [value]="(_posts | async)" [tableStyle]="{ 'min-width': '50rem', 'font-size': '1em' }"
+        <p-table
+            dataKey="id"
+            [loading]="loadingTable" stripedRows 
+            [value]="(_posts | async)"
+            [tableStyle]="{ 'min-width': '50rem', 'font-size': '1em' }"
             [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+            [globalFilterFields]="['title', 'category.name', 'status']"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" dataKey="id" editMode="row">
             <ng-template #header>
                 <tr>
                     <!-- <th pSortableColumn="id">
                         ID <p-sortIcon field="id"></p-sortIcon>
                     </th> -->
-                    <th style="width: 30%;" pSortableColumn="title">
+                    <th style="white-space: nowrap;" pSortableColumn="title">
                         Chủ đề <p-sortIcon field="title"></p-sortIcon>
                     </th>
-                    <th pSortableColumn="category.name">
+                    <th style="white-space: nowrap;" pSortableColumn="category.name">
                         Phân loại <p-sortIcon field="category.name"></p-sortIcon>
                     </th>
-                    <th pSortableColumn="user.name">
-                        Người viết <p-sortIcon field="user.name"></p-sortIcon>
-                    </th>
-                    <th pSortableColumn="status">
+                    <th style="white-space: nowrap;" pSortableColumn="status">
                         Trạng thái <p-sortIcon field="status"></p-sortIcon>
                     </th>
-                    <th pSortableColumn="publishedAt">
+                    <th style="white-space: nowrap;" pSortableColumn="publishedAt">
                         Ngày xuất bản <p-sortIcon field="publishedAt"></p-sortIcon>
                     </th>
                     <th></th>
@@ -39,18 +41,17 @@
                 <tr>
                     <!-- <td>{{ post.id }}</td> -->
                     <td>{{ post.title }}</td>
-                    <td>{{ post.category.name }}</td>
+                    <td style="white-space: nowrap;">{{ post.category.name }}</td>
                     <td>
-                        @if (post.user) {
-                        {{ post.user.username }}
-                        }
+                        <span style="white-space: nowrap;" class="post-status" [ngClass]="{ 'publish' : post.status == POST_STATUS.PUBLISH, 'draft': post.status == POST_STATUS.DRAFT }">
+                            {{ POST_STATUS_MAP[post.status] }}
+                        </span>
                     </td>
-                    <td>{{ POST_STATUS_MAP[post.status] }}</td>
                     <td>
                         @if (post.status == POST_STATUS.DRAFT) {
                             <button [loading]="publishing == post.id" pButton label="Xuất bản" icon="pi pi-send" class="admin-button-dark" (click)="publishPost(post.id)"></button>
                         } @else {
-                            {{ post.publishedAt == null ? '---' : post.publishedAt | date }}
+                            {{ post.publishedAt == null ? '---' : post.publishedAt | date:'dd/MM/yyyy' }}
                         }
                     </td>
                     <td>

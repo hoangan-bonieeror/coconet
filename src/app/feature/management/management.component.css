@@ -1,6 +1,6 @@
 main {
   display: grid;
-  grid-template-columns: 15% auto;
+  grid-template-columns: 16rem auto;
   width: 100vw;
   height: 100vh;
 }

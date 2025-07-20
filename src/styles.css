@@ -5,6 +5,8 @@
   --dark-color: #4f4135;
   --neutral-color: #f2ede7;
 
+  --light-color: #F5F3EF;
+
   --admin-dark-color: #1f214d;
   --admin-bright-color: #f7f6fb;
 }
@@ -323,8 +325,6 @@ button {
 .blog-container .tags > * {
   padding: 5px 10px;
   border-radius: 15px;
-  color: var(--admin-bright-color);
-  background-color: var(--admin-dark-color);
 }
 
 .blog-container .content, .blog {
@@ -344,7 +344,7 @@ button {
 .p-textarea {
   width: 100%;
 }
-.p-password, .p-password-input {
+.p-password, .p-password-input, .p-select, .p-multiselect {
   width: 100% !important;
 }
 
@@ -358,6 +358,21 @@ button {
 .p-inputtext:enabled:focus {
   border-color: var(--dark-color) !important;
 }
+
+.p-breadcrumb {
+  padding-left: 0 !important  ;
+}
+
+/* .p-select-option.p-select-option-selected {
+  background-color: #CAC6C2 !important;
+  color: var(--dark-color) !important;
+}
+
+.p-select-option.p-select-option-selected.p-focus {
+  background-color: #DBD9D6 !important;
+  color: var(--dark-color) !important;
+} */
+
 
 .drag-drop-img {
   cursor: pointer; 
@@ -404,4 +419,23 @@ button {
 
 .mr-tb-2 {
   margin: 20px 0;
+}
+
+
+.post-status {
+  padding: 7px 15px;
+  border-radius: 15px;
+  font-weight: 600;
+}
+
+.publish {
+  /* border: 1px solid rgb(22 101 52); */
+  color: rgb(22 101 52);
+  background-color: rgb(220 252 231);
+}
+
+.draft {
+  /* border: 1px solid hsl(210 29% 24%); */
+  color: hsl(210 29% 24%);
+  background-color: hsl(213 27% 90%);
 }

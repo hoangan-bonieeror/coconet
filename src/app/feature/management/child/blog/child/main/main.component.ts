@@ -7,6 +7,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { DataService } from '../../../../../../core/service/data.service';
+import { Category } from '../../../../../../interface/category';
 
 @Component({
   selector: 'app-main',
@@ -24,7 +25,9 @@ export class MainComponent implements OnInit {
   readonly POST_STATUS_MAP = POST_STATUS_MAP;
   readonly POST_STATUS = POST_STATUS
   
-  loadingTable: boolean = false
+  loadingTable: boolean = false;
+  categories: Category[] = [];
+  postStatuses: string[] = [];
   constructor(
     private _apiService: ApiService,
     private _router: Router,
@@ -50,6 +53,18 @@ export class MainComponent implements OnInit {
         this.loadingTable = false
         this.post$.next(posts)
       })
+
+      this._apiService.getAllCategories().subscribe(res => {
+        if(res.ok) {
+          let data = res.body as Category[];
+          this.categories = data
+        }
+      })
+
+      for(const value of Object.values(POST_STATUS_MAP)) {
+        this.postStatuses.push(value)
+      }
+
   }
 
   createNewBlog() {
