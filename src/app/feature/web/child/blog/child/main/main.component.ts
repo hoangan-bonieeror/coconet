@@ -47,6 +47,26 @@ export class MainComponent implements OnInit {
     this._router.navigate([`blog/${slug}`])
   }
   ngOnInit(): void {
+      window.addEventListener("click", (event) => {
+        let target = event.target
+        if(target) {
+          // @ts-ignore
+          if((target.id.length > 0 && target.id == 'filter-btn') 
+          // @ts-ignore
+            || (target.innerText.length > 0 && target.innerText == 'Bộ lọc')
+          // @ts-ignore
+            || (target.classList.length > 0 && target.classList.contains("pi-filter"))  
+        ) {
+            return
+          }
+
+          this.isShowFilter = false
+
+        }
+      })
+      window.addEventListener("scroll" , () => {
+        this.isShowFilter = false
+      })
       this._apiService.getAllCategories().subscribe(res => {
         if(res.ok) {
           let data = res.body as Category[]
@@ -76,6 +96,7 @@ export class MainComponent implements OnInit {
           let data = res.body as JoinPost[];
           this.blogs = data
           this.filterBlogs = this.blogs
+          this.triggerFilter()
         }
       })
   }

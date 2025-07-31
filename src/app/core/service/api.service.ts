@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TagInput } from '../../interface/tag';
 import { CategoryInput } from '../../interface/category';
@@ -6,6 +6,7 @@ import { UserInput, UserLogin } from '../../interface/user';
 import { CustomerRequest, CustomerRequestInput } from '../../interface/request';
 import { PostInput } from '../../interface/post';
 import { environment } from "../../../environments/environment"
+import { catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

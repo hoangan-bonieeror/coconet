@@ -1,1 +1,33 @@
-<p>setting works!</p>
+<main>
+    <header class="setting-header">Cài đặt</header>
+    <div class="setting-item">
+        <header class="setting-header" style="margin-bottom: 15px;">Tài khoản</header>
+        <div class="personal-info">
+            <header class="setting-item-header">Cập nhật thông tin</header>
+            <form action="" [formGroup]="personalInfoForm">
+                <div class="field">
+                    <label for="">Họ</label>
+                    <input pInputText formControlName="lastname">
+                    <label for="">Tên</label>
+                    <input pInputText formControlName="firstname">
+                </div>
+            </form>
+            <button class="admin-button-dark" pButton label="Lưu thông tin"></button>
+        </div>
+        <div class="divider"></div>
+        <div class="change-pwd">
+            <header class="setting-item-header">Thay đổi mật khẩu</header>
+            <form action="" [formGroup]="changePwdForm">
+                <div class="field">
+                    <label for="">Mật khẩu hiện tại</label>
+                    <p-password formControlName="currentPwd" [feedback]="false" autocomplete="off" fluid />
+                    <label for="">Mật khẩu mới</label>
+                    <p-password formControlName="newPwd" [feedback]="false" autocomplete="off" fluid />
+                    <label for="">Nhập lại mật khẩu</label>
+                    <p-password formControlName="reEnterPwd" [feedback]="false" autocomplete="off" fluid />
+                </div>
+            </form>
+            <button class="admin-button-dark" pButton label="Đặt lại"></button>
+        </div>
+    </div>
+</main>

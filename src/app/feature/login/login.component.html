@@ -8,13 +8,18 @@
         
             <div class="form">
                 <div class="form-content" [formGroup]="loginForm">
-                    <label for="">Username</label>
-                    <input type="text" pInputText formControlName="username">
-                    <label for="">Password</label>
-                    <p-password [toggleMask]="true" [feedback]="false" formControlName="password" />
+                    <label for="">Tên người dùng</label>
+                    <input type="text" pInputText formControlName="username" (input)="errorMsg = null">
+                    <label for="">Mật khẩu</label>
+                    <p-password [toggleMask]="true" [feedback]="false" formControlName="password" (ngModelChange)="errorMsg = null" />
                 </div>
+                @if (errorMsg != null) {
+                    <p-message severity="error" size="small" variant="simple">
+                        {{errorMsg}}
+                    </p-message>
+                }
                 <div class="form-footer">
-                    <button class="admin-button-dark" [loading]="loading" pButton label="LOGIN" (click)="login()"></button>
+                    <button class="admin-button-dark" [loading]="loading" pButton label="ĐĂNG NHẬP" (click)="login()"></button>
                 </div>
             </div>
         </div>

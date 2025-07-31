@@ -56,8 +56,8 @@
                     </td>
                     <td>
                         <div class="flex items-center justify-center gap-2">
-                            <button pButton pRipple type="button" icon="pi pi-eye" text rounded severity="secondary"
-                                (click)="previewPost(post.id)"></button>
+                            <!-- <button pButton pRipple type="button" icon="pi pi-eye" text rounded severity="secondary"
+                                (click)="previewPost(post.id)"></button> -->
                             <button pButton pRipple type="button" icon="pi pi-pencil" (click)="editPost(post.id)" text rounded severity="secondary"></button>
                             <button pButton pRipple type="button" icon="pi pi-trash" (click)="deletePost(post.id)" text rounded severity="secondary"></button>
                         </div>
@@ -69,7 +69,7 @@
 </div>
 
 
-<p-dialog
+<!-- <p-dialog
     [visible]="isPreview" header="Bản xem trước" [modal]="true" [style]="{ width: '80%' }" [maximizable]="true"
     maskStyleClass="backdrop-blur-sm" styleClass="!border-0 !bg-transparent">
     <ng-template #headless>
@@ -80,7 +80,7 @@
             </div>
             <div class="blog-container" *ngIf="selectedPost">
                 <h1 class="title">{{ selectedPost.title }}</h1>
-                <!-- <small class="publish-time">{{ selectedPost.publishedAt | date }}</small> -->
+                <small class="publish-time">{{ selectedPost.publishedAt | date }}</small>
 
                 <small class="category">{{ selectedPost.category.name }}</small>
                 <div class="tags">
@@ -93,5 +93,5 @@
             </div>
         </div>
     </ng-template>
-</p-dialog>
+</p-dialog> -->
 <p-confirmdialog />

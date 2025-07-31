@@ -44,6 +44,11 @@
     width: 100%;
 }
 
+.content > * {
+    line-height: 1.5;
+    color: var(--dark-color) !important;
+}
+
 .blog > * {
     line-height: 1.5;
 }

@@ -211,8 +211,12 @@ button {
 .form .form-content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   column-gap: 10px;
+}
+
+.form-content label {
+  margin-top: 10px;
 }
 
 .field {

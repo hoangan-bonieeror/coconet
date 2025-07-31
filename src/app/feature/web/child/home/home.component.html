@@ -37,7 +37,7 @@
                 <div class="img-overview" >
                     <img [src]="service.imgFileName" alt="" loading="lazy">
                 </div>
-                <label for="">{{ service.label
+                <label style="text-align: center;" for="">{{ service.label
                     }}</label>
                 <!-- <div class="service_content" data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="100">
                 {{ service.description }}
@@ -242,29 +242,31 @@
                 <div class="header-underline-dark"></div>
             </div>
             <div class="media_container loading">
-                <div class="media_slider" #mediaSlider>
-                    <div class="media_list">
-                        @for (media of _dataService.medias; track $index) {
-                        <div class="media_item">
-                            @switch (media.type) {
-                                @case (MediaType.IMAGE) {
-                                    <img [src]="'../../../../../assets/media/' + media.url" alt="" class="media_source">
+                @if (_dataService.medias.length > 0) {
+                    <div class="media_slider" #mediaSlider>
+                        <div class="media_list">
+                            @for (media of _dataService.medias; track $index) {
+                            <div class="media_item">
+                                @switch (media.type) {
+                                    @case (MediaType.IMAGE) {
+                                        <img [src]="'../../../../../assets/media/' + media.url" alt="" class="media_source">
+                                    }
+                                    @case (MediaType.VIDEO) {
+                                        <video loop [src]="'../../../../../assets/media/' + media.url" class="media_source" controls></video>
+                                    }
                                 }
-                                @case (MediaType.VIDEO) {
-                                    <video loop [src]="'../../../../../assets/media/' + media.url" class="media_source" controls></video>
-                                }
+                            </div>
                             }
                         </div>
-                        }
                     </div>
-                </div>
-                <!-- <h1 style="color: white;">Loading...</h1> -->
-                <div class="arrow_left" (click)="onSlideBackward()">
-                    <ng-icon name="heroArrowLeft"></ng-icon>
-                </div>
-                <div class="arrow_right" (click)="onSlideForward()">
-                    <ng-icon name="heroArrowRight"></ng-icon>
-                </div>
+                    <!-- <h1 style="color: white;">Loading...</h1> -->
+                    <div class="arrow_left" (click)="onSlideBackward()" >
+                        <ng-icon name="heroArrowLeft"></ng-icon>
+                    </div>
+                    <div class="arrow_right" (click)="onSlideForward()">
+                        <ng-icon name="heroArrowRight"></ng-icon>
+                    </div>
+                }
             </div>
         </div>
     </section>

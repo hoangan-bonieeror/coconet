@@ -19,7 +19,7 @@
         @let filterProjects = filterProject();
         @if (filterProjects.length == 0) {
             <div class="not-found-data" data-aos="fade-up" data-aos-duration="500">
-                <span >Not found project</span>
+                <span >Không tìm thấy dự án</span>
             </div>
         } @else {
             @for (project of filterProjects; track $index; let idx = $index) {
