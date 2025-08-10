@@ -7,7 +7,6 @@ import { ApiService } from '../../../../core/service/api.service';
 import { CustomerRequest, CustomerRequestInput } from '../../../../interface/request';
 import { MessageService } from 'primeng/api';
 
-import '@maptiler/sdk/dist/maptiler-sdk.css';
 import { faMapMarker, faPhone, faVoicemail } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 @Component({
