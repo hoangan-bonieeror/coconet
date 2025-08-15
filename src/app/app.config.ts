@@ -9,6 +9,7 @@ import Material from '@primeng/themes/material';
 import Nora from '@primeng/themes/nora';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideQuillConfig, QuillModules } from 'ngx-quill/config';
+import { VideoHandler, ImageHandler, Options } from 'ngx-quill-upload';
 
 import Quill from 'quill';
 
@@ -19,9 +20,11 @@ FontAttributor.whitelist = [
 ];
 // @ts-ignore
 Quill.register(FontAttributor, true);
-
 import ImageResize from 'quill-image-resize';
  
+
+Quill.register('modules/imageHandler', ImageHandler)
+Quill.register('modules/videoHandler', VideoHandler)
 Quill.register('modules/imageResize', ImageResize);
 const modules : QuillModules = {
   imageResize: {
@@ -64,7 +67,7 @@ export const appConfig: ApplicationConfig = {
     }),
     provideHttpClient(withFetch()),
     provideQuillConfig({
-      modules: modules,
+      // modules: modules,
       customOptions: [{
         import: 'formats/font',
         whitelist: ['mirza', 'roboto', 'aref', 'serif', 'sansserif', 'monospace']

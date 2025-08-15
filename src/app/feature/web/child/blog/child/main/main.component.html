@@ -5,6 +5,7 @@
         <div class="tool-bar">
             <div class="flex align-items-center gap-10">
                 <button
+                    id="filter-btn"
                     [ngClass]="{'admin-button-dark': isShowFilter, 'admin-button': !isShowFilter}" 
                     pButton 
                     icon="pi pi-filter"
@@ -74,9 +75,9 @@
             } @else {
                 @for (blog of filterBlogs; track $index; let idx = $index) {
                     <div (click)="navigateBlog(blog.slug)" class="blog-item" data-aos="fade-up" data-aos-duration="500" [attr.data-aos-delay]="idx * 100">
-                        <img class="img_overview" [src]="blog.img_overview" [alt]="blog.id">
+                        <img class="img_overview" [src]="blog.img_overview" [alt]="blog.id" loading="lazy">
                         <div class="item-content">
-                            <small class="item-publish_date">{{ blog.publishedAt | date }}</small>
+                            <small class="item-publish_date">{{ blog.publishedAt | date: "dd/MM/yyyy" }}</small>
                             <div class="title">{{blog.title}}</div>
                             <small class="category">{{blog.category.name}}</small>
                             <div class="tags">

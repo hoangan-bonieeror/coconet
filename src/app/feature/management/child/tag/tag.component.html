@@ -109,10 +109,11 @@
                         <button
                             *ngIf="!editing"
                             pButton
+                            pRipple
                             icon="pi pi-trash"
                             severity="danger"
                             rounded
-                            outlined
+                            text
                             (click)="deleteTag(tag)" 
                         ></button>
                         <button

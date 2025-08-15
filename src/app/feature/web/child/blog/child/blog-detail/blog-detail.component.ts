@@ -31,12 +31,14 @@ export class BlogDetailComponent implements OnInit {
             let data = res.body as JoinPost;
             const parser = new DOMParser();
             if(data) {
-              // let doc = parser.parseFromString(data.content, 'text/html')
+
+              let content = await lastValueFrom(this._apiService.getBlogFile(slug))
+              content = content.replaceAll("rgb(0, 0, 0)", "var(--dark-color)")
+              // let doc = parser.parseFromString(content, 'text/html')
               // console.log("Header 1 found : ", doc.querySelectorAll('h1'))
               // console.log("Header 2 found : ", doc.querySelectorAll('h2'))
               // console.log("Header 3 found : ", doc.querySelectorAll('h3'))
 
-              let content = await lastValueFrom(this._apiService.getBlogFile(slug))
               if(content) {
                 data.content = this.sanitizer.bypassSecurityTrustHtml(content)
               }

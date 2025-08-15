@@ -12,6 +12,10 @@ import { SessionStorageService } from '../../core/service/session-storage.servic
 import { CoreModule } from '../../core/core.module';
 import { SharedModule } from '../../shared/shared.module';
 import { AdminService } from '../../core/service/admin.service';
+import { catchError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
+import { MessageModule } from 'primeng/message';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +27,8 @@ import { AdminService } from '../../core/service/admin.service';
     ButtonModule,
     PasswordModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    MessageModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -32,6 +37,8 @@ export class LoginComponent {
   loading: boolean;
   submit: boolean;
   loginForm: FormGroup;
+
+  errorMsg: string | null = null;
   constructor(
     private _apiService: ApiService,
     private _localStorage: LocalStorageService,
@@ -67,7 +74,18 @@ export class LoginComponent {
       username: username,
       password: password
     }
-    this._apiService.login(userLogin).subscribe(response => {
+    this._apiService.login(userLogin)
+    .pipe(catchError((err: HttpErrorResponse) => {
+      console.log(err)
+      this.loading = false
+      this.errorMsg = err.error['message']
+
+      setTimeout(() => {
+        this.errorMsg = null
+      }, 3000);
+      return throwError(() => {})
+    }))
+    .subscribe(response => {
       if(response.ok) {
         let bodyResponse = response.body
         let token = (bodyResponse !== null && "token" in bodyResponse) ? bodyResponse["token"] as string : null
@@ -89,6 +107,8 @@ export class LoginComponent {
           }
         }
         
+      } else {
+
       }
 
       

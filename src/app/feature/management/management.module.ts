@@ -28,6 +28,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DashboardComponent } from './child/dashboard/dashboard.component';
 import { SettingComponent } from './child/setting/setting.component';
+import { PasswordModule } from 'primeng/password';
 @NgModule({
   declarations: [
     TagComponent,
@@ -59,7 +60,8 @@ import { SettingComponent } from './child/setting/setting.component';
     BadgeModule,
     OverlayBadgeModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    PasswordModule
   ],
   providers: [
     MessageService,

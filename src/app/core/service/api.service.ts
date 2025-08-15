@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TagInput } from '../../interface/tag';
 import { CategoryInput } from '../../interface/category';
@@ -6,6 +6,7 @@ import { UserInput, UserLogin } from '../../interface/user';
 import { CustomerRequest, CustomerRequestInput } from '../../interface/request';
 import { PostInput } from '../../interface/post';
 import { environment } from "../../../environments/environment"
+import { catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -96,7 +97,7 @@ export class ApiService {
 
   getBlogFile(slug: string) {
     return this._httpCLient.get(
-      `${this.baseUrl}/post_file/${slug}.html`,
+      `${this.baseUrl}/posts/${slug}/html/${slug}.html`,
       {
         headers: {
           "Content-Type": "text/html",
@@ -311,4 +312,25 @@ export class ApiService {
     })
   }
 
+  uploadImgBlog(file: File) {
+    const uploadData = new FormData();
+    uploadData.append('file', file);
+    return this._httpCLient.post(`${this.baseUrl}/posts/upload-img`, uploadData,
+      {
+        headers: {...this.headers},
+        observe: "response",
+        responseType: "json"
+      })
+  }
+  uploadVideoBlog(file: File) {
+    const uploadData = new FormData();
+    uploadData.append('file', file, file.name);
+    return this._httpCLient.post(`${this.baseUrl}/blog-video`, uploadData,
+      {
+        headers: {...this.headers},
+        observe: "response",
+        responseType: "json"
+      }
+    )
+  }
 }
