@@ -1,5 +1,12 @@
 <main>
-    <app-navbar></app-navbar>
+    <app-navbar
+        [style]="{
+            padding: _mainService.lastYScroll == 0 ? '20px 15px' : '15px',
+            position: _mainService.navPosition,
+            backgroundColor: _mainService.isOverlayNavbar() ? 'transparent':'var(--neutral-color)',
+            color: _mainService.isOverlayNavbar() ? 'var(--neutral-color)':'var(--dark-color)'
+        }"
+    ></app-navbar>
     <div class="container">
         <div class="form-login">
             <div class="header">

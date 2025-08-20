@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -16,6 +16,8 @@ import { catchError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { MessageModule } from 'primeng/message';
+import { MainServiceService } from '../../core/service/main.service.service';
+import { NavPostion } from '../../interface/common';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +35,7 @@ import { MessageModule } from 'primeng/message';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loading: boolean;
   submit: boolean;
   loginForm: FormGroup;
@@ -44,7 +46,8 @@ export class LoginComponent {
     private _localStorage: LocalStorageService,
     private _router: Router,
     private _sessionStorage: SessionStorageService,
-    private _adminService: AdminService
+    private _adminService: AdminService,
+    public _mainService: MainServiceService
   ) {
     this.loading = false;
     this.submit = false;
@@ -59,6 +62,10 @@ export class LoginComponent {
         this.login()
       }
     });
+  }
+
+  ngOnInit(): void {
+    this._mainService.setNavBarPosition(NavPostion.STICKY)
   }
 
   login() {
