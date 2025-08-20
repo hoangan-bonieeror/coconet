@@ -1,4 +1,5 @@
-<div #navbar class="navbar">
+<div #navbar class="navbar"
+>
     <div routerLink="/" style="cursor: pointer; display: flex; align-items: center; justify-content: center;">
         <img [src]="'../../../assets/logo.png'" width="150px" alt="">
     </div>
@@ -9,10 +10,26 @@
         </a>
     </div>
     <div class="social_media_contact">
-        <a target="_blank" class="social_link" href="https://www.facebook.com/Cocostudio.Interior">
+        <a 
+            target="_blank"
+            class="social_link" 
+            href="https://www.facebook.com/Cocostudio.Interior"
+            [style]="{
+                backgroundColor: _mainService.isOverlayNavbar() ? 'transparent':'var(--neutral-color)',
+                color: _mainService.isOverlayNavbar() ? 'var(--neutral-color)':'var(--dark-color)'
+            }"
+        >
             <fa-icon [icon]="IconFacebook"></fa-icon>
         </a>
-        <a target="_blank" class="social_link" href="https://www.instagram.com/coco.studiosaigon">
+        <a 
+            target="_blank"
+            class="social_link"
+            href="https://www.instagram.com/coco.studiosaigon"
+            [style]="{
+                backgroundColor: _mainService.isOverlayNavbar() ? 'transparent':'var(--neutral-color)',
+                color: _mainService.isOverlayNavbar() ? 'var(--neutral-color)':'var(--dark-color)'
+            }"
+        >
             <fa-icon [icon]="IconInstagram"></fa-icon>
         </a>
         <div class="navbar_menu">
@@ -20,9 +37,21 @@
         </div>
     </div>
     <button class="burger-menu-btn" #burgerMenuButton (click)="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
-        <span class="burger-line"></span>
-        <span class="burger-line"></span>
-        <span class="burger-line"></span>
+        <span class="burger-line"
+            [style]="{
+                backgroundColor: _mainService.isOverlayNavbar() ? 'var(--neutral-color)' : 'var(--dark-color)'
+            }"
+        ></span>
+        <span class="burger-line"
+            [style]="{
+                backgroundColor: _mainService.isOverlayNavbar() ? 'var(--neutral-color)' : 'var(--dark-color)'
+            }"
+        ></span>
+        <span class="burger-line"
+            [style]="{
+                backgroundColor: _mainService.isOverlayNavbar() ? 'var(--neutral-color)' : 'var(--dark-color)'
+            }"
+        ></span>
     </button>
 </div>
 

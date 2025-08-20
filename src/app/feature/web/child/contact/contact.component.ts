@@ -9,6 +9,7 @@ import { MessageService } from 'primeng/api';
 
 import { faMapMarker, faPhone, faVoicemail } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { NavPostion } from '../../../../interface/common';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -56,6 +57,9 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
       Service.CONSTRUCTION,
       Service.RENOVATION
     ]
+
+
+    this._mainService.setNavBarPosition(NavPostion.STICKY)
   }
 
   ngAfterViewInit(): void {}

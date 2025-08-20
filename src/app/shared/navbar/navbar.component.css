@@ -3,13 +3,8 @@
     /* grid-template-columns: 1fr 75% 1fr; */
     justify-content: space-between;
     align-items: center;
-    /* justify-content: center; */
-    padding: 15px 25px;
     border-bottom: 1px;
     transition-duration: 250ms;
-    background-color: transparent;
-    color: var(--dark-color);
-    background-color: var(--neutral-color);
     width: 100%;
 }
 
@@ -23,7 +18,7 @@
 .navbar_menu {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 2em;
   justify-content: center;
 }
 
@@ -40,6 +35,7 @@
   overflow: hidden;
   font-size: 1em;
   text-transform: uppercase;
+  user-select: none;
 }
 
 /* Fade in */
@@ -64,9 +60,14 @@
   background-color: var(--dark-color) !important;
 }
 
-.navbar_menu > *:hover::after,
+/* .navbar_menu > *:hover::after,
 .navbar_menu > *:focus::after {
   transform: translate3d(0, 0, 0);
+} */
+
+.navbar_menu > *:hover,
+.navbar_menu > *:focus {
+  filter: brightness(1.5);
 }
 
 .active {
@@ -124,7 +125,7 @@
   justify-content: space-between; /* Distributes lines evenly */
   cursor: pointer;
   border: none;
-  background: var(--neutral-color) !important;
+  background: transparent !important;
   padding: 0; /* Remove default button padding */
   z-index: 1001; /* Ensure it's above other content if needed */
 }
@@ -134,7 +135,6 @@
   display: block;
   width: 100%;
   height: 4px; /* Thickness of the lines */
-  background-color: var(--dark-color); /* Color of the lines */
   border-radius: 3px; /* Slightly rounded ends */
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   transform-origin: center; /* Rotate lines around their center */

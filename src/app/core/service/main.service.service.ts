@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Menu, MenuItem, NavMenu } from '../../config';
 import { Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
+import { NavPostion } from '../../interface/common';
 
 export enum Service {
   GENERAL = 'Dịch vụ của chúng tôi',
@@ -35,11 +36,11 @@ export class MainServiceService {
   services: ServiceDislay[];
   menu: MenuItem[] = [];
 
-  // Scroll
-  scrollPosition: number = 0;
   // Navbar Height
   navbarHeight: number = 0;
 
+  ticking: boolean = false
+  lastYScroll: number = 0
   constructor(
     private _router: Router,
     private _viewportScroller: ViewportScroller
@@ -66,14 +67,18 @@ export class MainServiceService {
       },
     ];
 
-    window.onscroll = () => {
-      this.setScrollPosition();
-    };
+    window.addEventListener('scroll',  this.onScroll.bind(this), { passive: true })
   }
 
-  setScrollPosition() {
-    let [x, y] = this._viewportScroller.getScrollPosition();
-    this.scrollPosition = y;
+  onScroll() {
+    if (!this.ticking) {
+      window.requestAnimationFrame(() => {
+        const currentY = window.scrollY;
+        this.lastYScroll = currentY;
+        this.ticking = false;
+      });
+      this.ticking = true;
+    }
   }
 
   // Menu Manage Section
@@ -102,5 +107,15 @@ export class MainServiceService {
   }
   getNavbarHeight() {
     return this.navbarHeight;
+  }
+
+  navPosition: NavPostion = NavPostion.FIXED
+
+  setNavBarPosition(pos : NavPostion) {
+    this.navPosition = pos
+  }
+
+  isOverlayNavbar() {
+    return this.lastYScroll == 0 && this.navPosition == NavPostion.FIXED
   }
 }

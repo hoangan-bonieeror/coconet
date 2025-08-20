@@ -3,6 +3,7 @@ import { DataService, Project } from '../../../../../core/service/data.service';
 import { Router } from '@angular/router';
 import { MainServiceService } from '../../../../../core/service/main.service.service';
 import { Menu } from '../../../../../config';
+import { NavPostion } from '../../../../../interface/common';
 
 @Component({
   selector: 'app-project',
@@ -19,6 +20,7 @@ export class ProjectComponent implements OnInit {
   ngOnInit(): void {
     let projectMenuItem = this._mainService.findMenuItem(Menu.PROJECT)
     if(projectMenuItem) this._mainService.activateEndpoint(projectMenuItem)
+    this._mainService.setNavBarPosition(NavPostion.STICKY)
   }
 
   filterProject() {

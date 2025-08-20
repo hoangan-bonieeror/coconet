@@ -42,12 +42,6 @@ export class MainComponent implements OnInit {
       this._dataService.getAllPost().then(async data => {
         let posts : JoinPost[] = []
         for(let post of data) {
-          // try {
-          //   let content = await lastValueFrom(this._apiService.getBlogFile(post.slug))
-          //   if(content) {
-          //     post.content = this.sanitizer.bypassSecurityTrustHtml(content)
-          //   }
-          // } catch(err) {}
           posts.push(post)
         }
         this.loadingTable = false

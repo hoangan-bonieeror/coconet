@@ -4,6 +4,9 @@ import { MainServiceService } from '../../../../core/service/main.service.servic
 import { Menu } from '../../../../config';
 import { DataService, MediaType, Project } from '../../../../core/service/data.service';
 import { Router } from '@angular/router';
+import { NavPostion } from '../../../../interface/common';
+import { JoinPost } from '../../../../interface/post';
+import { ApiService } from '../../../../core/service/api.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,7 +17,10 @@ export class HomeComponent implements OnInit {
   readonly heroArrowRight = heroArrowRight
   readonly MediaType = MediaType
 
+
+
   @ViewChild('mediaSlider') mediaSlider!: ElementRef<HTMLDivElement>;
+  @ViewChild('blogListContainer') blogListContainer!: ElementRef<HTMLDivElement>
 
   selectCarouselIndex: number = 0
 
@@ -38,10 +44,18 @@ export class HomeComponent implements OnInit {
   ]
 
   isHover: boolean = true
-  lastClickTime: number = 0
-  constructor(public _mainService: MainServiceService,
+  lastClickTime: number = 0;
+
+  lastYScroll: number = 0
+  ticking: boolean = false;
+
+  posts: JoinPost[] = []
+
+  constructor(
+    public _mainService: MainServiceService,
     public _dataService: DataService,
-    private _router: Router
+    private _router: Router,
+    private _apiService: ApiService
   ){}
 
   viewProjectGallery(project: Project) {
@@ -93,5 +107,25 @@ export class HomeComponent implements OnInit {
     let homeMenuItem = this._mainService.findMenuItem(Menu.HOME)
     if(homeMenuItem) this._mainService.activateEndpoint(homeMenuItem)
     this.triggerIntervalIncrease()
+    this._mainService.setNavBarPosition(NavPostion.FIXED)
+      this._apiService.getAllPublishPosts(10).subscribe(res => {
+        if(res.ok) {
+          let data = res.body as JoinPost[];
+          this.posts = [...data, ...data, ...data,...data, ...data,...data, ...data]
+        }
+      })
+
+  }
+
+  navigateBlog(slug : string) {
+    this._router.navigate([`blog/${slug}`])
+  }
+
+  onBlogForward() {
+    if(this.blogListContainer) this.blogListContainer.nativeElement.scrollLeft += 300
+  }
+
+  onBlogBackward() {
+    if(this.blogListContainer) this.blogListContainer.nativeElement.scrollLeft -= 300
   }
 }

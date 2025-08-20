@@ -14,7 +14,7 @@ import { Tag } from '../../../../../../interface/tag';
 export class MainComponent implements OnInit {
   isShowFilter: boolean = false;
   currentCategory: string;
-  categories: {name: string, value: boolean}[] = [];
+  categories: Category[] = [];
   tags: {name: string, value: boolean}[] = []
   sortOptions: {value: boolean, title: string}[] = [
     {
@@ -70,12 +70,8 @@ export class MainComponent implements OnInit {
       this._apiService.getAllCategories().subscribe(res => {
         if(res.ok) {
           let data = res.body as Category[]
-          for(const category of data) {
-            this.categories.push({
-              name: category.name,
-              value : false
-            })
-          }
+          
+            this.categories = data
         }
       })
 
@@ -96,7 +92,7 @@ export class MainComponent implements OnInit {
           let data = res.body as JoinPost[];
           this.blogs = data
           this.filterBlogs = this.blogs
-          this.triggerFilter()
+          this.filterBlogByCategory()
         }
       })
   }
@@ -110,27 +106,28 @@ export class MainComponent implements OnInit {
       return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
     })
   }
-  selectCategory(name: string) {
-    this.currentCategory = name;
+  selectCategory(category: Category | null = null) {
+    this.selectedCategory = category;
+    this.filterBlogByCategory()
   }
 
 
-  triggerFilter() {
-    let listCategory = this.categories.filter(o=>o.value).map(o=>o.name)
-    let listTag = this.tags.filter(o=>o.value).map(o=>o.name)
+  // triggerFilter() {
+  //   let listCategory = this.categories.filter(o=>o.value).map(o=>o.name)
+  //   let listTag = this.tags.filter(o=>o.value).map(o=>o.name)
 
-    this.filterBlogs = this.blogs.filter(o=> {
-      let matchCategory = listCategory.length == 0 || listCategory.includes(o.category.name)
-      let matchTag = listTag.length == 0 || o.tags.some(tag => listTag.includes(tag.name))
+  //   this.filterBlogs = this.blogs.filter(o=> {
+  //     let matchCategory = listCategory.length == 0 || listCategory.includes(o.category.name)
+  //     let matchTag = listTag.length == 0 || o.tags.some(tag => listTag.includes(tag.name))
 
-      let queryStr = this.removeVietnameseTones(this.searchStr.trim().toLocaleLowerCase())
-      let titleStr = this.removeVietnameseTones(o.title)
-      let matchSearchStr = this.searchStr.trim().length == 0 || titleStr.includes(queryStr)
-      return matchCategory && matchTag && matchSearchStr
-    })
+  //     let queryStr = this.removeVietnameseTones(this.searchStr.trim().toLocaleLowerCase())
+  //     let titleStr = this.removeVietnameseTones(o.title)
+  //     let matchSearchStr = this.searchStr.trim().length == 0 || titleStr.includes(queryStr)
+  //     return matchCategory && matchTag && matchSearchStr
+  //   })
 
-    this.filterBlogs = this.sortByDate()
-  }
+  //   this.filterBlogs = this.sortByDate()
+  // }
 
 
   sortByDate(): JoinPost[] {
@@ -154,5 +151,20 @@ export class MainComponent implements OnInit {
 
   toggleFilter() {
     this.isShowFilter = !this.isShowFilter
+  }
+
+
+  filterBlogByCategory() {
+    if(!this.selectedCategory) {
+      this.filterBlogs = this.blogs
+    } else {
+      let categoryName = this.selectedCategory.name
+      this.filterBlogs = this.blogs.filter(item => {
+        return item.category.name == categoryName
+      })
+    }
+
+
+    this.filterBlogs = this.sortByDate()
   }
 }

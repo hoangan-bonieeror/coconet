@@ -1,7 +1,7 @@
 <div class="container">
     <header class="blog-page-title">BLOG</header>
     
-    <div class="filter-bar">
+    <!-- <div class="filter-bar">
         <div class="tool-bar">
             <div class="flex align-items-center gap-10">
                 <button
@@ -37,13 +37,6 @@
         <div class="filter-expand" *ngIf="isShowFilter" data-aos="zoom-in" data-aos-duration="200">
             <div class="category-filter">
                 <label for="">Thể loại</label>
-                <!-- <p-select [options]="categories" [(ngModel)]="selectedCategory" (onChange)="triggerFilter()" optionLabel="name" placeholder="Phân loại" class="w-full md:w-56">
-                    <ng-template #selectedItem let-selectedOption>
-                        <div class="flex items-center gap-2" *ngIf="selectedOption">
-                            <div>Phân loại: {{ selectedOption.name }}</div>
-                        </div>
-                    </ng-template>
-                </p-select> -->
                 <div class="list flex flex-column gap-10">
                     @for (category of categories; track $index) {
                         <div class="item flex align-items-center gap-10">
@@ -55,7 +48,6 @@
             </div>
             <div class="tag-filter">
                 <label for="">Thẻ</label>
-                <!-- <p-multiselect [options]="tags" [(ngModel)]="selectedTags" (onChange)="triggerFilter()" [filter]="true" optionLabel="name" placeholder="Chọn thẻ" [maxSelectedLabels]="3" display="chip" /> -->
                 <div class="list flex flex-column gap-10">
                     @for (tag of tags; track $index) {
                         <div class="item flex align-items-center gap-10">
@@ -67,6 +59,13 @@
             </div>
         </div>
 
+    </div> -->
+    
+    <div class="category-filter-bar">
+        <span [class.selected]="selectedCategory == null" (click)="selectCategory()">Tất cả</span>
+        @for (category of categories; track $index) {
+            <span [class.selected]="selectedCategory != null && selectedCategory.name == category.name" (click)="selectCategory(category)">{{category.name}}</span>
+        }
     </div>
     <div class="blog-section">
         <div class="blog-list">

@@ -1,4 +1,4 @@
-<div style="position: relative;" [style.transform]="'translateY(-' + (_mainService.navbarHeight) +'px)'">
+<div>
     <div class="carousel" data-aos="fade-up" data-aos-duration="500">
         <div *ngFor="let item of carouselItem; index as i" class="carousel_item"
             [style.opacity]="selectCarouselIndex == i ? 1 : 0">
@@ -28,9 +28,9 @@
         <div class="service_section">
             <div class="service_header">
                 <header class=" header">Dịch vụ</header>
-                <div class="outline-btn" (click)="exploreMore()">
+                <!-- <div class="outline-btn" (click)="exploreMore()">
                     Xem thêm
-                </div>
+                </div> -->
             </div>
             @for (service of _mainService.services; track $index; let index = $index) {
             <div class="service_item" data-aos="fade-up" data-aos-duration="500">
@@ -46,182 +46,52 @@
             }
         </div>
     </section>
-    <!-- <section #read data-aos="fade-up" data-aos-duration="500">
-    <div class="read_section">
-        <div class="read_header">
-            <header style="padding-left: 0;">Lastest read</header>
-            <div class="inline-btn">
-                View all
+    <section #blog>
+        <div class="blog-section"  data-aos="fade-up" data-aos-duration="500">
+            <div class="flex align-items-center justify-between" style="padding: 0 20px;">
+                <header class="header">Bài blog mới</header>
+                <div class="flex align-items-center gap-10 view-all-blog" routerLink="/blog">
+                    <span>Xem tất cả</span>
+                    <ng-icon name="heroArrowRight"></ng-icon>
+                </div>
             </div>
-        </div>
-        <div class="read_content">
-            <div style="grid-area: first;" class="first_story">
-                <div class="story_item">
-                    <div class="story_header">
-                        <div class="story_img">
-                            <img src="../../../../../assets/read/Holiday2024.jpg" alt="">
-                        </div>
-                        <small>17 November</small>
+            <div class="control">
+                <div style="position: relative; width: 100%; height: 100%;">
+                    <div class="arrow_left" (click)="onBlogBackward()">
+                        <ng-icon name="heroArrowLeft"></ng-icon>
                     </div>
-                    <div class="story_title">
-                        Holiday 2024
-                    </div>
-                    <div class="story_brief">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
+                    <div class="arrow_right" (click)="onBlogForward()">
+                        <ng-icon name="heroArrowRight"></ng-icon>
                     </div>
                 </div>
-
             </div>
-            
-            <div class="story_list" style="grid-area: list;">
-                <div class="story_item">
-                    <div class="story_header">
-                        <div class="story_img">
-                            <img src="../../../../../assets/read/Spirit.jpg"  alt="">
-                        </div>
-                        <small>17 November</small>
+            <div class="blog-list" #blogListContainer>
+                <div *ngFor="let post of posts" class="blog-card" (click)="navigateBlog(post.slug)">
+                    <div class="blog-img_overview">
+                        <img [src]="post.img_overview" [alt]="blog.id" loading="lazy">
                     </div>
-                    <div class="story_title">
-                        Spirit
+                    <div class="blog-sub-title">
+                        <div class="blog-category">{{post.category.name}}</div>
+                        -
+                        <div class="blog-published-date">{{ post.publishedAt | date: "dd/MM/yyyy"  }}</div>
                     </div>
-                    <div class="story_brief">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
-                    </div>
-                </div>
-                <div class="story_item">
-                    <div class="story_header">
-                        <div class="story_img">
-                            <img src="../../../../../assets/read/Baking.jpg"  alt="">
-                        </div>
-                        <small>17 November</small>
-                    </div>
-                    <div class="story_title">
-                        Baking
-                    </div>
-                    <div class="story_brief">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
-                    </div>
-                </div>
-                <div class="story_item">
-                    <div class="story_header">
-                        <div class="story_img">
-                            <img src="../../../../../assets/read/Greenary.jpg"  alt="">
-                        </div>
-                        <small>17 November</small>
-                    </div>
-                    <div class="story_title">
-                        Greenary
-                    </div>
-                    <div class="story_brief">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
-                    </div>
-                </div>
-                <div class="story_item">
-                    <div class="story_header">
-                        <div class="story_img">
-                            <img src="../../../../../assets/read/Loeffer.jpg"  alt="">
-                        </div>
-                        <small>17 November</small>
-                    </div>
-                    <div class="story_title">
-                        Loeffer
-                    </div>
-                    <div class="story_brief">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
-                    </div>
-                </div>
-                <div class="story_item">
-                    <div class="story_header">
-                        <div class="story_img">
-                            <img src="../../../../../assets/read/Musing.jpg"  alt="">
-                        </div>
-                        <small>17 November</small>
-                    </div>
-                    <div class="story_title">
-                        Musing
-                    </div>
-                    <div class="story_brief">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
-                    </div>
-                </div>
-                <div class="story_item">
-                    <div class="story_header">
-                        <div class="story_img">
-                            <img src="../../../../../assets/read/Scent.jpg"  alt="">
-                        </div>
-                        <small>17 November</small>
-                    </div>
-                    <div class="story_title">
-                        Scent
-                    </div>
-                    <div class="story_brief">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
+                    <div class="blog-title">
+                        {{ post.title }}
                     </div>
                 </div>
             </div>
-            <div style="grid-area: top;">
-                <div style="margin-bottom: 20px;">
-                    <span >Top Stories</span>
-                </div>
-                <div class="top_list">
-                    <div class="story_item">
-                        <div class="story_header">
-                            <div class="story_img">
-                                <img src="../../../../../assets/read/top_stories/DesignTrend.jpg"  alt="">
-                            </div>
-                            <small>17 November</small>
-                        </div>
-                        <div class="story_title">
-                            DesignTrend
-                        </div>
-                        <div class="story_brief">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
-                        </div>
-                    </div>
-                    <div class="story_item">
-                        <div class="story_header">
-                            <div class="story_img">
-                                <img src="../../../../../assets/read/top_stories/HolidayGift.jpg"  alt="">
-                            </div>
-                            <small>17 November</small>
-                        </div>
-                        <div class="story_title">
-                            Holiday Gift
-                        </div>
-                        <div class="story_brief">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
-                        </div>
-                    </div>
-                    <div class="story_item">
-                        <div class="story_header">
-                            <div class="story_img">
-                                <img src="../../../../../assets/read/top_stories/Musing.jpg"  alt="">
-                            </div>
-                            <small>17 November</small>
-                        </div>
-                        <div class="story_title">
-                            Musing
-                        </div>
-                        <div class="story_brief">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique porttitor malesuada. Quisque et ornare diam, sagittis egestas purus. Etiam ante nunc, lacinia et mollis vitae, sollicitudin in tortor.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="divider" style="grid-area: divider;"></div>
         </div>
-    </div>
-</section> -->
+    </section>
     <section #portfolio>
         <div class="portfolio_section">
             <div class="portfolio_header">
                 <header>Dự án nổi bật</header>
-                <div class="header-underline-dark"></div>
+                <div class="header-underline"></div>
             </div>
-            <div class="portfolio_content">
-                @for (project of _dataService.projects; track $index) {
-                <div class="portfolio_item" (click)="viewProjectGallery(project)" data-aos="fade-up"
+            <div class="portfolio_content" data-aos="fade-up"
                     data-aos-duration="1000">
+                @for (project of _dataService.projects; track $index) {
+                <div class="portfolio_item" (click)="viewProjectGallery(project)" >
                     <img class="portfolio_img" [src]="project.cover_img" alt="">
                     <div class="portfolio_title">
                         {{project.name}}

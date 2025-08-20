@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MainServiceService } from '../../../../core/service/main.service.service';
 import { Menu } from '../../../../config';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { NavPostion } from '../../../../interface/common';
 
 export enum Service {
   GENERAL = "Dịch vụ của chúng tôi", 
@@ -45,6 +46,7 @@ export class ServiceComponent implements OnInit {
 
   ngOnInit(): void {
     this._mainService.exploreService(Service.GENERAL)
+    this._mainService.setNavBarPosition(NavPostion.STICKY)
     let serviceMenuItem = this._mainService.findMenuItem(Menu.SERVICE)
     if(serviceMenuItem) this._mainService.activateEndpoint(serviceMenuItem)
   }

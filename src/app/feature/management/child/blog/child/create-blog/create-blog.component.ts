@@ -12,6 +12,8 @@ import { LOCALSTORAGE_KEY, POST_STATUS } from '../../../../../../config/config';
 import { AdminService } from '../../../../../../core/service/admin.service';
 import { MessageService } from 'primeng/api';
 import { PrimeNG } from 'primeng/config';
+import { QuillModules } from 'ngx-quill';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-create-blog',
@@ -32,6 +34,37 @@ export class CreateBlogComponent implements OnInit {
   isPreview: boolean = false;
 
   isAutoGenerateSlug: boolean = true;
+
+
+  modules : QuillModules = {
+    imageResize: {
+      displaySize: true
+    },
+    imageHandler: {
+      upload: this.processUploadImg.bind(this),
+      accepts: ['png', 'jpg', 'jpeg']
+    },
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+      ['blockquote', 'code-block'],
+
+      [{ 'header': 1 }, { 'header': 2 }, { 'header': 3 }],               // custom button values
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+      [{ 'direction': 'rtl' }],                         // text direction
+
+      [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+      // [{ 'font': ['Arial'] }],
+      [{ 'align': [] }],
+
+      ['clean'],                                         // remove formatting button
+
+      ['link', 'image', 'video']                         // link and image, video
+    ]
+  };
 
   constructor(
     private _apiService: ApiService,
@@ -104,9 +137,11 @@ export class CreateBlogComponent implements OnInit {
         return
       }
       let authorId = userObjFromLocal['id']
-      console.log(content)
+      
       let blogHtml = content as string;
       blogHtml = blogHtml.replaceAll("&nbsp;", " ");
+       
+
       let formData = new FormData()
       formData.append('title', title)
       formData.append('content', blogHtml)
@@ -255,5 +290,55 @@ export class CreateBlogComponent implements OnInit {
   processBlogContent(content) {
     if(content == null) return ''
     return content.replace(/&nbsp;/g, ' ')
+  }
+
+  handleImg(file) {
+    
+  }
+
+  processUploadImg(file: File) {
+    // @ts-ignore
+    return new Promise((resolve, reject) => {
+        if (
+          file.type === 'image/jpeg' ||
+          file.type === 'image/png' ||
+          file.type === 'image/jpg'
+        ) {
+          // File types supported for image
+          if (file.size < 1000000) {
+            try {
+                          const responsePromise = lastValueFrom(this._apiService.uploadImgBlog(file))
+            return responsePromise
+              .then((response) => {
+                if(response && response.status == 201) {
+                    let responseBody = response.body
+                    if(responseBody) {
+                        let urlImg = responseBody['url']
+                        resolve(urlImg);
+                    }
+    
+                }
+              
+                resolve(null)
+              })
+              .catch((error) => {
+                reject('Upload failed');
+                // Handle error control
+                console.error('Error:', error);
+              });
+            } catch (error) {
+              console.log(error)
+            }
+          } else {
+            console.log("Wrong size")
+            reject('Size too large');
+            // Handle Image size large logic
+          }
+        } else {
+          reject('Unsupported type');
+          // Handle Unsupported type logic
+        }
+        
+      });
   }
 }

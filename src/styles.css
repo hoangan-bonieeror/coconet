@@ -291,6 +291,10 @@ button {
   justify-content: center;
 }
 
+.justify-between {
+  justify-content: space-between;
+}
+
 .gap-10 {
   gap: 10px;
 }

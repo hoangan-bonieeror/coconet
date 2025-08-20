@@ -2,6 +2,8 @@ import { Component, ElementRef, input, OnInit, ViewChild } from '@angular/core';
 import { DataService, ImgRatio, Project } from '../../../../core/service/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { heroArrowLeft, heroArrowRight, heroXMark } from '@ng-icons/heroicons/outline';
+import { MainServiceService } from '../../../../core/service/main.service.service';
+import { NavPostion } from '../../../../interface/common';
 @Component({
   selector: 'app-project-detail',
   templateUrl: './project-detail.component.html',
@@ -19,10 +21,12 @@ export class ProjectDetailComponent implements OnInit {
   isDisplayDialog: boolean = false;
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _dataService: DataService
+    private _dataService: DataService,
+    private _mainService: MainServiceService
   ) {}
 
   ngOnInit(): void {
+      this._mainService.setNavBarPosition(NavPostion.STICKY)
       this._activatedRoute.queryParams.subscribe(params => {
         if('name' in params) {
           let projectName = params['name']

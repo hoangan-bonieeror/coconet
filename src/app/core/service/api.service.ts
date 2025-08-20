@@ -108,7 +108,10 @@ export class ApiService {
     )
   }
 
-  getAllPublishPosts() {
+  getAllPublishPosts(limit: number|undefined = undefined, offset: number|undefined = undefined) {
+    const queryParam = {}
+    if(limit) queryParam['limit'] = limit
+    if(offset) queryParam['offset'] = offset
     return this._httpCLient.get(
       `${this.baseUrl}/posts/publish`,
       {
@@ -116,6 +119,7 @@ export class ApiService {
           "Content-Type": "application/json",
           ...this.headers
         },
+        params: queryParam,
         responseType: "json",
         observe: "response"
       }

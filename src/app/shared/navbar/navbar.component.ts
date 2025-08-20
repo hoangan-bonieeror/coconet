@@ -5,7 +5,7 @@ import { MainServiceService } from '../../core/service/main.service.service';
 import { Service } from '../../feature/web/child/service/service.component';
 import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
-
+import { NavPostion } from '../../interface/common';
 export interface MenuItem {
   title: string,
   isActive: boolean,
@@ -25,6 +25,8 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   readonly IconPhone = faPhone;
   readonly Menu = Menu
   isShowBurgerMenu: boolean = false
+
+  readonly NavPosition = NavPostion;
   constructor(
     private _router: Router,
     public _mainService: MainServiceService
